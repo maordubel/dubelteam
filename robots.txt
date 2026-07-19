@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Private services accessible only via direct link.
+Disallow: /vip-il
+Disallow: /vip-il.html
+Disallow: /test-form.html
+Disallow: /success.html
+Disallow: /success-vip.html

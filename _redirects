@@ -1,0 +1,20 @@
+# Netlify _redirects — auto-applied
+# Reference: https://docs.netlify.com/routing/redirects/
+
+# === Subdomain support ===
+https://events.dubel.team/* https://www.dubel.team/events.html 200!
+https://creators.dubel.team/* https://www.dubel.team/creators.html 200!
+
+# === Clean URLs (no .html extension) ===
+/services      /services.html      200
+/work          /work.html          200
+/about         /about.html         200
+/contact       /contact.html       200
+/events        /events.html        200
+/creators      /creators.html      200
+/vip-il        /vip-il.html        200
+/success       /success.html       200
+/success-vip   /success-vip.html   200
+
+# === Force www (optional — uncomment to enforce) ===
+# https://dubel.team/* https://www.dubel.team/:splat 301!

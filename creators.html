@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Muse Residency — Dubel Team · By Invitation</title>
+<meta name="description" content="A discreet, by-invitation residency in Greece for international & local models and content creators. Privately hosted. VIP access to every Dubel night across Greece.">
+<meta property="og:title" content="The Muse Residency — Dubel Team">
+<meta property="og:description" content="By invitation. By intention. A private chapter in Greece — for models & creators we ask. VIP across every Dubel night.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dubel.team/creators.html">
+<link rel="canonical" href="https://www.dubel.team/creators.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F2EAD8;
+    --cream-warm: #E9DEC6;
+    --red: #C8262A;
+    --ink: #141414;
+    --ink-soft: rgba(20,20,20,0.85);
+    --ink-mute: rgba(20,20,20,0.55);
+    --line: rgba(20,20,20,0.15);
+    --line-strong: rgba(20,20,20,0.3);
+    --display: "Anton", "Impact", sans-serif;
+    --italic: "Fraunces", "Times New Roman", serif;
+    --body: "Hanken Grotesk", system-ui, sans-serif;
+    --mono: "Hanken Grotesk", system-ui, sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{font-family:var(--body);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;min-width:320px}
+  ::selection{background:var(--red);color:var(--cream)}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+  .container{max-width:1400px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+  .ticker-top{background:var(--ink);color:var(--cream);padding:11px 0;overflow:hidden;border-bottom:2px solid var(--red);position:relative;z-index:60}
+  .ticker{display:flex;gap:48px;white-space:nowrap;animation:tick 60s linear infinite;font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase}
+  .ticker span{display:inline-flex;align-items:center;gap:48px}
+  .ticker span::after{content:"✦";color:var(--red);font-size:10px}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  nav.main{position:sticky;top:0;z-index:90;padding:18px 0;background:var(--cream);border-bottom:1px solid transparent;transition:border-color .2s, background .2s, padding .25s}
+  nav.main.scrolled{border-bottom-color:var(--ink);background:color-mix(in srgb, var(--cream) 96%, transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:12px 0}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink)}
+  .brand img{width:52px;height:52px;display:block}
+  .brand-meta{display:flex;flex-direction:column;gap:2px;line-height:1}
+  .brand-name{font-family:var(--display);font-size:22px;line-height:1;letter-spacing:0.02em}
+  .brand-sub{font-family:var(--italic);font-style:italic;font-size:12px;color:var(--red);line-height:1;margin-top:4px;font-variation-settings:"opsz" 14}
+  .nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+  .nav-links a{color:var(--ink);text-decoration:none;font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:color .15s}
+  .nav-links a:hover{color:var(--red)}
+  .nav-cta{background:var(--red)!important;color:var(--cream)!important;padding:11px 20px;transition:background .2s}
+  .nav-cta:hover{background:var(--ink)!important;color:var(--cream)!important}
+  .menu-toggle{display:none;background:var(--ink);color:var(--cream);border:none;padding:10px 14px;font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer}
+
+  /* HERO — centered, mysterious */
+  .hero{padding:80px 0 0;position:relative}
+  .hero-inner{max-width:1100px;margin:0 auto;text-align:center;padding:0 32px}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:48px}
+  .hero-eyebrow::before,.hero-eyebrow::after{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  h1.smash{font-family:var(--display);font-size:clamp(56px, 11vw, 200px);line-height:0.86;letter-spacing:-0.01em;color:var(--ink);text-transform:uppercase;overflow-wrap:break-word;margin-bottom:36px}
+  h1.smash .red{color:var(--red);display:block}
+  h1.smash .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144;display:block}
+  .hero-divider{width:1px;height:48px;background:var(--ink);margin:0 auto 36px}
+  .hero-lead{font-family:var(--italic);font-style:italic;font-weight:400;font-size:clamp(20px, 1.8vw, 26px);line-height:1.45;color:var(--ink);letter-spacing:-0.005em;font-variation-settings:"opsz" 144;max-width:680px;margin:0 auto 48px}
+  .hero-lead em{color:var(--red);font-style:italic}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .btn{font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:18px 28px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:2px solid var(--ink);transition:all .2s ease;cursor:pointer;background:transparent}
+  .btn-primary{background:var(--red);border-color:var(--red);color:var(--cream)}
+  .btn-primary:hover{background:var(--ink);border-color:var(--ink);color:var(--cream);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
+  .btn-secondary{color:var(--ink);background:transparent}
+  .btn-secondary:hover{background:var(--ink);color:var(--cream);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
+
+  .hero-image-strip{margin-top:80px;position:relative;overflow:hidden;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .hero-image{width:100%;aspect-ratio:21/9;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.05) brightness(0.92)}
+  .hero-image-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-start;padding:32px;pointer-events:none}
+  .hero-image-overlay span{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);background:rgba(20,20,20,0.6);padding:6px 12px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+
+  /* MANIFESTO */
+  .manifesto{background:var(--ink);color:var(--cream);padding:100px 0;position:relative;overflow:hidden}
+  .manifesto::before{content:"BY INVITATION";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-4deg);font-family:var(--display);font-size:24vw;line-height:1;color:rgba(242,234,216,0.04);white-space:nowrap;pointer-events:none;z-index:0}
+  .manifesto-inner{position:relative;z-index:1;max-width:920px;margin:0 auto;text-align:center}
+  .manifesto-eyebrow{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--red);margin-bottom:36px;display:inline-flex;align-items:center;gap:14px}
+  .manifesto-eyebrow::before,.manifesto-eyebrow::after{content:"";width:32px;height:1px;background:var(--red)}
+  .manifesto-text{font-family:var(--italic);font-style:italic;font-weight:500;font-size:clamp(28px, 4vw, 56px);line-height:1.18;letter-spacing:-0.02em;color:var(--cream);font-variation-settings:"opsz" 144}
+  .manifesto-text .red{color:var(--red)}
+
+  /* SECTION HEADS */
+  section.block{padding:90px 0;position:relative}
+  .block-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:48px;padding-bottom:24px;border-bottom:2px solid var(--ink)}
+  .block-head .num{font-family:var(--display);font-size:14px;letter-spacing:0.1em;color:var(--red)}
+  .block-head .label{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute)}
+  .block-head h2{font-family:var(--display);font-size:clamp(38px, 7vw, 96px);line-height:0.9;letter-spacing:-0.005em;text-transform:uppercase;color:var(--ink);overflow-wrap:break-word}
+  .block-head h2 .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144}
+  .head-left{display:flex;flex-direction:column;gap:8px}
+
+  /* PROGRAM */
+  .fc-program{background:var(--cream-warm);border:2px solid var(--ink);padding:40px 36px}
+  .fc-program-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-bottom:20px;margin-bottom:28px;border-bottom:1px solid var(--line-strong)}
+  .fc-program-title{font-family:var(--display);font-size:clamp(28px, 3.4vw, 44px);line-height:1;letter-spacing:0.005em;text-transform:uppercase;color:var(--ink)}
+  .fc-program-title .red{color:var(--red)}
+  .fc-program-meta{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute)}
+  .fc-program-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:22px 36px}
+  .fc-program-grid .item{display:flex;gap:14px;align-items:flex-start}
+  .fc-program-grid .item .num{font-family:var(--display);font-size:18px;line-height:1.2;color:var(--red);flex-shrink:0;width:28px}
+  .fc-program-grid .item .text{font-family:var(--body);font-size:15px;line-height:1.5;color:var(--ink-soft)}
+  .fc-program-grid .item .text strong{color:var(--ink);font-weight:700;display:block;margin-bottom:2px}
+
+  /* EXCHANGE */
+  .fc-exchange{display:grid;grid-template-columns:1fr 60px 1fr;gap:16px;align-items:center;padding:36px;background:var(--ink);color:var(--cream);margin-top:32px;border:2px solid var(--ink)}
+  .fc-exchange-side{text-align:center;padding:8px}
+  .fc-exchange-side .lbl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+  .fc-exchange-side .body{font-family:var(--italic);font-style:italic;font-weight:500;font-size:clamp(18px, 1.8vw, 22px);line-height:1.3;font-variation-settings:"opsz" 144;color:var(--cream)}
+  .fc-exchange-side .body strong{font-style:normal;font-family:var(--display);font-weight:400;font-size:1.3em;color:var(--cream);letter-spacing:0.005em;text-transform:uppercase;display:block;margin-top:6px;line-height:1}
+  .fc-exchange-arrow{text-align:center;font-family:var(--display);font-size:36px;color:var(--red);line-height:1}
+
+  /* GALLERY */
+  .gallery-strip{display:grid;grid-template-columns:repeat(4, 1fr);gap:1px;background:var(--ink);border:2px solid var(--ink)}
+  .gallery-strip img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.02);transition:transform .5s var(--ease)}
+  .gallery-strip img:hover{transform:scale(1.03)}
+
+  /* FORM */
+  .form-section{background:var(--ink);color:var(--cream);padding:100px 0;position:relative;overflow:hidden}
+  .form-section::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg, var(--red) 0 40px, var(--cream) 40px 80px)}
+  .form-eyebrow{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--red);margin-bottom:24px;display:inline-flex;align-items:center;gap:14px}
+  .form-eyebrow::before,.form-eyebrow::after{content:"";width:32px;height:1px;background:var(--red)}
+  .form-headline{font-family:var(--display);font-size:clamp(40px, 7vw, 96px);line-height:0.88;letter-spacing:-0.01em;text-transform:uppercase;color:var(--cream);margin-bottom:24px;overflow-wrap:break-word}
+  .form-headline .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144}
+  .form-intro{font-family:var(--italic);font-style:italic;font-size:clamp(17px, 1.5vw, 20px);line-height:1.5;color:rgba(242,234,216,0.75);max-width:680px;margin-bottom:48px;font-variation-settings:"opsz" 144}
+  .form-intro strong{font-style:normal;color:var(--red);font-family:var(--body);text-transform:uppercase;font-size:0.85em;letter-spacing:0.04em;font-weight:700}
+
+  .inquiry-form{display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;max-width:900px}
+  .form-field{display:flex;flex-direction:column;gap:8px;position:relative}
+  .form-field.full{grid-column:span 2}
+  .form-field label{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red)}
+  .form-field label .req{color:var(--cream);opacity:0.6;font-weight:500;letter-spacing:0.1em}
+  .form-field label .opt{color:rgba(242,234,216,0.45);font-weight:500;letter-spacing:0.1em}
+  .form-field input,.form-field textarea{background:transparent;border:none;border-bottom:2px solid rgba(242,234,216,0.3);padding:12px 4px;font-family:var(--body);font-size:16px;color:var(--cream);transition:border-color .2s;width:100%;appearance:none}
+  .form-field input:focus,.form-field textarea:focus{outline:none;border-bottom-color:var(--red)}
+  .form-field input::placeholder,.form-field textarea::placeholder{color:rgba(242,234,216,0.4)}
+  .form-field input.error,.form-field textarea.error{border-bottom-color:var(--red);animation:errorShake .35s var(--ease)}
+  @keyframes errorShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .form-field textarea{resize:vertical;min-height:100px;font-family:var(--body)}
+
+  .ig-wrapper{position:relative}
+  .ig-wrapper::before{content:"@";position:absolute;left:4px;top:12px;font-family:var(--display);font-size:18px;color:var(--red);pointer-events:none;line-height:1}
+  .ig-wrapper input{padding-left:24px}
+
+  .niche-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:8px;margin-top:6px}
+  .niche-chip{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1.5px solid rgba(242,234,216,0.3);cursor:pointer;transition:all .2s;font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,234,216,0.7)}
+  .niche-chip input{display:none}
+  .niche-chip:hover{border-color:rgba(242,234,216,0.6);color:var(--cream)}
+  .niche-chip:has(input:checked){background:var(--red);border-color:var(--red);color:var(--cream)}
+  .niche-chip .check{width:14px;height:14px;border:1.5px solid rgba(242,234,216,0.5);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;line-height:1}
+  .niche-chip:has(input:checked) .check{background:var(--cream);border-color:var(--cream);color:var(--red)}
+  .niche-chip:has(input:checked) .check::before{content:"✓"}
+
+  .form-actions{grid-column:span 2;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-top:16px;padding-top:24px;border-top:1px solid rgba(242,234,216,0.2)}
+  .form-disclaimer{font-family:var(--italic);font-style:italic;font-size:14px;color:rgba(242,234,216,0.6);max-width:420px;line-height:1.4;font-variation-settings:"opsz" 14}
+
+  .form-success{display:none;padding:60px 32px;text-align:center;background:rgba(242,234,216,0.05);border:2px solid var(--red);max-width:680px;margin:0 auto}
+  .form-success.show{display:block}
+  .form-success .check{font-family:var(--display);font-size:64px;color:var(--red);margin-bottom:20px;line-height:1}
+  .form-success h3{font-family:var(--display);font-size:36px;line-height:1;text-transform:uppercase;color:var(--cream);margin-bottom:14px;letter-spacing:0.005em}
+  .form-success p{font-family:var(--italic);font-style:italic;font-size:18px;color:rgba(242,234,216,0.75);font-variation-settings:"opsz" 144}
+
+  footer{background:var(--ink);color:rgba(242,234,216,0.6);padding:28px 0;border-top:2px solid var(--red);font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;position:relative;z-index:2}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .footer-inner a{color:inherit;text-decoration:none;transition:color .2s}
+  .footer-inner a:hover{color:var(--red)}
+  .footer-links{display:flex;gap:24px;flex-wrap:wrap}
+  .footer-mark{display:flex;align-items:center;gap:10px}
+  .footer-mark img{width:28px;height:28px}
+  .footer-eu{color:var(--red);font-family:var(--mono);font-weight:700;letter-spacing:0.18em}
+
+  .fade-up{opacity:0;transform:translateY(28px);transition:opacity 1.2s var(--ease), transform 1.2s var(--ease)}
+  .fade-up.in{opacity:1;transform:translateY(0)}
+  .hero-inner > *{opacity:0;animation:slideUp 1.4s var(--ease) forwards}
+  .hero-inner > *:nth-child(1){animation-delay:.05s}
+  .hero-inner > *:nth-child(2){animation-delay:.2s}
+  .hero-inner > *:nth-child(3){animation-delay:.4s}
+  .hero-inner > *:nth-child(4){animation-delay:.55s}
+  .hero-inner > *:nth-child(5){animation-delay:.7s}
+  .hero-image-strip{opacity:0;animation:slideUp 1.4s var(--ease) .85s forwards}
+  @keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+  @media (max-width: 980px){
+    .container{padding:0 22px}
+    .nav-links{display:none}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cream);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:22px;gap:16px;align-items:flex-start}
+    .menu-toggle{display:inline-flex}
+    .hero{padding:48px 0 0}
+    .hero-inner{padding:0 22px}
+    .hero-eyebrow{margin-bottom:32px;letter-spacing:0.24em}
+    .hero-image-strip{margin-top:56px}
+    .hero-image{aspect-ratio:16/9}
+    .block-head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:32px;padding-bottom:18px}
+    section.block{padding:52px 0}
+    .fc-program{padding:28px 24px;border-width:1.5px}
+    .fc-program-grid{grid-template-columns:1fr;gap:18px}
+    .fc-exchange{grid-template-columns:1fr;gap:14px;padding:24px;border-width:1.5px}
+    .fc-exchange-arrow{transform:rotate(90deg);font-size:28px}
+    .gallery-strip{grid-template-columns:repeat(2, 1fr);border-width:1.5px}
+    .inquiry-form{grid-template-columns:1fr;gap:18px}
+    .form-field.full{grid-column:auto}
+    .form-actions{grid-column:auto;flex-direction:column;align-items:stretch;gap:14px}
+    .form-actions .btn{justify-content:center}
+    .form-disclaimer{text-align:center}
+    .niche-grid{grid-template-columns:repeat(2, 1fr)}
+    .footer-inner{flex-direction:column;text-align:center;gap:12px}
+    .manifesto{padding:64px 0}
+    .form-section{padding:64px 0}
+    .manifesto-text{font-size:26px;line-height:1.18}
+  }
+  @media (max-width: 640px){
+    .container{padding:0 18px}
+    .hero{padding:36px 0 0}
+    .hero-inner{padding:0 18px}
+    .hero-eyebrow{margin-bottom:28px;font-size:10px;letter-spacing:0.2em;gap:10px}
+    .hero-eyebrow::before,.hero-eyebrow::after{width:24px}
+    .hero-divider{height:36px;margin-bottom:28px}
+    .hero-lead{margin-bottom:36px;font-size:17px;line-height:1.5}
+    .hero-image-strip{margin-top:48px}
+    section.block{padding:44px 0}
+    .manifesto{padding:52px 0}
+    .form-section{padding:52px 0}
+    .block-head{margin-bottom:24px;padding-bottom:14px;gap:12px}
+    .block-head h2{font-size:32px;line-height:0.92}
+    .ticker-top{padding:9px 0}
+    .ticker{font-size:10.5px;gap:20px;letter-spacing:0.14em}
+    .ticker span{gap:20px}
+    nav.main{padding:13px 0}
+    .brand{gap:10px}
+    .brand img{width:40px;height:40px}
+    .brand-name{font-size:17px}
+    .brand-sub{font-size:11px}
+    .fc-program{padding:24px 20px}
+    .fc-program-grid .item .text{font-size:14px}
+    .fc-program-title{font-size:24px}
+    .fc-exchange{padding:20px 16px}
+    .form-headline{font-size:clamp(36px, 11vw, 72px);margin-bottom:20px}
+    .form-intro{font-size:16px;margin-bottom:32px}
+    .form-eyebrow{font-size:10px;letter-spacing:0.2em;gap:10px}
+    .form-eyebrow::before,.form-eyebrow::after{width:24px}
+    footer{padding:20px 0;font-size:10px;letter-spacing:0.12em}
+  }
+  @media (max-width: 520px){
+    .container{padding:0 16px}
+    .hero-inner{padding:0 16px}
+    h1.smash{font-size:54px;line-height:0.88}
+    .hero-lead{font-size:16px}
+    .btn{padding:14px 20px;font-size:12px;letter-spacing:0.1em}
+    .hero-actions{gap:10px;flex-direction:column;align-items:stretch}
+    .hero-actions .btn{justify-content:center}
+    .hero-image{aspect-ratio:4/3}
+    .hero-image-overlay{padding:18px}
+    .hero-image-overlay span{font-size:9.5px;padding:5px 10px}
+    .gallery-strip{grid-template-columns:repeat(2, 1fr)}
+    .niche-grid{grid-template-columns:1fr}
+    .footer-links{justify-content:center;font-size:10px;letter-spacing:0.1em;gap:12px;flex-wrap:wrap}
+    .footer-eu{font-size:10px;width:100%;text-align:center;margin-bottom:6px}
+    .form-field input,.form-field textarea{font-size:15px}
+    .form-field label{font-size:10px;letter-spacing:0.14em}
+    section.block{padding:38px 0}
+    .manifesto{padding:44px 0}
+    .form-section{padding:44px 0}
+    .manifesto-text{font-size:22px;line-height:1.22}
+    .block-head h2{font-size:28px}
+    .fc-program{padding:20px 16px}
+    .fc-program-title{font-size:22px}
+    .fc-exchange-side .body{font-size:15px}
+    .fc-program-grid{gap:14px}
+    .form-success{padding:40px 22px}
+    .form-success h3{font-size:28px}
+  }
+  @media (max-width: 360px){
+    .container{padding:0 14px}
+    .hero-inner{padding:0 14px}
+    h1.smash{font-size:44px;line-height:0.9}
+    .form-headline{font-size:32px}
+    .block-head h2{font-size:26px}
+    .manifesto-text{font-size:20px;line-height:1.22}
+    .btn{padding:12px 14px;font-size:11px;letter-spacing:0.08em}
+    .ticker{font-size:9.5px;gap:16px}
+    .ticker span{gap:16px}
+    .brand-name{font-size:16px}
+    .brand img{width:36px;height:36px}
+    .fc-program{padding:18px 14px}
+    .fc-program-grid .item{gap:8px}
+    .fc-program-grid .item .num{width:22px;font-size:16px}
+    .fc-exchange{padding:18px 14px}
+  }
+
+  /* ===================== REDUCED MOTION ===================== */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      animation-duration:0.01ms!important;
+      animation-iteration-count:1!important;
+      transition-duration:0.01ms!important;
+      scroll-behavior:auto!important;
+    }
+    html{scroll-behavior:auto}
+    .ticker{animation:none!important}
+    .fade-up{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-top" aria-hidden="true">
+  <div class="ticker">
+    <span>BY INVITATION ONLY</span><span>THE MUSE RESIDENCY</span><span>MODELS &amp; CREATORS · INTERNATIONAL &amp; LOCAL</span><span>VIP AT EVERY DUBEL NIGHT IN GREECE</span><span>OFF THE RECORD</span>
+    <span>BY INVITATION ONLY</span><span>THE MUSE RESIDENCY</span><span>MODELS &amp; CREATORS · INTERNATIONAL &amp; LOCAL</span><span>VIP AT EVERY DUBEL NIGHT IN GREECE</span><span>OFF THE RECORD</span>
+  </div>
+</div>
+
+<nav class="main" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Dubel Team logo">
+      <div class="brand-meta">
+        <span class="brand-name">DUBEL TEAM</span>
+        <span class="brand-sub">Muses</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events ↗</a></li>
+      <li><a href="creators.html" class="active">Creators</a></li>
+      <li><a href="contact.html" class="nav-cta">Hire us</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Off The Record · By Invitation</div>
+    <h1 class="smash">
+      THE
+      <span class="it">muse</span>
+      <span class="red">residency.</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-lead">
+      A quiet list of <em>international &amp; local models and content creators</em> spends a few days with us each season — at addresses we don't publish, in rooms we keep for the few. No campaign. No brief. Just Greece, on its softest light — and a <em>VIP seat</em> at every night we throw across the country. <em>If you found this page, someone meant for you to.</em>
+    </p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn btn-primary">Leave your name →</a>
+      <a href="#program" class="btn btn-secondary">How it works</a>
+    </div>
+  </div>
+  <div class="hero-image-strip">
+    <img src="hosp-04-pool-sea.jpg" alt="A private Greek property at golden hour — pool, sea, sunshine" class="hero-image" loading="lazy">
+    <div class="hero-image-overlay"><span>An address we don't publish · Greece</span></div>
+  </div>
+</header>
+
+<section class="manifesto">
+  <div class="container manifesto-inner">
+    <div class="manifesto-eyebrow">Read this first</div>
+    <p class="manifesto-text">
+      We host the few, not the many. <span class="red">No script. No call sheet. No deliverable.</span> A handful of days, the right rooms, the right table — and the trust that something quietly beautiful will come of it. <em>What that is, is between you and the light.</em>
+    </p>
+  </div>
+</section>
+
+<section class="block" id="program">
+  <div class="container">
+    <div class="block-head fade-up">
+      <div class="head-left">
+        <span class="num">/01</span>
+        <span class="label">How it works</span>
+      </div>
+      <h2>A FEW <span class="it">days,</span> SHAPED <span class="it">to you.</span></h2>
+    </div>
+
+    <div class="fc-program fade-up">
+      <div class="fc-program-head">
+        <div class="fc-program-title">The shape of it <span class="red">// nothing fixed</span></div>
+        <div class="fc-program-meta">[ MODELS &amp; CREATORS · INTERNATIONAL &amp; LOCAL · BY INVITATION ]</div>
+      </div>
+      <div class="fc-program-grid">
+        <div class="item">
+          <div class="num">01</div>
+          <div class="text"><strong>A room that suits you</strong>A private suite at one of our partner houses in Athens or the islands — chosen for the way you move through a space, not from a list.</div>
+        </div>
+        <div class="item">
+          <div class="num">02</div>
+          <div class="text"><strong>Quiet hours, on your terms</strong>Spa, sea, pool, sunrise. Sleep in. Disappear for an afternoon. Nothing on the calendar unless you want it there.</div>
+        </div>
+        <div class="item">
+          <div class="num">03</div>
+          <div class="text"><strong>The right table</strong>Dinners at rooms we love — sometimes ours, sometimes a friend's. Always the right table, never the loud one.</div>
+        </div>
+        <div class="item">
+          <div class="num">04</div>
+          <div class="text"><strong>Days off the map</strong>A boat at first light, a gallery after closing, an island your phone won't find. Built around you, never templated.</div>
+        </div>
+        <div class="item">
+          <div class="num">05</div>
+          <div class="text"><strong>One number, discreet</strong>A single fixer on the ground. Reservations, transport, last-minute changes — handled, quietly.</div>
+        </div>
+        <div class="item">
+          <div class="num">06</div>
+          <div class="text"><strong>A camera, if you want one</strong>Bring no one and shoot nothing. Or let us open the door — see 07.</div>
+        </div>
+        <div class="item">
+          <div class="num">07</div>
+          <div class="text"><strong>The full chapter — on request</strong>An optional, paid add-on for creators who want to leave with the work in hand: photographer, location, styling on the ground, and a finished edit delivered after. Quietly priced, never templated. <em>Ask, and we'll shape it for you.</em></div>
+        </div>
+        <div class="item">
+          <div class="num">08</div>
+          <div class="text"><strong>VIP at every Dubel night</strong>Once you're in the room, you're in the room — for good. Personal access to every party, opening and private night Dubel Team hosts across Greece, all year. <em>Your name is already on the door.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fc-exchange fade-up">
+      <div class="fc-exchange-side">
+        <div class="lbl">From you</div>
+        <div class="body">Presence. Discretion. <em>Whatever you choose to share.</em><strong>On your terms</strong></div>
+      </div>
+      <div class="fc-exchange-arrow">⇄</div>
+      <div class="fc-exchange-side">
+        <div class="lbl">From us</div>
+        <div class="body">A few hosted days in Greece — and a permanent VIP seat at every Dubel night.<strong>Off the record</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="gallery" style="background:var(--cream-warm);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);">
+  <div class="container">
+    <div class="block-head fade-up">
+      <div class="head-left">
+        <span class="num">/02</span>
+        <span class="label">The setting</span>
+      </div>
+      <h2>WHERE YOU'LL <span class="it">be hosted.</span></h2>
+    </div>
+    <div class="gallery-strip fade-up">
+      <img src="hosp-01-paros-bar.jpg" alt="A pool bar at a private Paros property — bamboo pergola, late afternoon" loading="lazy">
+      <img src="hosp-03-rooftop-red.jpg" alt="An Athens rooftop at night — red light, city below" loading="lazy">
+      <img src="hosp-05-dj-night.jpg" alt="A rooftop after midnight — red light, Athens cityscape" loading="lazy">
+      <img src="hosp-07-dj-portrait.jpg" alt="Golden hour portrait — Athens dusk" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="apply">
+  <div class="container">
+    <div class="form-eyebrow">/03 — Leave your name</div>
+    <h2 class="form-headline">
+      ASK TO BE <span class="it">considered.</span>
+    </h2>
+    <p class="form-intro">
+      <strong>One note:</strong> the stay itself isn't a paid booking and isn't a brand deal — we host you, quietly, and trust you to know what to do with the time. <em>Models and content creators, international or local — we read everything.</em> If you'd like the optional <em>full production add-on</em> (photo &amp; edit, on us to arrange, on you to fund), say so below and we'll quote it personally. Either way, you're VIP at every Dubel night going forward.
+    </p>
+
+    <form class="inquiry-form" id="creatorForm" method="POST" action="https://api.web3forms.com/submit">
+      <!-- Web3Forms required fields -->
+      <input type="hidden" name="access_key" value="a0f6ad4b-9a68-48c2-bb9b-d4d132e1fc24">
+      <input type="hidden" name="subject" value="New Muse Residency Application — Dubel Team">
+      <input type="hidden" name="from_name" value="Dubel Team — Muse Residency Application">
+      <input type="hidden" name="cc" value="maordubel@gmail.com">
+      <input type="hidden" name="redirect" value="https://www.dubel.team/success.html">
+
+      <!-- Honeypot — Web3Forms blocks bots that fill this -->
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+
+      <div class="form-field">
+        <label for="name">Full name <span class="req">· required</span></label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-field">
+        <label for="instagram">Instagram <span class="req">· required</span></label>
+        <div class="ig-wrapper">
+          <input type="text" id="instagram" name="instagram" placeholder="yourhandle" required>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="email">Email <span class="req">· required</span></label>
+        <input type="email" id="email" name="email" placeholder="you@email.com" required>
+      </div>
+      <div class="form-field">
+        <label for="country">Where you're based <span class="opt">· optional</span></label>
+        <input type="text" id="country" name="country" placeholder="City, country — international or local">
+      </div>
+
+      <div class="form-field full">
+        <label>How would you describe yourself · select all that apply</label>
+        <div class="niche-grid">
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="International model">International model</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Local model">Local model</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Content creator">Content creator</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Fashion">Fashion</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Editorial">Editorial</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Lifestyle">Lifestyle</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Travel">Travel</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Beauty &amp; Wellness">Beauty &amp; Wellness</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Art &amp; Culture">Art &amp; Culture</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Interested in the full production add-on">Interested in the full production add-on</label>
+          <label class="niche-chip"><span class="check"></span><input type="checkbox" name="niche" value="Other">Other</label>
+        </div>
+      </div>
+
+      <div class="form-field full">
+        <label for="links">Agency, portfolio or other links <span class="opt">· optional</span></label>
+        <input type="text" id="links" name="links" placeholder="Agency, book, TikTok, YouTube, anything you'd like us to see">
+      </div>
+
+      <div class="form-field full">
+        <label for="message">A few lines, in your own voice</label>
+        <textarea id="message" name="message" rows="4" placeholder="What pulls you to this. What you'd want a few quiet days in Greece to look like." required></textarea>
+      </div>
+
+      <div class="form-actions">
+        <p class="form-disclaimer">Every note is read personally and kept in confidence. If it's a fit, you'll hear from us. If not, we won't waste your time.</p>
+        <button type="submit" class="btn btn-primary">Send your name →</button>
+      </div>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <div class="check">✓</div>
+      <h3>Noted. Quietly.</h3>
+      <p>If it's a fit, you'll hear from us. If not, you won't.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-mark">
+      <img src="logo.png" alt="">
+      <span>© <span id="year"></span> Dubel Team · The Muse Residency</span>
+    </div>
+    <div class="footer-links">
+      <span class="footer-eu">EU CITIZEN [BULGARIA]</span>
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events ↗</a>
+      <a href="creators.html">Creators ↗</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/maorharel/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuToggle.textContent = isOpen ? 'Close' : 'Menu';
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.textContent = 'Menu';
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  const form = document.getElementById('creatorForm');
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+  if (form && submitBtn) {
+    form.addEventListener('submit', () => {
+      // Native form submission to Web3Forms — no JS interception.
+      // Just disable the button to prevent double-submits.
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+    });
+  }
+</script>
+
+</body>
+</html>

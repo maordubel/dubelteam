@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubel Team Events — Private Celebrations &amp; Corporate Retreats in Greece</title>
+<meta name="description" content="From a bar mitzvah on Paros to an off-site for a 200-person tech team in Athens. End-to-end event production in Greece by Dubel Team. Operating since 2014.">
+<meta property="og:title" content="Dubel Team Events — Greece. Curated. Executed.">
+<meta property="og:description" content="Private celebrations and corporate retreats in Greece, produced end-to-end by an operator who lives there.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dubel.team/events.html">
+<link rel="canonical" href="https://www.dubel.team/events.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F2EAD8;
+    --cream-warm: #E9DEC6;
+    --red: #C8262A;
+    --red-deep: #9E1E22;
+    --ink: #141414;
+    --ink-soft: rgba(20,20,20,0.85);
+    --ink-mute: rgba(20,20,20,0.55);
+    --line: rgba(20,20,20,0.15);
+    --line-strong: rgba(20,20,20,0.3);
+    --display: "Anton", "Impact", sans-serif;
+    --italic: "Fraunces", "Times New Roman", serif;
+    --body: "Hanken Grotesk", system-ui, sans-serif;
+    --mono: "Hanken Grotesk", system-ui, sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{
+    font-family:var(--body);
+    background:var(--cream);
+    color:var(--ink);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    min-width:320px;
+  }
+  ::selection{background:var(--red);color:var(--cream)}
+
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    z-index:1;
+    opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  .container{
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 32px;
+    position:relative;
+    z-index:2;
+  }
+
+  /* TICKER */
+  .ticker-top{
+    background:var(--ink);
+    color:var(--cream);
+    padding:11px 0;
+    overflow:hidden;
+    border-bottom:2px solid var(--red);
+    position:relative;
+    z-index:60;
+  }
+  .ticker{
+    display:flex;
+    gap:48px;
+    white-space:nowrap;
+    animation:tick 50s linear infinite;
+    font-family:var(--body);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+  }
+  .ticker span{display:inline-flex;align-items:center;gap:48px}
+  .ticker span::after{content:"✦";color:var(--red);font-size:10px}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* NAV */
+  nav.main{
+    position:sticky;
+    top:0;
+    z-index:90;
+    padding:18px 0;
+    background:var(--cream);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s, background .2s, padding .25s;
+  }
+  nav.main.scrolled{
+    border-bottom-color:var(--ink);
+    background:color-mix(in srgb, var(--cream) 96%, transparent);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    padding:12px 0;
+  }
+  .nav-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .brand img{width:52px;height:52px;display:block}
+  .brand-meta{display:flex;flex-direction:column;gap:2px;line-height:1}
+  .brand-name{
+    font-family:var(--display);
+    font-size:22px;
+    line-height:1;
+    letter-spacing:0.02em;
+  }
+  .brand-sub{
+    font-family:var(--italic);
+    font-style:italic;
+    font-size:12px;
+    color:var(--red);
+    line-height:1;
+    margin-top:4px;
+    font-variation-settings:"opsz" 14;
+  }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+    align-items:center;
+  }
+  .nav-links a{
+    color:var(--ink);
+    text-decoration:none;
+    font-family:var(--body);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--red)}
+  .nav-cta{
+    background:var(--red)!important;
+    color:var(--cream)!important;
+    padding:11px 20px;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--ink)!important;color:var(--cream)!important}
+  .menu-toggle{
+    display:none;
+    background:var(--ink);
+    color:var(--cream);
+    border:none;
+    padding:10px 14px;
+    font-family:var(--body);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+
+  /* HERO with image */
+  .hero{
+    padding:60px 0 80px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-family:var(--body);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:32px;
+  }
+  .hero-eyebrow .dot{
+    width:8px;height:8px;
+    background:var(--red);
+    border-radius:50%;
+    animation:blink 1.6s ease-in-out infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.35}}
+  .hero-eyebrow .bar{flex:1;height:1px;background:var(--ink);max-width:120px}
+  h1.smash{
+    font-family:var(--display);
+    font-size:clamp(44px, 9vw, 132px);
+    line-height:0.88;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+    text-transform:uppercase;
+    overflow-wrap:break-word;
+  }
+  h1.smash .red{color:var(--red)}
+  h1.smash .it{
+    font-family:var(--italic);
+    font-style:italic;
+    font-weight:500;
+    text-transform:none;
+    letter-spacing:-0.02em;
+    color:var(--red);
+    font-variation-settings:"opsz" 144;
+  }
+  .hero-img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border:2px solid var(--ink);
+    filter:saturate(1.05) contrast(1.02);
+  }
+  .hero-side-text{
+    margin-top:32px;
+  }
+  .hero-lead{
+    font-family:var(--italic);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(20px, 1.8vw, 24px);
+    line-height:1.4;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+    font-variation-settings:"opsz" 144;
+    border-left:3px solid var(--red);
+    padding-left:20px;
+    max-width:640px;
+    margin-bottom:32px;
+  }
+  .hero-lead strong{
+    font-style:normal;
+    font-family:var(--body);
+    font-weight:700;
+    color:var(--red);
+    text-transform:uppercase;
+    font-size:0.85em;
+    letter-spacing:0.04em;
+  }
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    font-family:var(--body);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    padding:18px 28px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border:2px solid var(--ink);
+    transition:all .2s ease;
+    cursor:pointer;
+    background:transparent;
+  }
+  .btn-primary{background:var(--red);border-color:var(--red);color:var(--cream)}
+  .btn-primary:hover{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--cream);
+    transform:translate(-2px,-2px);
+    box-shadow:6px 6px 0 var(--red);
+  }
+  .btn-secondary{color:var(--ink);background:transparent}
+  .btn-secondary:hover{
+    background:var(--ink);
+    color:var(--cream);
+    transform:translate(-2px,-2px);
+    box-shadow:6px 6px 0 var(--red);
+  }
+
+  /* MANIFESTO STRIP */
+  .manifesto{
+    background:var(--ink);
+    color:var(--cream);
+    padding:80px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .manifesto::before{
+    content:"GREECE";
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%) rotate(-4deg);
+    font-family:var(--display);
+    font-size:34vw;
+    line-height:1;
+    color:rgba(242,234,216,0.04);
+    white-space:nowrap;
+    pointer-events:none;
+    z-index:0;
+  }
+  .manifesto-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto}
+  .manifesto-eyebrow{
+    font-family:var(--body);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin-bottom:32px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .manifesto-eyebrow::before{content:"";width:32px;height:2px;background:var(--red)}
+  .manifesto-text{
+    font-family:var(--italic);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(28px, 4vw, 56px);
+    line-height:1.15;
+    letter-spacing:-0.02em;
+    color:var(--cream);
+    font-variation-settings:"opsz" 144;
+  }
+  .manifesto-text .red{color:var(--red)}
+  .manifesto-text .nostalgic{
+    font-family:var(--display);
+    font-style:normal;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    color:var(--cream);
+  }
+
+  /* SECTION HEAD */
+  section.block{padding:90px 0;position:relative}
+  .block-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:32px;
+    margin-bottom:48px;
+    padding-bottom:24px;
+    border-bottom:2px solid var(--ink);
+  }
+  .block-head .num{
+    font-family:var(--display);
+    font-size:14px;
+    letter-spacing:0.1em;
+    color:var(--red);
+  }
+  .block-head .label{
+    font-family:var(--body);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+  }
+  .block-head h2{
+    font-family:var(--display);
+    font-size:clamp(38px, 7vw, 96px);
+    line-height:0.9;
+    letter-spacing:-0.005em;
+    text-transform:uppercase;
+    color:var(--ink);
+    overflow-wrap:break-word;
+  }
+  .block-head h2 .red{color:var(--red)}
+  .block-head h2 .it{
+    font-family:var(--italic);
+    font-style:italic;
+    font-weight:500;
+    text-transform:none;
+    letter-spacing:-0.025em;
+    color:var(--red);
+    font-variation-settings:"opsz" 144;
+  }
+  .head-left{display:flex;flex-direction:column;gap:8px}
+
+  /* THREE PILLARS */
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--ink);
+    border:2px solid var(--ink);
+  }
+  .pillar{
+    background:var(--cream);
+    padding:40px 32px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    min-height:340px;
+    transition:background .25s;
+    position:relative;
+    overflow:hidden;
+  }
+  .pillar::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--red);
+    transform:translateY(100%);
+    transition:transform .35s var(--ease);
+    z-index:0;
+  }
+  .pillar:hover::before{transform:translateY(0)}
+  .pillar > *{position:relative;z-index:1;transition:color .25s}
+  .pillar:hover .p-num,
+  .pillar:hover .p-name,
+  .pillar:hover .p-desc,
+  .pillar:hover .p-list li{color:var(--cream)!important}
+  .pillar:hover .p-tag{color:var(--cream)!important;border-color:var(--cream)!important}
+  .p-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .p-num{
+    font-family:var(--display);
+    font-size:22px;
+    color:var(--red);
+    line-height:1;
+  }
+  .p-tag{
+    font-family:var(--mono);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.16em;
+    color:var(--ink);
+    border:1px solid var(--ink);
+    padding:5px 9px;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .p-name{
+    font-family:var(--display);
+    font-size:clamp(28px, 2.6vw, 38px);
+    line-height:0.95;
+    letter-spacing:0.005em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .p-desc{
+    font-family:var(--body);
+    font-size:15px;
+    line-height:1.55;
+    color:var(--ink-soft);
+  }
+  .p-list{
+    list-style:none;
+    padding:0;
+    margin:auto 0 0 0;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .p-list li{
+    font-family:var(--body);
+    font-size:13px;
+    color:var(--ink);
+    padding-left:18px;
+    position:relative;
+    line-height:1.4;
+  }
+  .p-list li::before{
+    content:"→";
+    position:absolute;
+    left:0;
+    color:var(--red);
+    font-weight:700;
+  }
+
+  /* GALLERY STRIP */
+  .gallery-strip{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--ink);
+    border:2px solid var(--ink);
+    margin-top:48px;
+  }
+  .gallery-strip img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    display:block;
+    filter:saturate(1.05) contrast(1.02);
+    transition:transform .5s var(--ease);
+  }
+  .gallery-strip img:hover{transform:scale(1.03)}
+
+  /* WHY US — FOUR REASONS */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--ink);
+    border:2px solid var(--ink);
+  }
+  .why-cell{
+    background:var(--cream);
+    padding:32px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    min-height:240px;
+  }
+  .why-num{
+    font-family:var(--display);
+    font-size:48px;
+    line-height:1;
+    color:var(--red);
+    letter-spacing:0.005em;
+  }
+  .why-name{
+    font-family:var(--display);
+    font-size:22px;
+    line-height:1;
+    color:var(--ink);
+    text-transform:uppercase;
+    letter-spacing:0.005em;
+  }
+  .why-desc{
+    font-family:var(--body);
+    font-size:14px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    margin-top:auto;
+  }
+
+  /* INQUIRY FORM */
+  .form-section{
+    background:var(--ink);
+    color:var(--cream);
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .form-section::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:8px;
+    background:repeating-linear-gradient(90deg, var(--red) 0 40px, var(--cream) 40px 80px);
+  }
+  .form-eyebrow{
+    font-family:var(--body);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin-bottom:24px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .form-eyebrow::before{content:"";width:32px;height:2px;background:var(--red)}
+  .form-headline{
+    font-family:var(--display);
+    font-size:clamp(40px, 7vw, 96px);
+    line-height:0.88;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    color:var(--cream);
+    margin-bottom:48px;
+    overflow-wrap:break-word;
+  }
+  .form-headline .it{
+    font-family:var(--italic);
+    font-style:italic;
+    font-weight:500;
+    text-transform:none;
+    letter-spacing:-0.025em;
+    color:var(--red);
+    font-variation-settings:"opsz" 144;
+  }
+
+  .inquiry-form{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:24px;
+    max-width:900px;
+  }
+  .form-field{display:flex;flex-direction:column;gap:8px}
+  .form-field.full{grid-column:span 2}
+  .form-field label{
+    font-family:var(--body);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--red);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea{
+    background:transparent;
+    border:none;
+    border-bottom:2px solid rgba(242,234,216,0.3);
+    padding:12px 4px;
+    font-family:var(--body);
+    font-size:16px;
+    color:var(--cream);
+    transition:border-color .2s;
+    width:100%;
+    appearance:none;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus{
+    outline:none;
+    border-bottom-color:var(--red);
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder{color:rgba(242,234,216,0.4)}
+  .form-field select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23F2EAD8' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 8px center;
+    padding-right:28px;
+    cursor:pointer;
+  }
+  .form-field select option{background:var(--ink);color:var(--cream)}
+  .form-field textarea{
+    resize:vertical;
+    min-height:100px;
+    font-family:var(--body);
+  }
+  .form-actions{
+    grid-column:span 2;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    margin-top:16px;
+    padding-top:24px;
+    border-top:1px solid rgba(242,234,216,0.2);
+  }
+  .form-disclaimer{
+    font-family:var(--italic);
+    font-style:italic;
+    font-size:14px;
+    color:rgba(242,234,216,0.6);
+    max-width:420px;
+    line-height:1.4;
+    font-variation-settings:"opsz" 14;
+  }
+
+  /* DIRECT CONTACT */
+  .direct-contact{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:0;
+    margin-top:64px;
+    padding-top:48px;
+    border-top:1px solid rgba(242,234,216,0.2);
+  }
+
+  /* FORM SUCCESS */
+  .form-success{
+    display:none;
+    padding:60px 32px;
+    text-align:center;
+    background:rgba(242,234,216,0.05);
+    border:2px solid var(--red);
+    max-width:680px;
+    margin:0 auto;
+  }
+  .form-success.show{display:block}
+  .form-success .check{
+    font-family:var(--display);
+    font-size:64px;
+    color:var(--red);
+    margin-bottom:20px;
+    line-height:1;
+  }
+  .form-success h3{
+    font-family:var(--display);
+    font-size:36px;
+    line-height:1;
+    text-transform:uppercase;
+    color:var(--cream);
+    margin-bottom:14px;
+    letter-spacing:0.005em;
+  }
+  .form-success p{
+    font-family:var(--italic);
+    font-style:italic;
+    font-size:18px;
+    color:rgba(242,234,216,0.75);
+    font-variation-settings:"opsz" 144;
+  }
+  .direct-cell{
+    padding:0 32px 0 0;
+    border-right:1px solid rgba(242,234,216,0.2);
+  }
+  .direct-cell:last-child{border-right:none}
+  .direct-cell .label{
+    font-family:var(--body);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .direct-cell .value{
+    font-family:var(--display);
+    font-size:clamp(20px, 2.4vw, 32px);
+    line-height:1;
+    text-transform:uppercase;
+    color:var(--cream);
+    text-decoration:none;
+    display:inline-block;
+    word-break:break-word;
+    transition:color .2s;
+  }
+  a.direct-link:hover{color:var(--red)}
+
+  /* FOOTER */
+  footer{
+    background:var(--ink);
+    color:rgba(242,234,216,0.6);
+    padding:28px 0;
+    border-top:2px solid var(--red);
+    font-family:var(--body);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    position:relative;
+    z-index:2;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .footer-inner a{color:inherit;text-decoration:none;transition:color .2s}
+  .footer-inner a:hover{color:var(--red)}
+  .footer-links{display:flex;gap:24px;flex-wrap:wrap}
+  .footer-mark{display:flex;align-items:center;gap:10px}
+  .footer-mark img{width:28px;height:28px}
+  .footer-eu{
+    color:var(--red);
+    font-family:var(--mono);
+    font-weight:700;
+    letter-spacing:0.18em;
+  }
+
+  /* FADE */
+  .fade-up{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 1.2s var(--ease), transform 1.2s var(--ease);
+  }
+  .fade-up.in{opacity:1;transform:translateY(0)}
+
+  .hero-grid > *{
+    opacity:0;
+    animation:slideUp 1.2s var(--ease) forwards;
+  }
+  .hero-grid > *:nth-child(1){animation-delay:.05s}
+  .hero-grid > *:nth-child(2){animation-delay:.25s}
+  @keyframes slideUp{
+    from{opacity:0;transform:translateY(28px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* ===================== TABLET (≤980px) ===================== */
+  /* ===================== TABLET / LARGE MOBILE (≤980px) ===================== */
+  @media (max-width: 980px){
+    .container{padding:0 22px}
+    .nav-links{display:none}
+    .nav-links.open{
+      display:flex;
+      flex-direction:column;
+      position:absolute;
+      top:100%;left:0;right:0;
+      background:var(--cream);
+      border-top:2px solid var(--ink);
+      border-bottom:2px solid var(--ink);
+      padding:22px;
+      gap:16px;
+      align-items:flex-start;
+    }
+    .menu-toggle{display:inline-flex}
+    .hero{padding:28px 0 48px}
+    .hero-grid{grid-template-columns:1fr;gap:24px}
+    .hero-side-text{margin-top:20px}
+    .hero-img{aspect-ratio:1/1}
+    .block-head{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:32px;padding-bottom:18px}
+    section.block{padding:52px 0}
+    .pillars{grid-template-columns:1fr;border-width:1.5px}
+    .pillar{padding:24px 22px;min-height:auto;gap:12px}
+    .gallery-strip{grid-template-columns:repeat(2, 1fr);margin-top:32px;border-width:1.5px}
+    .why-grid{grid-template-columns:repeat(2, 1fr);border-width:1.5px}
+    .why-cell{padding:22px 18px;min-height:auto;gap:10px}
+    .inquiry-form{grid-template-columns:1fr;gap:18px}
+    .form-field.full{grid-column:auto}
+    .form-actions{grid-column:auto;flex-direction:column;align-items:stretch;gap:14px}
+    .form-actions .btn{justify-content:center}
+    .form-disclaimer{text-align:center}
+    .direct-contact{grid-template-columns:1fr;gap:20px;margin-top:40px;padding-top:28px}
+    .direct-cell{
+      border-right:none;
+      border-bottom:1px solid rgba(242,234,216,0.2);
+      padding:0 0 18px 0;
+    }
+    .direct-cell:last-child{border-bottom:none;padding-bottom:0}
+    .footer-inner{flex-direction:column;text-align:center;gap:12px}
+    .manifesto{padding:52px 0}
+    .form-section{padding:52px 0}
+    .manifesto-text{font-size:26px;line-height:1.18}
+  }
+
+  /* ===================== MID-MOBILE (≤640px) ===================== */
+  @media (max-width: 640px){
+    .container{padding:0 18px}
+    .hero{padding:20px 0 40px}
+    .hero-eyebrow{margin-bottom:20px;font-size:10.5px;letter-spacing:0.14em}
+    .hero-grid{gap:20px}
+    .hero-side-text{margin-top:16px}
+    .hero-lead{margin-bottom:20px;font-size:16px;line-height:1.5}
+    section.block{padding:44px 0}
+    .manifesto{padding:44px 0}
+    .form-section{padding:44px 0}
+    .block-head{margin-bottom:24px;padding-bottom:14px;gap:12px}
+    .block-head .num{font-size:12px}
+    .block-head .label{font-size:10px;letter-spacing:0.14em}
+    .pillar{padding:22px 18px;gap:10px}
+    .pillar .p-name{font-size:24px}
+    .pillar .p-desc{font-size:14px}
+    .pillar .p-list li{font-size:12.5px}
+    .why-cell{padding:20px 16px}
+    .why-cell .why-num{font-size:38px}
+    .why-cell .why-name{font-size:20px}
+    .why-cell .why-desc{font-size:13.5px}
+    .ticker-top{padding:9px 0}
+    .ticker{font-size:10.5px;gap:20px;letter-spacing:0.14em}
+    .ticker span{gap:20px}
+    nav.main{padding:13px 0}
+    nav.main.scrolled{padding:9px 0}
+    .brand{gap:10px}
+    .brand img{width:40px;height:40px}
+    .brand-name{font-size:17px}
+    .brand-sub{font-size:11px}
+    .block-head h2{font-size:32px;line-height:0.92}
+    .form-headline{font-size:clamp(36px, 11vw, 72px);margin-bottom:28px}
+    footer{padding:20px 0;font-size:10px;letter-spacing:0.12em}
+  }
+
+  /* ===================== SMALL MOBILE (≤520px) ===================== */
+  @media (max-width: 520px){
+    .container{padding:0 16px}
+    .hero-eyebrow .bar{display:none}
+    .hero-eyebrow{font-size:10px;gap:10px;margin-bottom:18px}
+    h1.smash{font-size:44px;line-height:0.88}
+    .hero-lead{font-size:15.5px;padding-left:14px}
+    .btn{padding:14px 20px;font-size:12px;letter-spacing:0.1em}
+    .hero-actions,
+    .form-actions{gap:10px;flex-direction:column;align-items:stretch}
+    .hero-actions .btn,
+    .form-actions .btn{justify-content:center}
+    .pillar .p-tag{font-size:9px;padding:5px 8px;letter-spacing:0.1em}
+    .gallery-strip{grid-template-columns:repeat(2, 1fr)}
+    .why-grid{grid-template-columns:1fr}
+    .why-num{font-size:38px}
+    .why-name{font-size:20px}
+    .footer-links{justify-content:center;font-size:10px;letter-spacing:0.1em;gap:12px;flex-wrap:wrap}
+    .footer-eu{font-size:10px;width:100%;text-align:center;margin-bottom:6px}
+    .form-field input,
+    .form-field select,
+    .form-field textarea{font-size:15px}
+    .form-field label{font-size:10px;letter-spacing:0.14em}
+    .direct-cell .label{font-size:10px;margin-bottom:10px}
+    section.block{padding:38px 0}
+    .manifesto{padding:38px 0}
+    .form-section{padding:38px 0}
+    .manifesto-text{font-size:22px;line-height:1.22}
+    .block-head h2{font-size:28px}
+    .pillar{padding:20px 16px}
+    .pillar .p-name{font-size:22px}
+    .pillar .p-list li{font-size:12px}
+    .why-cell{padding:18px 14px}
+  }
+
+  /* ===================== TINY MOBILE (≤360px) ===================== */
+  @media (max-width: 360px){
+    .container{padding:0 14px}
+    h1.smash{font-size:36px;line-height:0.9}
+    .form-headline{font-size:30px}
+    .block-head h2{font-size:26px}
+    .manifesto-text{font-size:20px;line-height:1.22}
+    .btn{padding:12px 14px;font-size:11px;letter-spacing:0.08em}
+    .ticker{font-size:9.5px;gap:16px}
+    .ticker span{gap:16px}
+    .brand-name{font-size:16px}
+    .brand img{width:36px;height:36px}
+    .pillar{padding:18px 14px}
+    .pillar .p-name{font-size:22px}
+    .why-name{font-size:18px}
+  }
+
+  /* ===================== REDUCED MOTION ===================== */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      animation-duration:0.01ms!important;
+      animation-iteration-count:1!important;
+      transition-duration:0.01ms!important;
+      scroll-behavior:auto!important;
+    }
+    html{scroll-behavior:auto}
+    .ticker{animation:none!important}
+    .hero-eyebrow .dot{animation:none!important;opacity:1}
+    .fade-up{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-top" aria-hidden="true">
+  <div class="ticker">
+    <span>EVENTS IN GREECE · BY DUBEL TEAM</span><span>PRIVATE · CORPORATE · BESPOKE</span><span>ATHENS / ISLANDS</span><span>OPERATING SINCE 2014</span>
+    <span>EVENTS IN GREECE · BY DUBEL TEAM</span><span>PRIVATE · CORPORATE · BESPOKE</span><span>ATHENS / ISLANDS</span><span>OPERATING SINCE 2014</span>
+  </div>
+</div>
+
+<nav class="main" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Dubel Team logo">
+      <div class="brand-meta">
+        <span class="brand-name">DUBEL TEAM</span>
+        <span class="brand-sub">Events</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="creators.html">Creators ↗</a></li>
+      <li><a href="contact.html" class="nav-cta">Hire us</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span>Private &amp; Corporate Events in Greece</span>
+          <span class="bar"></span>
+        </div>
+        <h1 class="smash">
+          YOUR EVENT.<br>
+          <span class="it">Greece's stage.</span><br>
+          <span class="red">Our orchestration.</span>
+        </h1>
+      </div>
+      <img src="hosp-04-pool-sea.jpg" alt="A Greek hospitality scene — pool, sea, sunshine" class="hero-img" loading="lazy">
+    </div>
+    <div class="hero-side-text">
+      <p class="hero-lead">
+        <strong>From a bar mitzvah on Paros</strong> to an off-site for a 200-person tech team in Athens. Curated venues, vetted vendors, end-to-end execution — by an operator who lives here, speaks the languages, and has the receipts.
+      </p>
+      <div class="hero-actions">
+        <a href="#inquire" class="btn btn-primary">Plan an event →</a>
+        <a href="#what" class="btn btn-secondary">What we do</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="manifesto">
+  <div class="container manifesto-inner">
+    <div class="manifesto-eyebrow">The proposition</div>
+    <p class="manifesto-text">
+      A wedding planner can plan a wedding. We <span class="red">build a country around it.</span> Hotels we know by first name. Cooks who'll cook for fifteen or five hundred. <em class="red">Boats. Beaches. Athens rooftops. Island courtyards.</em> One operator. One number to call. <span class="nostalgic">Greece.</span>
+    </p>
+  </div>
+</section>
+
+<section class="block" id="what">
+  <div class="container">
+    <div class="block-head fade-up">
+      <div class="head-left">
+        <span class="num">/01</span>
+        <span class="label">What we produce</span>
+      </div>
+      <h2>THREE KINDS OF <span class="it">events.</span></h2>
+    </div>
+
+    <div class="pillars fade-up">
+      <div class="pillar">
+        <div class="p-top">
+          <div class="p-num">01</div>
+          <div class="p-tag">[ PRIVATE ]</div>
+        </div>
+        <div class="p-name">Private Celebrations</div>
+        <p class="p-desc">Milestone moments produced like state visits. Quiet logistics, loud results.</p>
+        <ul class="p-list">
+          <li>Bar &amp; bat mitzvahs</li>
+          <li>Birthdays &amp; landmark anniversaries</li>
+          <li>Destination weddings &amp; engagements</li>
+          <li>Family reunions &amp; private retreats</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="p-top">
+          <div class="p-num">02</div>
+          <div class="p-tag">[ CORPORATE ]</div>
+        </div>
+        <div class="p-name">Corporate &amp; Group</div>
+        <p class="p-desc">Off-sites that earn the receipts. Logistics that don't end up in a Slack post-mortem.</p>
+        <ul class="p-list">
+          <li>Company retreats &amp; off-sites</li>
+          <li>Team summits &amp; sales kickoffs</li>
+          <li>Investor &amp; board gatherings</li>
+          <li>Brand activations &amp; launch parties</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="p-top">
+          <div class="p-num">03</div>
+          <div class="p-tag">[ BESPOKE ]</div>
+        </div>
+        <div class="p-name">Bespoke Productions</div>
+        <p class="p-desc">When the brief doesn't fit a box. Pop-ups, festivals, exhibitions, and the unclassifiable.</p>
+        <ul class="p-list">
+          <li>Pop-up dinners &amp; chef collaborations</li>
+          <li>Cultural &amp; arts programming</li>
+          <li>Private screenings &amp; performances</li>
+          <li>Multi-day curated experiences</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="gallery-strip fade-up" id="gallery">
+      <img src="hosp-01-paros-bar.jpg" alt="Paros pool bar — bamboo pergola, daytime hospitality activation" loading="lazy">
+      <img src="hosp-03-rooftop-red.jpg" alt="Athens rooftop event — red neon, city skyline at night" loading="lazy">
+      <img src="hosp-06-crowd-laughing.jpg" alt="Rooftop crowd laughing — energy and atmosphere" loading="lazy">
+      <img src="hosp-07-dj-portrait.jpg" alt="DJ at sunset — Athens dusk view" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="block" id="why" style="background:var(--cream-warm);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);">
+  <div class="container">
+    <div class="block-head fade-up">
+      <div class="head-left">
+        <span class="num">/02</span>
+        <span class="label">Why book through us</span>
+      </div>
+      <h2>FOUR REASONS, <span class="it">if you need them.</span></h2>
+    </div>
+
+    <div class="why-grid fade-up">
+      <div class="why-cell">
+        <div class="why-num">01</div>
+        <div class="why-name">Insider access</div>
+        <p class="why-desc">Working partnerships with PLAY, BROWN, and PAREA hotel groups. Venues, suppliers, talent — accessible through one direct line, not a public inquiry form.</p>
+      </div>
+      <div class="why-cell">
+        <div class="why-num">02</div>
+        <div class="why-name">EU citizen, on the ground</div>
+        <p class="why-desc">Based in Athens. EU citizenship [Bulgaria]. Operations across the EU without the visa, customs, or compliance friction other agencies bury in their fees.</p>
+      </div>
+      <div class="why-cell">
+        <div class="why-num">03</div>
+        <div class="why-name">Multilingual</div>
+        <p class="why-desc">Hebrew, English, Greek. We negotiate in the local language and brief you in yours. Nothing gets lost between you and the supplier.</p>
+      </div>
+      <div class="why-cell">
+        <div class="why-num">04</div>
+        <div class="why-name">End-to-end</div>
+        <p class="why-desc">Concept → venue → vendors → production → on-the-day execution. One operator. One contract. One number to call when something needs to move at midnight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="inquire">
+  <div class="container">
+    <div class="form-eyebrow">/03 — Tell us what you're planning</div>
+    <h2 class="form-headline">
+      LET'S MAKE IT <span class="it">happen.</span>
+    </h2>
+
+    <form class="inquiry-form" id="leadForm" method="POST" action="https://api.web3forms.com/submit">
+      <!-- Web3Forms required fields -->
+      <input type="hidden" name="access_key" value="a0f6ad4b-9a68-48c2-bb9b-d4d132e1fc24">
+      <input type="hidden" name="subject" value="New Event Inquiry — Dubel Team">
+      <input type="hidden" name="from_name" value="Dubel Team — Event Inquiry Form">
+      <input type="hidden" name="cc" value="maordubel@gmail.com">
+      <input type="hidden" name="redirect" value="https://www.dubel.team/success.html">
+
+      <!-- Honeypot -->
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+
+      <div class="form-field">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+      </div>
+      
+      <div class="form-field">
+        <label for="type">Event type</label>
+        <select id="type" name="type">
+          <option value="">Select one</option>
+          <option>Private celebration (birthday, mitzvah, etc.)</option>
+          <option>Wedding / engagement</option>
+          <option>Corporate retreat / off-site</option>
+          <option>Brand activation / launch</option>
+          <option>Bespoke / multi-day production</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="date">Approximate date</label>
+        <input type="text" id="date" name="date" placeholder="June 2026 / TBD">
+      </div>
+      <div class="form-field">
+        <label for="size">Approximate group size</label>
+        <select id="size" name="size">
+          <option value="">Select one</option>
+          <option>Up to 25 guests</option>
+          <option>25 — 75 guests</option>
+          <option>75 — 200 guests</option>
+          <option>200+ guests</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="location">Preferred location</label>
+        <select id="location" name="location">
+          <option value="">Select one</option>
+          <option>Athens</option>
+          <option>Cyclades islands (Paros, Mykonos, Santorini, etc.)</option>
+          <option>Other Greek mainland / island</option>
+          <option>Open to recommendations</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="budget">Budget range (helps us serve you faster)</label>
+        <select id="budget" name="budget">
+          <option value="">Select one</option>
+          <option>Under €20K</option>
+          <option>€20K — €75K</option>
+          <option>€75K — €200K</option>
+          <option>€200K+</option>
+          <option>Prefer to discuss</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label for="message">Tell us about it</label>
+        <textarea id="message" name="message" rows="4" placeholder="What are you celebrating? What does success look like? Any non-negotiables?" required></textarea>
+      </div>
+      <div class="form-actions">
+        <p class="form-disclaimer">We reply to every inquiry within 48 hours. No automated funnels — every message lands directly with the team.</p>
+        <button type="submit" class="btn btn-primary">Send inquiry →</button>
+      </div>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <div class="check">✓</div>
+      <h3>Inquiry received.</h3>
+      <p>Maor will be in touch within 48 hours.</p>
+    </div>
+
+    <div class="direct-contact">
+      <div class="direct-cell">
+        <div class="label">Email</div>
+        <a href="mailto:maor@dubel.team?subject=Event%20inquiry" class="value direct-link">maor@<br>dubel.team</a>
+      </div>
+      
+      <div class="direct-cell">
+        <div class="label">Office</div>
+        <span class="value">Athens<br>Greece</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-mark">
+      <img src="logo.png" alt="">
+      <span>© <span id="year"></span> Dubel Team Events · Operating Since 2014</span>
+    </div>
+    <div class="footer-links">
+      <span class="footer-eu">EU CITIZEN [BULGARIA]</span>
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events ↗</a>
+      <a href="creators.html">Creators ↗</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/maorharel/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuToggle.textContent = isOpen ? 'Close' : 'Menu';
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.textContent = 'Menu';
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Form submit — native submission to Web3Forms (sends to maordubel@gmail.com)
+  const form = document.getElementById('leadForm');
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+  if (form && submitBtn) {
+    form.addEventListener('submit', () => {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+    });
+  }
+</script>
+
+</body>
+</html>
