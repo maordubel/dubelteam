@@ -6,4 +6,4 @@ Disallow: /success.html
 Disallow: /success-vip.html
 Disallow: /vip-il.html
 
-Sitemap: https://dubelteam.com/sitemap.xml
+Sitemap: https://www.dubelteam.com/sitemap.xml

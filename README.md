@@ -1,6 +1,6 @@
 # Dubel Team — Main Website (dubelteam.com)
 
-Static site for **Dubel Team**, deployed on **GitHub Pages** at `dubelteam.com`.
+Static site for **Dubel Team**, deployed on **GitHub Pages** at `www.dubelteam.com`.
 No build step, no framework — plain HTML/CSS/JS. Push to the repo and GitHub Pages serves it.
 
 ---
@@ -53,14 +53,14 @@ each has its own deployment. See the DNS guide handed over with this update.
 (`https://api.web3forms.com/submit`). Every form includes
 `cc = maordubel@gmail.com`, so submissions arrive there regardless of the
 Web3Forms dashboard setting. On success the browser is redirected to
-`https://dubelteam.com/success.html`.
+`https://www.dubelteam.com/success.html`.
 
 Access key: `a0f6ad4b-9a68-48c2-bb9b-d4d132e1fc24`
 
-**Email note:** the site displays `maor@dubelteam.com` as the public address.
-Make sure that mailbox exists (or forwards) — otherwise change the display
-address back to a mailbox you control. Lead capture does not depend on it
-(forms cc to Gmail).
+**Email note:** all contact — form submissions (via `cc`) and every `mailto:`
+link — routes to `maordubel@gmail.com`. To make Gmail the *primary* Web3Forms
+recipient too (not just the cc), set the destination on the Web3Forms dashboard
+for access key `a0f6ad4b-9a68-48c2-bb9b-d4d132e1fc24`.
 
 ---
 
@@ -68,7 +68,7 @@ address back to a mailbox you control. Lead capture does not depend on it
 
 1. Push all files to the repository (root of the branch you publish from).
 2. Repo → **Settings → Pages** → Source: `Deploy from a branch` → `main` / `(root)`.
-3. Under **Custom domain**, enter `dubelteam.com` (the `CNAME` file already sets this).
+3. Under **Custom domain**, enter `www.dubelteam.com` (the `CNAME` file already sets this).
 4. Point DNS at GitHub Pages (see the DNS guide).
 5. Enable **Enforce HTTPS** once the certificate is issued.
 
