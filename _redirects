@@ -1,20 +1,21 @@
-# Netlify _redirects — auto-applied
+# ============================================================
+# NOTE: This file is a NETLIFY feature. GitHub Pages IGNORES it.
+# The site is currently deployed on GitHub Pages, so these rules
+# are NOT active. They are kept here only so that clean URLs and
+# redirects would work automatically IF you ever move the main
+# site to Netlify. On GitHub Pages, always link with the .html
+# extension (the whole site already does).
 # Reference: https://docs.netlify.com/routing/redirects/
+# ============================================================
 
-# === Subdomain support ===
-https://events.dubel.team/* https://www.dubel.team/events.html 200!
-https://creators.dubel.team/* https://www.dubel.team/creators.html 200!
-
-# === Clean URLs (no .html extension) ===
+# Clean URLs (Netlify only)
 /services      /services.html      200
 /work          /work.html          200
 /about         /about.html         200
 /contact       /contact.html       200
 /events        /events.html        200
 /creators      /creators.html      200
-/vip-il        /vip-il.html        200
 /success       /success.html       200
-/success-vip   /success-vip.html   200
 
-# === Force www (optional — uncomment to enforce) ===
-# https://dubel.team/* https://www.dubel.team/:splat 301!
+# Force apex domain (Netlify only — uncomment to enforce)
+# https://www.dubelteam.com/* https://dubelteam.com/:splat 301!

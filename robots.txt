@@ -1,9 +1,9 @@
 User-agent: *
 Allow: /
 
-# Private services accessible only via direct link.
-Disallow: /vip-il
-Disallow: /vip-il.html
-Disallow: /test-form.html
+# Private / utility pages — not for indexing.
 Disallow: /success.html
 Disallow: /success-vip.html
+Disallow: /vip-il.html
+
+Sitemap: https://dubelteam.com/sitemap.xml

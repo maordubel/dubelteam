@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="I AM HAPOEL — fan culture campaign">
+  <rect width="800" height="600" fill="#141414"/>
+  <rect x="0" y="0" width="800" height="16" fill="#C8262A"/>
+  <rect x="0" y="584" width="800" height="16" fill="#C8262A"/>
+  <text x="400" y="250" fill="#C8262A" font-family="Anton, Impact, sans-serif" font-size="150" font-weight="700" text-anchor="middle" letter-spacing="4">I AM</text>
+  <text x="400" y="390" fill="#F2EAD8" font-family="Anton, Impact, sans-serif" font-size="120" font-weight="700" text-anchor="middle" letter-spacing="6">HAPOEL</text>
+  <text x="400" y="470" fill="rgba(242,234,216,0.55)" font-family="Hanken Grotesk, system-ui, sans-serif" font-size="24" font-weight="700" text-anchor="middle" letter-spacing="10">FAN-OWNED · SINCE 2007</text>
+</svg>
