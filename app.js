@@ -44,9 +44,12 @@
 
   // Fade-up on scroll
   var fadeEls = document.querySelectorAll('.fade-up');
+  var revealAll = function () {
+    fadeEls.forEach(function (el) { el.classList.add('in'); });
+  };
   if (fadeEls.length) {
     if (!('IntersectionObserver' in window) || reduceMotion) {
-      fadeEls.forEach(function (el) { el.classList.add('in'); });
+      revealAll();
     } else {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -55,8 +58,22 @@
             io.unobserve(e.target);
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px 20% 0px' });
       fadeEls.forEach(function (el) { io.observe(el); });
+
+      // Safety net: never leave content hidden if the observer is slow,
+      // the user scrolls fast, or anything else goes wrong.
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          fadeEls.forEach(function (el) {
+            var r = el.getBoundingClientRect();
+            // Reveal anything already in or above the viewport
+            if (r.top < window.innerHeight * 1.2) el.classList.add('in');
+          });
+        }, 300);
+      });
+      // Absolute fallback — everything visible within 3s no matter what.
+      setTimeout(revealAll, 3000);
     }
   }
 
