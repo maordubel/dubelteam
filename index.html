@@ -8,7 +8,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2094079368271424" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>DUBEL TEAM — Strategic Operations, Hospitality &amp; Cultural Execution Across Europe</title>
-<meta name="description" content="Founder-led operator company. Strategy, hospitality, events, sports, and Greece market entry. 15+ years of P&amp;L ownership across six industries.">
+<meta name="description" content="Founder-led operator company. Strategy, hospitality, events, sports, Greece market entry, and custom tech builds for businesses and independents. 15+ years of P&amp;L ownership across six industries.">
 <meta property="og:title" content="DUBEL TEAM — Built by an operator. Numbers, not narratives.">
 <meta property="og:description" content="Strategic operations, hospitality &amp; cultural execution across Europe. Founder-led since 2014.">
 <meta property="og:type" content="website">
@@ -53,9 +53,9 @@
   .routing-intro h2 .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144}
   .routing-intro p{font-family:var(--italic);font-style:italic;font-size:clamp(17px, 1.4vw, 21px);line-height:1.45;color:var(--ink-soft);font-variation-settings:"opsz" 144;max-width:520px}
 
-  /* PRACTICES GRID — 5 prominent routing cards */
-  .practices-grid{display:grid;grid-template-columns:repeat(5, 1fr);gap:0;border:2px solid var(--ink);background:var(--ink)}
-  .practice-tile{background:var(--cream);padding:28px 24px;display:flex;flex-direction:column;gap:14px;min-height:300px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:background .25s;-webkit-tap-highlight-color:transparent}
+  /* PRACTICES GRID — 6 prominent routing cards */
+  .practices-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:2px;border:2px solid var(--ink);background:var(--ink)}
+  .practice-tile{background:var(--cream);padding:28px 24px;display:flex;flex-direction:column;gap:14px;min-height:280px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:background .25s;-webkit-tap-highlight-color:transparent}
   .practice-tile::before{content:"";position:absolute;inset:0;background:var(--red);transform:translateY(100%);transition:transform .35s var(--ease);z-index:0}
   .practice-tile:hover::before,.practice-tile:focus-visible::before{transform:translateY(0)}
   .practice-tile > *{position:relative;z-index:1;transition:color .25s}
@@ -67,6 +67,24 @@
   .pt-cta{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red)}
   .pt-cta-arrow{font-family:var(--display);font-size:24px;line-height:1;color:var(--red);transition:transform .25s}
   .practice-tile:hover .pt-cta-arrow,.practice-tile:focus-visible .pt-cta-arrow{transform:translateX(4px)}
+  /* Featured tile — the new build practice */
+  .practice-tile.feat{background:var(--ink)}
+  .practice-tile.feat .pt-name{color:var(--cream)}
+  .practice-tile.feat .pt-desc{color:rgba(242,234,216,0.75)}
+  .practice-tile.feat .pt-cta-row{border-top-color:rgba(242,234,216,0.22)}
+  .pt-flag{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red)}
+  .pt-flag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1.6s ease-in-out infinite}
+
+  /* PLATFORMS — four products */
+  .ventures-grid{grid-template-columns:repeat(4, 1fr)!important}
+  .ventures-intro{max-width:640px;font-family:var(--italic);font-style:italic;font-size:clamp(17px,1.4vw,21px);line-height:1.45;color:var(--ink-soft);font-variation-settings:"opsz" 144;margin:-16px 0 34px}
+  .ventures-foot{margin-top:34px;padding-top:24px;border-top:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .ventures-foot .vf-line{font-family:var(--body);font-size:13.5px;line-height:1.55;color:var(--ink-soft);max-width:560px}
+  .ventures-foot .vf-line strong{color:var(--ink)}
+  @media (max-width:1180px){
+    .practices-grid{grid-template-columns:repeat(2, 1fr)}
+    .ventures-grid{grid-template-columns:repeat(2, 1fr)!important}
+  }
 
   /* WORK PREVIEW */
   .work-preview-section{padding:80px 0;background:var(--cream-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -113,6 +131,8 @@
     .routing-section{padding:48px 0}
     .routing-intro{grid-template-columns:1fr;gap:18px;align-items:flex-start;margin-bottom:28px;padding-bottom:18px}
     .practices-grid{grid-template-columns:1fr;border-width:1.5px}
+    .ventures-grid{grid-template-columns:1fr!important}
+    .ventures-foot{flex-direction:column;align-items:flex-start;gap:16px}
     .practice-tile{min-height:auto;padding:22px 20px}
     .pt-num{font-size:32px}
     .work-preview-section{padding:48px 0}
@@ -159,8 +179,8 @@
 
 <div class="ticker-top" aria-hidden="true">
   <div class="ticker">
-    <span>STRATEGIC OPERATIONS · HOSPITALITY · CULTURAL EXECUTION</span><span>FOUNDER-LED · ATHENS · DEPLOYED WORLDWIDE</span><span>NUMBERS, NOT NARRATIVES</span><span>OPEN FOR NEW MISSIONS</span>
-    <span>STRATEGIC OPERATIONS · HOSPITALITY · CULTURAL EXECUTION</span><span>FOUNDER-LED · ATHENS · DEPLOYED WORLDWIDE</span><span>NUMBERS, NOT NARRATIVES</span><span>OPEN FOR NEW MISSIONS</span>
+    <span>STRATEGIC OPERATIONS · HOSPITALITY · CULTURAL EXECUTION</span><span>FOUNDER-LED · ATHENS · DEPLOYED WORLDWIDE</span><span>NUMBERS, NOT NARRATIVES</span><span>OPEN FOR NEW MISSIONS</span><span>NOW BUILDING: CUSTOM TECH FOR BUSINESSES &amp; INDEPENDENTS</span>
+    <span>STRATEGIC OPERATIONS · HOSPITALITY · CULTURAL EXECUTION</span><span>FOUNDER-LED · ATHENS · DEPLOYED WORLDWIDE</span><span>NUMBERS, NOT NARRATIVES</span><span>OPEN FOR NEW MISSIONS</span><span>NOW BUILDING: CUSTOM TECH FOR BUSINESSES &amp; INDEPENDENTS</span>
   </div>
 </div>
 
@@ -175,6 +195,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="services.html">Services</a></li>
+      <li><a href="build.html">Build</a></li>
       <li><a href="work.html">Work</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="events.html">Events ↗</a></li>
@@ -240,6 +261,9 @@
       Operators first. Advisors second. <span class="red">No strategy without execution.</span> The P&amp;L speaks louder than the slide deck. <em class="red">Every project built from scratch — to fit the brief, the client, the room.</em>
     </p>
     <div class="manifesto-sign">— Dubel Team · Founded by Maor Harel · Operating from Athens since 2021.</div>
+    <div style="margin-top:20px">
+      <button class="team-trigger on-dark" type="button" data-team-open><span class="tt-dot"></span>So who's the team?</button>
+    </div>
   </div>
 </section>
 
@@ -249,7 +273,7 @@
     <div class="routing-intro fade-up">
       <div class="head-left">
         <span class="num">/01</span>
-        <span class="label">Five practices · One operator</span>
+        <span class="label">Six practices · One operator</span>
         <h2 style="margin-top:12px">WHERE DO YOU <span class="it">need us?</span></h2>
       </div>
       <p>Pick the practice that matches what you're building. Each track has its own page — services, who it's for, the actual outcomes, and the proof behind them.</p>
@@ -301,6 +325,16 @@
           <span class="pt-cta-arrow" aria-hidden="true">→</span>
         </div>
       </a>
+      <a href="build.html" class="practice-tile feat">
+        <div class="pt-num">06</div>
+        <span class="pt-flag">New</span>
+        <div class="pt-name">Tech &amp; Digital Builds</div>
+        <p class="pt-desc">Custom sites, apps, automations and internal systems for businesses and independents. Scoped, built and run end-to-end.</p>
+        <div class="pt-cta-row">
+          <span class="pt-cta">See the build practice</span>
+          <span class="pt-cta-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -346,39 +380,56 @@
   </div>
 </section>
 
-<!-- VENTURES / PLATFORMS — the three apps -->
+<!-- VENTURES / PLATFORMS — the four products -->
 <section class="ventures-section" id="platforms">
   <div class="container">
     <div class="block-head fade-up">
       <div class="head-left">
         <span class="num">/03</span>
-        <span class="label">Digital platforms · Built in-house</span>
+        <span class="label">Four live products · Built in-house</span>
       </div>
       <h2>THE <span class="it">platforms.</span></h2>
     </div>
+
+    <p class="ventures-intro fade-up">Nobody paid us to build these. We wanted them to exist, so we shipped them — four live products, four different problems, all running in public where you can use them right now.</p>
 
     <div class="ventures-grid fade-up">
       <a href="https://takemeout.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
         <div class="vc-top"><span class="vc-tag">Discovery · Athens</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
         <div class="vc-name">TakeMeOut!</div>
-        <div class="vc-tagline">Athens, day &amp; night</div>
-        <p class="vc-desc">A city companion for Athens — where to go for nightlife, dining and daytime, curated around the clock.</p>
-        <span class="vc-cta">Open the app →</span>
+        <div class="vc-tagline">Your Athens, planned</div>
+        <p class="vc-desc">Three complete plans for your day in Athens, in about thirty seconds — first coffee to last call, built on what locals actually do.</p>
+        <span class="vc-cta">Plan a day →</span>
+      </a>
+      <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
+        <div class="vc-top"><span class="vc-tag">Daily game · Football</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
+        <div class="vc-name">Offsides</div>
+        <div class="vc-tagline">Onside or off? Call it.</div>
+        <p class="vc-desc">One real moment a day, one judgment to make. You against the VAR room — and against everyone else who thinks they read the game better.</p>
+        <span class="vc-cta">Play today's call →</span>
+      </a>
+      <a href="https://retzach.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
+        <div class="vc-top"><span class="vc-tag">Archive · Hebrew</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
+        <div class="vc-name">Retzach</div>
+        <div class="vc-tagline">The listeners' archive</div>
+        <p class="vc-desc">Every case from the podcast — evidence, timelines, letters and sources in one place. Each file documented by hand against verified sources before it goes live.</p>
+        <span class="vc-cta">Open the archive →</span>
       </a>
       <a href="https://art.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
         <div class="vc-top"><span class="vc-tag">Private sale · By appointment</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
         <div class="vc-name">Dubel Art</div>
         <div class="vc-tagline">Modern &amp; contemporary</div>
-        <p class="vc-desc">Curated private placement of modern and contemporary works — European modernism, post-war abstraction and contemporary mixed-media.</p>
+        <p class="vc-desc">Private placement of modern and contemporary works — European modernism, post-war abstraction, contemporary mixed-media. Documented provenance, quiet sales.</p>
         <span class="vc-cta">Enter the department →</span>
       </a>
-      <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
-        <div class="vc-top"><span class="vc-tag">Daily game · Football</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
-        <div class="vc-name">Offsides</div>
-        <div class="vc-tagline">Was it offside or not?</div>
-        <p class="vc-desc">The daily football call. One moment, one judgment — think you read the game better than the VAR room?</p>
-        <span class="vc-cta">Play today's →</span>
-      </a>
+    </div>
+
+    <div class="ventures-foot fade-up">
+      <p class="vf-line"><strong>These are the portfolio.</strong> Every one was scoped, designed, built and shipped in-house — which is exactly what we now do for other people's businesses.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="platforms.html" class="btn btn-secondary">Inside the platforms →</a>
+        <a href="build.html" class="btn btn-primary">Build mine →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -429,6 +480,8 @@
       <span class="footer-eu">EU CITIZEN [BULGARIA]</span>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
+      <a href="build.html">Build</a>
+      <a href="platforms.html">Platforms</a>
       <a href="work.html">Work</a>
       <a href="about.html">About</a>
       <a href="events.html">Events ↗</a>
@@ -438,12 +491,31 @@
     </div>
     <div class="footer-apps">
       <span class="fa-label">Platforms:</span>
-      <a href="https://art.dubelteam.com/" target="_blank" rel="noopener">Dubel Art ↗</a>
-      <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener">Offsides ↗</a>
       <a href="https://takemeout.dubelteam.com/" target="_blank" rel="noopener">TakeMeOut! ↗</a>
+      <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener">Offsides ↗</a>
+      <a href="https://retzach.dubelteam.com/" target="_blank" rel="noopener">Retzach ↗</a>
+      <a href="https://art.dubelteam.com/" target="_blank" rel="noopener">Dubel Art ↗</a>
+      <button class="team-trigger on-dark" type="button" data-team-open style="margin-left:auto"><span class="tt-dot"></span>Who's the team?</button>
     </div>
   </div>
 </footer>
+
+
+<!-- ===================== WHO'S THE TEAM — shared identity layer ===================== -->
+<div class="team-modal" id="teamModal" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle" data-open="false">
+  <div class="team-modal-backdrop" data-team-close></div>
+  <div class="team-modal-panel">
+    <button class="team-modal-close" type="button" data-team-close aria-label="Close">✕</button>
+    <div class="tm-eyebrow">The honest version</div>
+    <h2 id="teamModalTitle">WHO'S THE <span class="it">team?</span></h2>
+    <p>Fair question. There is no floor of desks behind this.</p>
+    <p><strong>Dubel Team is run by one operator.</strong> What stands behind it is a network — people who know their world from the inside. Hospitality operators and chefs. Bartenders and DJs. Artists, designers, promoters, producers. People who actually live in the cities we work in and can tell you what changed last month.</p>
+    <p>They are not employees. They are not a roster we rent out. They are the reason a brief comes back with a real answer instead of a search result.</p>
+    <p class="tm-quote">We don't know everything.<br>We know people who do.</p>
+    <p>Sometimes the best information is online. Sometimes it is sitting at the bar next to someone who has been running the room for ten years. The network is the asset — the work is how we use it.</p>
+    <div class="tm-foot">Dubel Team · One operator. Many perspectives.</div>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>

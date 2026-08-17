@@ -10,7 +10,9 @@ No build step, no framework — plain HTML/CSS/JS. Push to the repo and GitHub P
 ```
 /
 ├── index.html            Homepage (routing hub + work preview).
-├── services.html         The five practices.
+├── services.html         The six practices.
+├── build.html            Practice 06 — custom tech solutions (sales page).
+├── platforms.html        The four in-house products (TakeMeOut!, Offsides, Retzach, Dubel Art).
 ├── work.html             Case studies (ARTHINA, hospitality, Hapoel B.C.).
 ├── about.html            The company. Founder-led.
 ├── contact.html          Contact form (Web3Forms) + mailto fallback → success.html
@@ -36,14 +38,33 @@ were built self-contained). Every other page shares `styles.css` + `app.js`.
 
 ## Subdomains (separate deployments)
 
-The three apps are hosted **separately** and pointed at subdomains via DNS:
+The four apps are hosted **separately** and pointed at subdomains via DNS:
 
-- `art.dubelteam.com`
-- `offsides.dubelteam.com`
 - `takemeout.dubelteam.com`
+- `offsides.dubelteam.com`
+- `retzach.dubelteam.com`
+- `art.dubelteam.com`
 
-They are linked from the footer of this site. They are **not** part of this repo —
-each has its own deployment. See the DNS guide handed over with this update.
+They are linked from the footer of every page, marketed on `platforms.html`, and used
+as proof on `build.html`. They are **not** part of this repo — each has its own
+deployment. See the DNS guide handed over with this update.
+
+---
+
+## "Who's the team?" identity layer
+
+A shared component, present on every page that uses `styles.css`:
+
+- **Trigger** — `<button class="team-trigger" data-team-open>` (any number per page).
+  Currently in the footer of every page, plus the manifesto on `index.html` /
+  `platforms.html` and the final CTA on `build.html`.
+- **Panel** — the `#teamModal` block just before `<script src="app.js">`.
+- **Behaviour** — in `app.js`: open/close, Esc, backdrop click, focus trap,
+  focus restore, body scroll lock.
+- **Source of truth** — the full version lives inline on `about.html` (`#team`,
+  `.team-band`). The modal is the short version.
+
+Copy rule: one operator, real network, never invented people, never fake credentials.
 
 ---
 

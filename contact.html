@@ -41,6 +41,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="services.html">Services</a></li>
+      <li><a href="build.html">Build</a></li>
       <li><a href="work.html">Work</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="events.html">Events ↗</a></li>
@@ -109,6 +110,7 @@
           <option value="Events & Production">Events &amp; Production</option>
           <option value="Sports & Fan Culture">Sports &amp; Fan Culture</option>
           <option value="Greece Market Entry">Greece Market Entry</option>
+          <option value="Tech & Digital Builds">Tech &amp; Digital Builds — site, app, automation or system</option>
           <option value="Something else">Something else</option>
         </select>
       </div>
@@ -136,6 +138,8 @@
       <span class="footer-eu">EU CITIZEN [BULGARIA]</span>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
+      <a href="build.html">Build</a>
+      <a href="platforms.html">Platforms</a>
       <a href="work.html">Work</a>
       <a href="about.html">About</a>
       <a href="events.html">Events ↗</a>
@@ -145,13 +149,47 @@
     </div>
     <div class="footer-apps">
       <span class="fa-label">Platforms:</span>
-      <a href="https://art.dubelteam.com/" target="_blank" rel="noopener">Dubel Art ↗</a>
-      <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener">Offsides ↗</a>
       <a href="https://takemeout.dubelteam.com/" target="_blank" rel="noopener">TakeMeOut! ↗</a>
+      <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener">Offsides ↗</a>
+      <a href="https://retzach.dubelteam.com/" target="_blank" rel="noopener">Retzach ↗</a>
+      <a href="https://art.dubelteam.com/" target="_blank" rel="noopener">Dubel Art ↗</a>
+      <button class="team-trigger on-dark" type="button" data-team-open style="margin-left:auto"><span class="tt-dot"></span>Who's the team?</button>
     </div>
   </div>
 </footer>
 
+
+<!-- ===================== WHO'S THE TEAM — shared identity layer ===================== -->
+<div class="team-modal" id="teamModal" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle" data-open="false">
+  <div class="team-modal-backdrop" data-team-close></div>
+  <div class="team-modal-panel">
+    <button class="team-modal-close" type="button" data-team-close aria-label="Close">✕</button>
+    <div class="tm-eyebrow">The honest version</div>
+    <h2 id="teamModalTitle">WHO'S THE <span class="it">team?</span></h2>
+    <p>Fair question. There is no floor of desks behind this.</p>
+    <p><strong>Dubel Team is run by one operator.</strong> What stands behind it is a network — people who know their world from the inside. Hospitality operators and chefs. Bartenders and DJs. Artists, designers, promoters, producers. People who actually live in the cities we work in and can tell you what changed last month.</p>
+    <p>They are not employees. They are not a roster we rent out. They are the reason a brief comes back with a real answer instead of a search result.</p>
+    <p class="tm-quote">We don't know everything.<br>We know people who do.</p>
+    <p>Sometimes the best information is online. Sometimes it is sitting at the bar next to someone who has been running the room for ten years. The network is the asset — the work is how we use it.</p>
+    <div class="tm-foot">Dubel Team · One operator. Many perspectives.</div>
+  </div>
+</div>
+
+<script>
+/* Preselect the practice dropdown from ?practice= (e.g. build.html links with ?practice=tech) */
+(function(){
+  var map = {
+    tech:'Tech & Digital Builds', strategy:'Brand & Strategy', hospitality:'Hospitality & Venue Ops',
+    events:'Events & Production', sports:'Sports & Fan Culture', greece:'Greece Market Entry'
+  };
+  var key = new URLSearchParams(window.location.search).get('practice');
+  var sel = document.getElementById('practice');
+  if (!key || !sel || !map[key]) return;
+  for (var i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].value === map[key]) { sel.selectedIndex = i; break; }
+  }
+})();
+</script>
 <script src="app.js"></script>
 <script>
   // Disable submit button on send to prevent double-posting

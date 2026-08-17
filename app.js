@@ -112,4 +112,51 @@
       counters.forEach(function (el) { cio.observe(el); });
     }
   }
+
+  /* ---------------------------------------------------------------
+     WHO'S THE TEAM — modal (present on every shared-CSS page)
+     Opens from any [data-team-open]; closes on backdrop, ✕ or Esc.
+     Focus is trapped to the panel and restored on close.
+     --------------------------------------------------------------- */
+  var teamModal = document.getElementById('teamModal');
+  if (teamModal) {
+    var lastFocused = null;
+    var panel = teamModal.querySelector('.team-modal-panel');
+
+    var openTeam = function (trigger) {
+      lastFocused = trigger || document.activeElement;
+      teamModal.setAttribute('data-open', 'true');
+      document.body.classList.add('team-open');
+      var closeBtn = teamModal.querySelector('.team-modal-close');
+      if (closeBtn) closeBtn.focus();
+    };
+
+    var closeTeam = function () {
+      teamModal.setAttribute('data-open', 'false');
+      document.body.classList.remove('team-open');
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    };
+
+    document.querySelectorAll('[data-team-open]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openTeam(btn);
+      });
+    });
+
+    teamModal.querySelectorAll('[data-team-close]').forEach(function (el) {
+      el.addEventListener('click', closeTeam);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (teamModal.getAttribute('data-open') !== 'true') return;
+      if (e.key === 'Escape') { closeTeam(); return; }
+      if (e.key !== 'Tab' || !panel) return;
+      var focusable = panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
 })();
