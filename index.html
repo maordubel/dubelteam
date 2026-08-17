@@ -1,198 +1,522 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
-
-<title>ארכיון הרצח — מחווה לקהילת פודקאסט רצח</title>
-<meta name="description" content="מחווה עצמאית לקהילת המאזינים של פודקאסט רצח, ולה בלבד. נועד להעשיר את הידע של מאזינים שמעוניינים בכך: ראיות, קורבנות, צירי זמן, סרטים דוקומנטריים ומקורות מאומתים — תיק לכל פרק, במקום אחד.">
-<link rel="canonical" href="https://retzach.dubelteam.com/">
-<meta name="theme-color" content="#0a0908">
-<meta name="color-scheme" content="dark">
-<meta name="author" content="Dubel Team">
-<meta name="generator" content="Dubel Team — dubelteam.com">
-<meta name="keywords" content="ארכיון הרצח, פודקאסט רצח, מאיה גזית, שי מגל, טרו קריים, ארכיון, תומאס דילון, סטיבן זליך, רוצח סדרתי">
-
-<!-- Open Graph -->
+<meta charset="UTF-8">
+<!-- Reveal-safe: mark that JS is available so scroll-reveal never hides content on non-JS/slow loads -->
+<script>document.documentElement.className+=' js';</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2094079368271424" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>DUBEL TEAM — Strategic Operations, Hospitality &amp; Cultural Execution Across Europe</title>
+<meta name="description" content="Founder-led operator company. Strategy, hospitality, events, sports, Greece market entry, and custom tech builds for businesses and independents. 15+ years of P&amp;L ownership across six industries.">
+<meta property="og:title" content="DUBEL TEAM — Built by an operator. Numbers, not narratives.">
+<meta property="og:description" content="Strategic operations, hospitality &amp; cultural execution across Europe. Founder-led since 2014.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="ארכיון הרצח">
-<meta property="og:locale" content="he_IL">
-<meta property="og:url" content="https://retzach.dubelteam.com/">
-<meta property="og:title" content="ארכיון הרצח — מחווה לקהילת פודקאסט רצח">
-<meta property="og:description" content="מחווה לקהילת המאזינים של פודקאסט רצח. ראיות, קורבנות, צירי זמן, סרטים דוקומנטריים ומקורות מאומתים — תיק לכל פרק.">
-<meta property="og:image" content="https://retzach.dubelteam.com/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ארכיון הרצח — מחווה לקהילת פודקאסט רצח">
-<meta name="twitter:description" content="מחווה לקהילת המאזינים של פודקאסט רצח — ראיות, קורבנות, צירי זמן ומקורות.">
-<meta name="twitter:image" content="https://retzach.dubelteam.com/og.png">
-
-<!-- PWA -->
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="ארכיון הרצח">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="mobile-web-app-capable" content="yes">
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://commons.wikimedia.org">
-<link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+<meta property="og:url" content="https://www.dubelteam.com/">
+<link rel="canonical" href="https://www.dubelteam.com/">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* HERO */
+  .hero{padding:64px 0 24px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:end}
+  .hero-eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;flex-wrap:wrap}
+  .hero-eyebrow .dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:blink 1.6s ease-in-out infinite;flex-shrink:0}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.35}}
+  .hero-eyebrow .bar{flex:1;height:1px;background:var(--ink);max-width:120px;min-width:24px}
+  .smash{font-family:var(--display);font-size:clamp(56px, 12vw, 200px);line-height:0.82;letter-spacing:-0.01em;color:var(--ink);text-transform:uppercase;overflow-wrap:break-word}
+  .smash .red{color:var(--red);display:block}
+  .smash .strike{position:relative;display:inline-block;color:var(--ink-mute);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:5px;text-underline-offset:-0.18em}
+  .hero-side{display:flex;flex-direction:column;gap:24px;padding-bottom:14px}
+  .hero-lead{font-family:var(--italic);font-style:italic;font-weight:400;font-size:clamp(18px, 1.5vw, 22px);line-height:1.5;color:var(--ink);font-variation-settings:"opsz" 144;border-left:3px solid var(--red);padding-left:20px}
+  .hero-lead strong{font-family:var(--body);font-style:normal;font-weight:700;letter-spacing:0.01em}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
 
-<link rel="stylesheet" href="/assets/style.css?v=9">
+  /* META STRIP */
+  .hero-meta-strip{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px;margin-top:56px;padding-top:32px;border-top:2px solid var(--ink)}
+  .meta-item{display:flex;flex-direction:column;gap:6px}
+  .meta-num{font-family:var(--display);font-size:clamp(36px, 4vw, 56px);line-height:1;color:var(--ink)}
+  .meta-num .red{color:var(--red)}
+  .meta-label{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mute);line-height:1.4}
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "ארכיון הרצח",
-  "alternateName": "ארכיון הרצח — מחווה לקהילת פודקאסט רצח",
-  "url": "https://retzach.dubelteam.com/",
-  "inLanguage": "he",
-  "description": "מחווה עצמאית ולא מסחרית לקהילת המאזינים של פודקאסט רצח, שנועדה להעשיר את הידע של מאזינים שמעוניינים בכך. אינה מסונפת לפודקאסט.",
-  "creator": {
-    "@type": "Organization",
-    "name": "Dubel Team",
-    "url": "https://www.dubelteam.com/",
-    "slogan": "Built by the brief. An operator.",
-    "founder": { "@type": "Person", "name": "Maor Harel" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Athens", "addressCountry": "GR" }
+  /* ROUTING SECTION — the core "where do you need us" hub */
+  .routing-section{padding:80px 0;border-top:1px solid var(--line)}
+  .routing-intro{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:end;margin-bottom:40px;padding-bottom:24px;border-bottom:2px solid var(--ink)}
+  .routing-intro .head-left{display:flex;flex-direction:column;gap:8px}
+  .routing-intro .num{font-family:var(--display);font-size:14px;letter-spacing:0.1em;color:var(--red)}
+  .routing-intro .label{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute)}
+  .routing-intro h2{font-family:var(--display);font-size:clamp(38px, 7vw, 96px);line-height:0.9;letter-spacing:-0.005em;text-transform:uppercase;color:var(--ink);overflow-wrap:break-word}
+  .routing-intro h2 .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144}
+  .routing-intro p{font-family:var(--italic);font-style:italic;font-size:clamp(17px, 1.4vw, 21px);line-height:1.45;color:var(--ink-soft);font-variation-settings:"opsz" 144;max-width:520px}
+
+  /* PRACTICES GRID — 6 prominent routing cards */
+  .practices-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:2px;border:2px solid var(--ink);background:var(--ink)}
+  .practice-tile{background:var(--cream);padding:28px 24px;display:flex;flex-direction:column;gap:14px;min-height:280px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:background .25s;-webkit-tap-highlight-color:transparent}
+  .practice-tile::before{content:"";position:absolute;inset:0;background:var(--red);transform:translateY(100%);transition:transform .35s var(--ease);z-index:0}
+  .practice-tile:hover::before,.practice-tile:focus-visible::before{transform:translateY(0)}
+  .practice-tile > *{position:relative;z-index:1;transition:color .25s}
+  .practice-tile:hover .pt-num,.practice-tile:hover .pt-name,.practice-tile:hover .pt-desc,.practice-tile:hover .pt-cta,.practice-tile:hover .pt-cta-arrow,.practice-tile:focus-visible .pt-num,.practice-tile:focus-visible .pt-name,.practice-tile:focus-visible .pt-desc,.practice-tile:focus-visible .pt-cta,.practice-tile:focus-visible .pt-cta-arrow{color:var(--cream)!important}
+  .pt-num{font-family:var(--display);font-size:clamp(32px, 3.4vw, 44px);line-height:1;color:var(--red);letter-spacing:0.005em}
+  .pt-name{font-family:var(--display);font-size:clamp(20px, 1.7vw, 26px);line-height:0.95;letter-spacing:0.005em;text-transform:uppercase;color:var(--ink)}
+  .pt-desc{font-family:var(--body);font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+  .pt-cta-row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:18px;border-top:1px solid var(--line)}
+  .pt-cta{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red)}
+  .pt-cta-arrow{font-family:var(--display);font-size:24px;line-height:1;color:var(--red);transition:transform .25s}
+  .practice-tile:hover .pt-cta-arrow,.practice-tile:focus-visible .pt-cta-arrow{transform:translateX(4px)}
+  /* Featured tile — the new build practice */
+  .practice-tile.feat{background:var(--ink)}
+  .practice-tile.feat .pt-name{color:var(--cream)}
+  .practice-tile.feat .pt-desc{color:rgba(242,234,216,0.75)}
+  .practice-tile.feat .pt-cta-row{border-top-color:rgba(242,234,216,0.22)}
+  .pt-flag{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red)}
+  .pt-flag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1.6s ease-in-out infinite}
+
+  /* PLATFORMS — four products */
+  .ventures-grid{grid-template-columns:repeat(4, 1fr)!important}
+  .ventures-intro{max-width:640px;font-family:var(--italic);font-style:italic;font-size:clamp(17px,1.4vw,21px);line-height:1.45;color:var(--ink-soft);font-variation-settings:"opsz" 144;margin:-16px 0 34px}
+  .ventures-foot{margin-top:34px;padding-top:24px;border-top:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .ventures-foot .vf-line{font-family:var(--body);font-size:13.5px;line-height:1.55;color:var(--ink-soft);max-width:560px}
+  .ventures-foot .vf-line strong{color:var(--ink)}
+  @media (max-width:1180px){
+    .practices-grid{grid-template-columns:repeat(2, 1fr)}
+    .ventures-grid{grid-template-columns:repeat(2, 1fr)!important}
   }
-}
-</script>
+
+  /* WORK PREVIEW */
+  .work-preview-section{padding:80px 0;background:var(--cream-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .work-preview-section .block-head{margin-bottom:36px}
+  .work-preview{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px}
+  .wp-card{display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;transition:transform .3s var(--ease);-webkit-tap-highlight-color:transparent}
+  .wp-card:hover,.wp-card:focus-visible{transform:translateY(-4px)}
+  .wp-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:2px solid var(--ink);transition:filter .25s}
+  .wp-card:hover .wp-img,.wp-card:focus-visible .wp-img{filter:brightness(1.05)}
+  .wp-meta{display:flex;justify-content:space-between;font-family:var(--body);font-size:10.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mute);flex-wrap:wrap;gap:8px}
+  .wp-meta .red{color:var(--red)}
+  .wp-name{font-family:var(--display);font-size:clamp(22px, 2.4vw, 32px);line-height:0.95;letter-spacing:0.005em;text-transform:uppercase;color:var(--ink)}
+  .wp-name .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144}
+  .wp-desc{font-family:var(--body);font-size:13.5px;line-height:1.55;color:var(--ink-soft)}
+  .wp-cta{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-top:6px}
+  .work-preview-cta{margin-top:36px;text-align:center}
+
+  /* TRUST STRIP — partners */
+  .trust-strip{background:var(--ink);color:var(--cream);padding:36px 0;border-top:2px solid var(--red);border-bottom:2px solid var(--red)}
+  .trust-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:0;align-items:center}
+  .trust-cell{display:flex;flex-direction:column;gap:6px;padding:0 22px;border-right:1px solid rgba(242,234,216,0.15);text-align:center}
+  .trust-cell:last-child{border-right:none}
+  .trust-name{font-family:var(--display);font-size:clamp(16px, 1.5vw, 22px);line-height:1.05;color:var(--cream);letter-spacing:0.005em;text-transform:uppercase}
+  .trust-role{font-family:var(--italic);font-style:italic;font-size:12.5px;color:rgba(242,234,216,0.6);font-variation-settings:"opsz" 144}
+
+  /* FINAL CTA */
+  .conv-cta{background:var(--ink);color:var(--cream);padding:80px 0;position:relative;overflow:hidden}
+  .conv-cta::before{content:"DUBEL · DUBEL · DUBEL ·";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-4deg);font-family:var(--display);font-size:24vw;line-height:1;color:rgba(242,234,216,0.04);white-space:nowrap;pointer-events:none;z-index:0}
+  .conv-cta-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;text-align:center}
+  .conv-cta .eyebrow{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--red);margin-bottom:24px;display:inline-flex;align-items:center;gap:14px}
+  .conv-cta .eyebrow::before,.conv-cta .eyebrow::after{content:"";width:32px;height:1px;background:var(--red)}
+  .conv-cta h2{font-family:var(--display);font-size:clamp(40px, 7vw, 96px);line-height:0.92;letter-spacing:-0.005em;text-transform:uppercase;margin-bottom:32px}
+  .conv-cta h2 .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144}
+  .conv-cta .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .conv-cta .btn-secondary{color:var(--cream);border-color:var(--cream)}
+  .conv-cta .btn-secondary:hover,.conv-cta .btn-secondary:active{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+
+  /* RESPONSIVE — mobile-first audit */
+  @media (max-width: 980px){
+    .hero{padding:24px 0 16px}
+    .hero-grid{grid-template-columns:1fr;gap:24px}
+    .hero-side{padding-bottom:0}
+    .hero-meta-strip{grid-template-columns:1fr 1fr;gap:18px;margin-top:28px;padding-top:22px}
+    .routing-section{padding:48px 0}
+    .routing-intro{grid-template-columns:1fr;gap:18px;align-items:flex-start;margin-bottom:28px;padding-bottom:18px}
+    .practices-grid{grid-template-columns:1fr;border-width:1.5px}
+    .ventures-grid{grid-template-columns:1fr!important}
+    .ventures-foot{flex-direction:column;align-items:flex-start;gap:16px}
+    .practice-tile{min-height:auto;padding:22px 20px}
+    .pt-num{font-size:32px}
+    .work-preview-section{padding:48px 0}
+    .work-preview{grid-template-columns:1fr;gap:24px}
+    .trust-strip{padding:24px 0}
+    .trust-grid{grid-template-columns:1fr 1fr;gap:18px 0}
+    .trust-cell{padding:8px 12px;border-right:none}
+    .trust-cell:nth-child(odd){border-right:1px solid rgba(242,234,216,0.15)}
+    .conv-cta{padding:54px 0}
+    .smash{font-size:64px;line-height:0.88}
+  }
+  @media (max-width: 640px){
+    .hero{padding:16px 0 8px}
+    .hero-meta-strip{gap:14px}
+    .meta-num{font-size:30px}
+    .meta-label{font-size:10px;letter-spacing:0.12em}
+    .smash{font-size:54px}
+    .hero-eyebrow{font-size:11px}
+    .conv-cta h2{font-size:36px}
+    .routing-intro h2{font-size:34px}
+    .pt-name{font-size:22px}
+    .wp-name{font-size:24px}
+    .trust-grid{grid-template-columns:1fr;gap:14px 0}
+    .trust-cell{border-right:none!important;border-bottom:1px solid rgba(242,234,216,0.15);padding:10px 12px}
+    .trust-cell:last-child{border-bottom:none}
+  }
+  @media (max-width: 380px){
+    .smash{font-size:42px}
+    .meta-num{font-size:26px}
+    .conv-cta h2{font-size:28px}
+    .routing-intro h2{font-size:28px}
+    .pt-name{font-size:20px}
+    .wp-name{font-size:22px}
+  }
+  @media (max-width: 340px){
+    .hero-meta-strip{grid-template-columns:1fr 1fr;gap:12px 14px}
+    .meta-num{font-size:24px}
+    .meta-label{font-size:9.5px;letter-spacing:0.1em}
+    .smash{font-size:38px}
+  }
+</style>
 </head>
 <body>
-<div id="grain"></div><div id="vignette"></div><div id="prog"></div>
-<div id="app">
 
-<!-- ============ ARCHIVE VIEW ============ -->
-<section class="view on" id="v-home">
-  <div class="topbar" id="tb-home">
-    <button class="iconbtn brandbtn" id="about-btn" aria-label="אודות הארכיון">
-      <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h11"/></svg>
-    </button>
-    <div class="tb-title">ארכיון הרצח</div>
-    <button class="iconbtn" id="share-btn" aria-label="שיתוף">
-      <svg viewBox="0 0 24 24"><path d="M12 16V4M8.5 7.5L12 4l3.5 3.5"/><path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg>
-    </button>
+<div class="ticker-top" aria-hidden="true">
+  <div class="ticker">
+    <span>STRATEGIC OPERATIONS · HOSPITALITY · CULTURAL EXECUTION</span><span>FOUNDER-LED · ATHENS · DEPLOYED WORLDWIDE</span><span>NUMBERS, NOT NARRATIVES</span><span>OPEN FOR NEW MISSIONS</span><span>NOW BUILDING: CUSTOM TECH FOR BUSINESSES &amp; INDEPENDENTS</span>
+    <span>STRATEGIC OPERATIONS · HOSPITALITY · CULTURAL EXECUTION</span><span>FOUNDER-LED · ATHENS · DEPLOYED WORLDWIDE</span><span>NUMBERS, NOT NARRATIVES</span><span>OPEN FOR NEW MISSIONS</span><span>NOW BUILDING: CUSTOM TECH FOR BUSINESSES &amp; INDEPENDENTS</span>
   </div>
+</div>
 
-  <div class="hero">
-    <div class="kicker">מחווה לקהילת המאזינים</div>
-    <div class="brandmark">
-      <div class="stencil-top">ארכיון</div>
-      <div class="stencil">הרצח
-        <svg class="drip" viewBox="0 0 26 34"><path d="M6 0c0 6 5 8 5 13a5 5 0 1 1-10 0C1 8 6 6 6 0z"/><path class="d2" d="M17 2a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z"/></svg>
+<nav class="main" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" aria-label="Dubel Team — homepage">
+      <img src="logo.png" alt="Dubel Team logo">
+      <div class="brand-meta">
+        <span class="brand-name">DUBEL TEAM</span>
+        <span class="brand-sub">Operator. Founder-led. Athens.</span>
       </div>
-    </div>
-    <p class="hero-sub"><b>מחווה לקהילת המאזינים של פודקאסט רצח — ולה בלבד.</b> נבנה כדי להעשיר את הידע של מאזינים שמעוניינים בכך: כל מה שדובר עליו בפרק — ראיות, קורבנות, מכתבים, צירי זמן ומקורות — במקום אחד. אינו מסונף לפודקאסט של <b>מאיה גזית ושי מגל</b> ואינו מחליף אותו.</p>
-    <div class="tape">ARCHIVE · V9</div>
-    <div class="hero-art" id="hero-art"></div>
-  </div>
-
-  <div class="pad">
-    <div class="toolbar">
-      <div class="search">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="q" type="search" placeholder="חיפוש רוצח, פרק או עונה…" autocomplete="off">
-      </div>
-      <div class="chips" id="chips"></div>
-    </div>
-  </div>
-
-  <div class="pad">
-    <div class="sec-head"><h2>תיקים</h2><span id="count"></span></div>
-    <div class="cases" id="cases"></div>
-    <div class="note"><b>למה חלק מהתיקים מסומנים "בקרוב"?</b> הארכיון נבנה תיק־תיק. כל תיק מתועד ידנית מול מקורות מאומתים לפני שהוא נפתח — כדי שמה שכתוב פה יהיה נכון.</div>
-
-    <!-- ===== credit ===== -->
-    <a class="credit" href="https://www.dubelteam.com/?utm_source=retzach&utm_medium=footer&utm_campaign=archive" target="_blank" rel="noopener">
-      <div class="credit-mark">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4h6a8 8 0 0 1 0 16z"/><path d="M14 4h6M14 20h6" opacity=".45"/></svg>
-      </div>
-      <div class="credit-txt">
-        <span class="c1">נבנה ומתוחזק על ידי <b>DUBEL TEAM</b></span>
-        <span class="c2">Built by the brief. An operator. · dubelteam.com</span>
-      </div>
-      <div class="credit-go"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6"/></svg></div>
     </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="build.html">Build</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events ↗</a></li>
+      <li><a href="creators.html">Creators ↗</a></li>
+      <li><a href="contact.html" class="nav-cta">Hire us</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  </div>
+</nav>
 
-    <div class="foot">
-      <b>ארכיון הרצח</b> · מחווה עצמאית ולא מסחרית לקהילת המאזינים של פודקאסט רצח<br>
-      אינו מסונף לפודקאסט ואינו מחליף אותו · נועד להעשיר את מי שמעוניין בכך<br>
-      התוכן המקורי, המחקר והעריכה שייכים ל<b>מאיה גזית ושי מגל</b>
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span>15+ Years of Active Operations — Founder-Led</span>
+          <span class="bar"></span>
+        </div>
+        <h1 class="smash">
+          BUILT BY<br>
+          <span class="strike">THE BRIEF.</span><br>
+          <span class="red">AN OPERATOR.</span>
+        </h1>
+      </div>
+      <div class="hero-side">
+        <p class="hero-lead">
+          <strong>Strategic operations, hospitality &amp; cultural execution across Europe.</strong> A founder-led operator company. Active across hospitality programming, cultural production, strategic advisory, and EU market entry. Based in Athens. Deployed wherever the brief takes us.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary">Bring us a mission →</a>
+          <a href="work.html" class="btn btn-secondary">See the receipts</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-meta-strip">
+      <div class="meta-item">
+        <div class="meta-num"><span data-count="15">0</span><span class="red">+</span></div>
+        <div class="meta-label">Years of active<br>operations</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-num"><span data-count="100">0</span><span class="red">+</span></div>
+        <div class="meta-label">Staff led<br>across ventures</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-num"><span data-count="3500">0</span></div>
+        <div class="meta-label">Arena seats<br>planned</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-num"><span data-count="6">0</span><span class="red">+</span></div>
+        <div class="meta-label">Industries.<br>One operator.</div>
+      </div>
     </div>
   </div>
-  <div class="spacer"></div>
-</section>
+</header>
 
-<!-- ============ KILLER VIEW ============ -->
-<section class="view" id="v-killer">
-  <div class="topbar" id="tb-k">
-    <button class="iconbtn" id="back" aria-label="חזרה"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
-    <div class="tb-title" id="tb-k-title"></div>
-    <button class="iconbtn" id="share-k" aria-label="שיתוף התיק">
-      <svg viewBox="0 0 24 24"><path d="M12 16V4M8.5 7.5L12 4l3.5 3.5"/><path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg>
-    </button>
-  </div>
-  <div id="k-content"></div>
-  <div class="spacer"></div>
-</section>
-
-<!-- ============ PLAYER ============ -->
-<div id="player">
-  <div class="pl-bar">
-    <div class="pl-art">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17V9h3.5M13 9v8M11.5 17h4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+<!-- MANIFESTO -->
+<section class="manifesto" data-watermark="DUBEL · DUBEL · DUBEL · DUBEL ·">
+  <div class="container manifesto-inner">
+    <div class="manifesto-eyebrow">The Position</div>
+    <p class="manifesto-text">
+      Operators first. Advisors second. <span class="red">No strategy without execution.</span> The P&amp;L speaks louder than the slide deck. <em class="red">Every project built from scratch — to fit the brief, the client, the room.</em>
+    </p>
+    <div class="manifesto-sign">— Dubel Team · Founded by Maor Harel · Operating from Athens since 2021.</div>
+    <div style="margin-top:20px">
+      <button class="team-trigger on-dark" type="button" data-team-open><span class="tt-dot"></span>So who's the team?</button>
     </div>
-    <div class="pl-t"><h5 id="pl-title"></h5><p id="pl-sub"></p></div>
-    <button class="pl-btn" id="pl-toggle">האזן לפרק</button>
   </div>
-  <div class="pl-embed"><iframe id="pl-frame" title="Spotify" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+</section>
+
+<!-- ROUTING HUB — the core: "where do you need us?" -->
+<section class="routing-section" id="practices">
+  <div class="container">
+    <div class="routing-intro fade-up">
+      <div class="head-left">
+        <span class="num">/01</span>
+        <span class="label">Six practices · One operator</span>
+        <h2 style="margin-top:12px">WHERE DO YOU <span class="it">need us?</span></h2>
+      </div>
+      <p>Pick the practice that matches what you're building. Each track has its own page — services, who it's for, the actual outcomes, and the proof behind them.</p>
+    </div>
+
+    <div class="practices-grid fade-up">
+      <a href="services.html#strategy" class="practice-tile">
+        <div class="pt-num">01</div>
+        <div class="pt-name">Brand &amp; Strategy</div>
+        <p class="pt-desc">Brand architecture, market positioning, founder identity. Built by operators, not advisors.</p>
+        <div class="pt-cta-row">
+          <span class="pt-cta">See practice</span>
+          <span class="pt-cta-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a href="services.html#hospitality" class="practice-tile">
+        <div class="pt-num">02</div>
+        <div class="pt-name">Hospitality &amp; Venue Ops</div>
+        <p class="pt-desc">Venue launches, programming, VIP flow, revenue optimization. 12+ properties in Greece.</p>
+        <div class="pt-cta-row">
+          <span class="pt-cta">See practice</span>
+          <span class="pt-cta-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a href="services.html#events" class="practice-tile">
+        <div class="pt-num">03</div>
+        <div class="pt-name">Events &amp; Production</div>
+        <p class="pt-desc">End-to-end event ops — artist logistics, staffing, sponsorship integration, on-the-day execution.</p>
+        <div class="pt-cta-row">
+          <span class="pt-cta">See practice</span>
+          <span class="pt-cta-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a href="services.html#sports" class="practice-tile">
+        <div class="pt-num">04</div>
+        <div class="pt-name">Sports &amp; Fan Culture</div>
+        <p class="pt-desc">Club organizational development, fan engagement, merchandise. By the founder of Israel's first fan-owned club.</p>
+        <div class="pt-cta-row">
+          <span class="pt-cta">See practice</span>
+          <span class="pt-cta-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a href="services.html#greece" class="practice-tile">
+        <div class="pt-num">05</div>
+        <div class="pt-name">Greece Market Entry</div>
+        <p class="pt-desc">Local network access, vendor sourcing, venue access. EU citizenship — operationally clean.</p>
+        <div class="pt-cta-row">
+          <span class="pt-cta">See practice</span>
+          <span class="pt-cta-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a href="build.html" class="practice-tile feat">
+        <div class="pt-num">06</div>
+        <span class="pt-flag">New</span>
+        <div class="pt-name">Tech &amp; Digital Builds</div>
+        <p class="pt-desc">Custom sites, apps, automations and internal systems for businesses and independents. Scoped, built and run end-to-end.</p>
+        <div class="pt-cta-row">
+          <span class="pt-cta">See the build practice</span>
+          <span class="pt-cta-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WORK PREVIEW — proof + routing to /work -->
+<section class="work-preview-section" id="work-preview">
+  <div class="container">
+    <div class="block-head fade-up">
+      <div class="head-left">
+        <span class="num">/02</span>
+        <span class="label">Selected work</span>
+      </div>
+      <h2>THE <span class="it">receipts.</span></h2>
+    </div>
+
+    <div class="work-preview fade-up">
+      <a href="work.html#arthina" class="wp-card">
+        <img src="arthina-1-crowd.jpg" alt="ARTHINA — courtyard packed with visitors" class="wp-img" loading="lazy">
+        <div class="wp-meta"><span class="red">/01 · Cultural</span><span>Athens · Summer '24</span></div>
+        <div class="wp-name">ARTH<span class="it">θ</span>INA</div>
+        <p class="wp-desc">Pop-up street art museum founded from zero. €100K budget, 14 artists, 10K+ visitors.</p>
+        <span class="wp-cta">Read the case →</span>
+      </a>
+      <a href="work.html#hospitality" class="wp-card">
+        <img src="hosp-04-pool-sea.jpg" alt="Greek hospitality programming — poolside event" class="wp-img" loading="lazy">
+        <div class="wp-meta"><span class="red">/02 · Hospitality</span><span>Greece · 2023 — Now</span></div>
+        <div class="wp-name">HOSPI<span class="it">tality</span></div>
+        <p class="wp-desc">Event production &amp; content direction across PLAY, BROWN, and PAREA Hotels. 12+ properties programmed.</p>
+        <span class="wp-cta">Read the case →</span>
+      </a>
+      <a href="work.html#hapoel-bc" class="wp-card">
+        <img src="hapoel-bc-campaign.svg" alt="I AM HAPOEL — fan culture campaign" class="wp-img" loading="lazy">
+        <div class="wp-meta"><span class="red">/03 · Sports</span><span>Tel Aviv · 2007 — 2015</span></div>
+        <div class="wp-name">HAPOEL <span class="it">B.C.</span></div>
+        <p class="wp-desc">Founded Israel's first fan-owned pro club. Lowest division → Premier League. 3,500-seat arena planned.</p>
+        <span class="wp-cta">Read the case →</span>
+      </a>
+    </div>
+
+    <div class="work-preview-cta">
+      <a href="work.html" class="btn btn-secondary">All case studies →</a>
+    </div>
+  </div>
+</section>
+
+<!-- VENTURES / PLATFORMS — the four products -->
+<section class="ventures-section" id="platforms">
+  <div class="container">
+    <div class="block-head fade-up">
+      <div class="head-left">
+        <span class="num">/03</span>
+        <span class="label">Four live products · Built in-house</span>
+      </div>
+      <h2>THE <span class="it">platforms.</span></h2>
+    </div>
+
+    <p class="ventures-intro fade-up">Nobody paid us to build these. We wanted them to exist, so we shipped them — four live products, four different problems, all running in public where you can use them right now.</p>
+
+    <div class="ventures-grid fade-up">
+      <a href="https://takemeout.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
+        <div class="vc-top"><span class="vc-tag">Discovery · Athens</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
+        <div class="vc-name">TakeMeOut!</div>
+        <div class="vc-tagline">Your Athens, planned</div>
+        <p class="vc-desc">Three complete plans for your day in Athens, in about thirty seconds — first coffee to last call, built on what locals actually do.</p>
+        <span class="vc-cta">Plan a day →</span>
+      </a>
+      <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
+        <div class="vc-top"><span class="vc-tag">Daily game · Football</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
+        <div class="vc-name">Offsides</div>
+        <div class="vc-tagline">Onside or off? Call it.</div>
+        <p class="vc-desc">One real moment a day, one judgment to make. You against the VAR room — and against everyone else who thinks they read the game better.</p>
+        <span class="vc-cta">Play today's call →</span>
+      </a>
+      <a href="https://retzach.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
+        <div class="vc-top"><span class="vc-tag">Archive · Hebrew</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
+        <div class="vc-name">Retzach</div>
+        <div class="vc-tagline">The listeners' archive</div>
+        <p class="vc-desc">Every case from the podcast — evidence, timelines, letters and sources in one place. Each file documented by hand against verified sources before it goes live.</p>
+        <span class="vc-cta">Open the archive →</span>
+      </a>
+      <a href="https://art.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
+        <div class="vc-top"><span class="vc-tag">Private sale · By appointment</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
+        <div class="vc-name">Dubel Art</div>
+        <div class="vc-tagline">Modern &amp; contemporary</div>
+        <p class="vc-desc">Private placement of modern and contemporary works — European modernism, post-war abstraction, contemporary mixed-media. Documented provenance, quiet sales.</p>
+        <span class="vc-cta">Enter the department →</span>
+      </a>
+    </div>
+
+    <div class="ventures-foot fade-up">
+      <p class="vf-line"><strong>These are the portfolio.</strong> Every one was scoped, designed, built and shipped in-house — which is exactly what we now do for other people's businesses.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="platforms.html" class="btn btn-secondary">Inside the platforms →</a>
+        <a href="build.html" class="btn btn-primary">Build mine →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-cell">
+        <div class="trust-name">PLAY · BROWN · PAREA</div>
+        <div class="trust-role">Hospitality programming partners</div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-name">M.T. ABRAHAM GROUP</div>
+        <div class="trust-role">Strategic advisory · Industrial &amp; cultural</div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-name">HŠK ZRINJSKI MOSTAR</div>
+        <div class="trust-role">Football club · Organizational development</div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-name">HAPOEL TEL AVIV</div>
+        <div class="trust-role">B.C. (founder) · F.C. (brand &amp; commercial)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="conv-cta">
+  <div class="container conv-cta-inner">
+    <div class="eyebrow">Ready when you are</div>
+    <h2>YOU HAVE A MISSION. <br><span class="it">We have the receipts.</span></h2>
+    <div class="actions">
+      <a href="contact.html" class="btn btn-primary">Start a conversation →</a>
+      <a href="about.html" class="btn btn-secondary">Meet the founder</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-mark">
+      <img src="logo.png" alt="">
+      <span>© <span id="year"></span> Dubel Team · Operating Since 2014</span>
+    </div>
+    <div class="footer-links">
+      <span class="footer-eu">EU CITIZEN [BULGARIA]</span>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="build.html">Build</a>
+      <a href="platforms.html">Platforms</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events ↗</a>
+      <a href="creators.html">Creators ↗</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/maorharel/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="footer-apps">
+      <span class="fa-label">Platforms:</span>
+      <a href="https://takemeout.dubelteam.com/" target="_blank" rel="noopener">TakeMeOut! ↗</a>
+      <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener">Offsides ↗</a>
+      <a href="https://retzach.dubelteam.com/" target="_blank" rel="noopener">Retzach ↗</a>
+      <a href="https://art.dubelteam.com/" target="_blank" rel="noopener">Dubel Art ↗</a>
+      <button class="team-trigger on-dark" type="button" data-team-open style="margin-left:auto"><span class="tt-dot"></span>Who's the team?</button>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===================== WHO'S THE TEAM — shared identity layer ===================== -->
+<div class="team-modal" id="teamModal" role="dialog" aria-modal="true" aria-labelledby="teamModalTitle" data-open="false">
+  <div class="team-modal-backdrop" data-team-close></div>
+  <div class="team-modal-panel">
+    <button class="team-modal-close" type="button" data-team-close aria-label="Close">✕</button>
+    <div class="tm-eyebrow">The honest version</div>
+    <h2 id="teamModalTitle">WHO'S THE <span class="it">team?</span></h2>
+    <p>Fair question. There is no floor of desks behind this.</p>
+    <p><strong>Dubel Team is run by one operator.</strong> What stands behind it is a network — people who know their world from the inside. Hospitality operators and chefs. Bartenders and DJs. Artists, designers, promoters, producers. People who actually live in the cities we work in and can tell you what changed last month.</p>
+    <p>They are not employees. They are not a roster we rent out. They are the reason a brief comes back with a real answer instead of a search result.</p>
+    <p class="tm-quote">We don't know everything.<br>We know people who do.</p>
+    <p>Sometimes the best information is online. Sometimes it is sitting at the bar next to someone who has been running the room for ten years. The network is the asset — the work is how we use it.</p>
+    <div class="tm-foot">Dubel Team · One operator. Many perspectives.</div>
+  </div>
 </div>
 
-<!-- ============ SHEET ============ -->
-<div id="sheet"><div class="scrim"></div><div class="panel-s" id="sheet-body"></div></div>
-
-<!-- ============ LIGHTBOX ============ -->
-<div id="lightbox"></div>
-
-<!-- ============ TOAST ============ -->
-<div id="toast"></div>
-
-</div>
-
-<script src="/assets/data.js?v=9"></script>
-<script src="/assets/scenes.js?v=9"></script>
-<script src="/assets/cases.js?v=9"></script>
-<script src="/assets/custom-images.js?v=9"></script>
-<script src="/assets/editor-page.js?v=9"></script>
-<script src="/assets/app.js?v=9"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  addEventListener('load', async () => {
-    try {
-      const reg = await navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' });
-      reg.addEventListener('updatefound', () => {
-        const w = reg.installing;
-        w && w.addEventListener('statechange', () => {
-          if (w.state === 'installed' && navigator.serviceWorker.controller) w.postMessage('skipWaiting');
-        });
-      });
-      let reloaded = false;
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (reloaded) return; reloaded = true; location.reload();
-      });
-      reg.update();
-    } catch (e) {}
-  });
-}
-</script>
+<script src="app.js"></script>
 </body>
 </html>

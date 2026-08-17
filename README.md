@@ -1,165 +1,103 @@
-# ארכיון הרצח
+# Dubel Team — Main Website (dubelteam.com)
 
-### מחווה לקהילת פודקאסט רצח
-
-**מחווה עצמאית ולא מסחרית לקהילת המאזינים של [פודקאסט רצח](https://open.spotify.com/show/0UvJ4TczaGA7oC3Bu8lYdt) — ולה בלבד.**
-נבנה כדי להעשיר את הידע של מאזינים שמעוניינים בכך: לכל פרק — תיק אחד שמרכז את הראיות, הקורבנות,
-ציר הזמן, הסרטים הדוקומנטריים והמקורות שדובר עליהם.
-
-🔗 **[retzach.dubelteam.com](https://retzach.dubelteam.com/)**
-
-> **אינו מסונף לפודקאסט, אינו מייצג אותו ואינו מחליף אותו.**
-> אין לו כל קשר רשמי למאיה גזית, לשי מגל או למי מטעמם.
-> התוכן המקורי, המחקר, העריכה והמותג של הפודקאסט שייכים ליוצריו.
-> בקשת הסרה או תיקון — נענית מיד.
-
-📐 **[מדריך המותג המלא → BRAND.md](BRAND.md)**
+Static site for **Dubel Team**, deployed on **GitHub Pages** at `www.dubelteam.com`.
+No build step, no framework — plain HTML/CSS/JS. Push to the repo and GitHub Pages serves it.
 
 ---
 
-## מה יש בפנים
-
-- **ארכיון** — 36 פרקים, חיפוש חופשי, סינון לפי עונה, סימון "תיק סגור" מול "בקרוב"
-- **28 תיקים סגורים** (עונות 1–3) — כולם במבנה זהה ומלא: 6 לשוניות, גיליון תיק, סיפור, ציטוטים,
-  מהפרק, קורבנות, ראיות, ציר זמן, צפייה ומקורות. 107 תמונות אמיתיות
-- **לוח בקרה נסתר** — נתוני צפייה, ניהול תיקים, סטודיו תמונות, ותפקידים (בעלים / עורכת)
-- **עמוד תיק** בשש לשוניות: התיק · **מהפרק** · הקורבנות · ראיות · ציר זמן · מקורות
-- **"מהפרק"** — הערות מאיה מהפוסט בקבוצה: מה הבטיחה, מה השמיטה במכוון, מה המליצה לראות
-- **כרזות SVG מקוריות** לכל תיק — וקטור מלא, נטען מיידית, חד בכל רזולוציה
-- **תמונות אמיתיות מוויקישיתוף** — מפות מחוזות, אתרי הרצח, בתי משפט וכלי נשק, נפתרות
-  בזמן ריצה עם **ייחוס ורישיון אוטומטיים**, ורשימת קרדיטים שנבנית מעצמה
-- **מפת זירות** אינטראקטיבית (איפה שרלוונטי)
-- **קלסר ראיות** — כל ראיה נפתחת ל־bottom sheet מלא
-- **סרטים ודוקו** עם תג עלות: חינם / חינם עם פרסומות / בתשלום
-- **נגן ספוטיפיי** מוטמע, PWA להתקנה למסך הבית, ועבודה אופליין אחרי ביקור ראשון
-- **רספונסיבי אמיתי** — פריסת אפליקציה בנייד, פריסת שתי עמודות עם sidebar דביק בדפדפן
-- lightbox לתמונות, סרגל התקדמות, ניווט מקלדת (← →), כיבוד `prefers-reduced-motion`
-
-## סטאק
-
-אין. HTML, CSS ו־JavaScript סטטיים, בלי build ובלי תלויות. הפונט היחיד שנטען מבחוץ הוא Rubik.
-
-## מבנה
+## Structure
 
 ```
-├── index.html                 מעטפת האפליקציה + מטא־תגיות ו־SEO
-├── assets/
-│   ├── style.css              עיצוב מלא (טוקנים, קומפוננטות, אנימציות)
-│   ├── data.js                ← כל התוכן: פרקים, תיקים, ראיות, מקורות
-│   └── app.js                 ראוטינג, רינדור, אינטראקציות
-├── img/                       תמונות פרטיות (ראו img/README.md)
-│   └── commons/               תמונות ויקישיתוף שהורדו + manifest.json + CREDITS.md
-├── tools/fetch-media.mjs      מוריד את תמונות ויקישיתוף לשרת שלנו
-├── icons/                     אייקוני PWA
-├── manifest.webmanifest
-├── sw.js                      service worker (offline)
-├── vercel.json                headers + cache
-├── assets/cases.js            26 תיקים מלאים (עונות 1–3)
-├── assets/scenes.js           כרזות SVG פרמטריות לכל תיק
-├── assets/admin.js            לוח הבקרה — נטען רק בדרישה
-├── assets/custom-images.js    תמונות שיוצאו מהסטודיו
-├── api/_redis.js              זיהוי אוטומטי של מסד ה-Redis שחובר
-├── api/track.js · api/stats.js  אנליטיקס (Vercel Functions + Redis)
-├── BRAND.md                   מדריך המותג של ארכיון הרצח
-├── robots.txt · sitemap.xml · og.png
+/
+├── index.html            Homepage (routing hub + work preview).
+├── services.html         The six practices.
+├── build.html            Practice 06 — custom tech solutions (sales page).
+├── platforms.html        The four in-house products (TakeMeOut!, Offsides, Retzach, Dubel Art).
+├── work.html             Case studies (ARTHINA, hospitality, Hapoel B.C.).
+├── about.html            The company. Founder-led.
+├── contact.html          Contact form (Web3Forms) + mailto fallback → success.html
+├── success.html          Thank-you page after a form submission.
+├── events.html           Private events landing page (self-contained styles).
+├── creators.html         The Muse Residency landing page (self-contained styles).
+├── 404.html              Custom not-found page.
+├── styles.css            Shared design system (index/services/work/about/contact/success).
+├── app.js                Shared JS — sticky nav, mobile menu, fade-up, stat counters.
+├── CNAME                 GitHub Pages custom domain → dubelteam.com
+├── .nojekyll             Serve files as-is (disables Jekyll).
+├── robots.txt            Indexing rules + sitemap link.
+├── sitemap.xml           Public URLs for search engines.
+├── _redirects            INERT on GitHub Pages (Netlify-only). Kept for reference.
+├── hapoel-bc-campaign.svg  On-brand placeholder for the Hapoel case image.
+└── [images]              Project photography (arthina-*, hosp-*, logo, favicon).
 ```
 
-## תמונות
-
-האפליקציה מושכת תמונות חופשיות מוויקישיתוף אוטומטית. כדי להגיש אותן מהשרת שלנו
-(מהיר יותר, לא תלוי בוויקימדיה):
-
-```bash
-node tools/fetch-media.mjs      # דורש Node 18+
-```
-
-מוריד ל־`img/commons/`, כותב `manifest.json` ו־`CREDITS.md`, והאפליקציה מעדיפה אותם אוטומטית.
-
-## הרצה מקומית
-
-```bash
-python3 -m http.server 8080
-# → http://localhost:8080
-```
-
-חובה להריץ דרך שרת (ולא לפתוח את הקובץ ישירות) כדי שה־service worker ונתיבי `/assets` יעבדו.
-
-## דיפלוי ל־Vercel
-
-1. `git push` לריפו ב־GitHub
-2. ב־Vercel: **Add New → Project → Import** את הריפו
-3. Framework Preset: **Other** · Build Command: *(ריק)* · Output Directory: `.`
-4. **Settings → Domains** → `retzach.dubelteam.com` (רשומת CNAME ל־`cname.vercel-dns.com`)
-
-זהו. אתר סטטי, בלי build step.
-
-## הוספת תיק חדש
-
-הכל ב־`assets/data.js`:
-
-1. הוסיפו אובייקט תיק לפי המבנה של `DILLON` / `ZELICH`:
-   `facts · story · quotes · victims · timeline · evidence · watch · links · host`
-   – `host` הוא סקשן "מהפרק": `{intro, items:[{k,t,d,q?,link?}]}`, כאשר `k` הוא אחד מ־
-     `verdict · promise · skip · rec · art · bts · live · fun`
-   – `scene` (אופציונלי) מפנה לכרזה ב־`SCENE`
-2. רשמו אותו ב־`const DB = { ... }`
-3. ב־`EPISODES`, החליפו `id:null, ready:false` ב־`id:'<המזהה>', ready:true`
-4. תמונות — ראו [`img/README.md`](img/README.md)
-
-**כללי הדיוק של הארכיון:** כל עובדה מקושרת למקור בלשונית "מקורות"; כשמקורות חלוקים — מציגים את שני הנתונים; טענה שלא הוכחה בבית משפט מסומנת במפורש ככזו.
-
-## תוכן ורישוי
-
-הקוד והעיצוב © Dubel Team. תוכן הפרקים, השמות והמותג של הפודקאסט שייכים ליוצריו.
-בקשת הסרה או תיקון — [dubelteam.com/contact](https://www.dubelteam.com/contact.html).
+Note: `events.html` and `creators.html` keep their own inline `<style>` blocks (they
+were built self-contained). Every other page shares `styles.css` + `app.js`.
 
 ---
 
-<div dir="ltr">
+## Subdomains (separate deployments)
 
-**Built by [DUBEL TEAM](https://www.dubelteam.com/)** — *Built by the brief. An operator.*
-Founder-led operations, brand and digital products. Athens.
+The four apps are hosted **separately** and pointed at subdomains via DNS:
 
-</div>
+- `takemeout.dubelteam.com`
+- `offsides.dubelteam.com`
+- `retzach.dubelteam.com`
+- `art.dubelteam.com`
 
+They are linked from the footer of every page, marketed on `platforms.html`, and used
+as proof on `build.html`. They are **not** part of this repo — each has its own
+deployment. See the DNS guide handed over with this update.
 
-## לוח הבקרה
+---
 
-**כניסה:** `?admin` בכתובת · `Ctrl+Shift+A` · שבע לחיצות על תג הגרסה.
+## "Who's the team?" identity layer
 
-**הפעלת נתוני אמת ב-Vercel:**
+A shared component, present on every page that uses `styles.css`:
 
-> **שימו לב:** Vercel כבר לא מציעה "KV" כמוצר נפרד. היום פותחים **Redis** דרך ה-Marketplace,
-> וזה בדיוק אותו דבר מבחינת הקוד.
+- **Trigger** — `<button class="team-trigger" data-team-open>` (any number per page).
+  Currently in the footer of every page, plus the manifesto on `index.html` /
+  `platforms.html` and the final CTA on `build.html`.
+- **Panel** — the `#teamModal` block just before `<script src="app.js">`.
+- **Behaviour** — in `app.js`: open/close, Esc, backdrop click, focus trap,
+  focus restore, body scroll lock.
+- **Source of truth** — the full version lives inline on `about.html` (`#team`,
+  `.team-band`). The modal is the short version.
 
-1. **Storage → Create Database → Redis** (Upstash) → בחרו שם (למשל `redis-bole-ball`)
-2. **Connect Project** → חברו אותו לפרויקט הזה. משתני הסביבה נוספים אוטומטית
-3. **Settings → Environment Variables**:
-   - `ADMIN_TOKEN` — מפתח הבעלים
-   - `EDITOR_TOKEN` — מפתח העורכת (גישה מוגבלת)
-4. **Redeploy** ← חובה. בלי זה משתני הסביבה החדשים לא נטענים
+Copy rule: one operator, real network, never invented people, never fake credentials.
 
-`api/_redis.js` מזהה לבד את המסד לפי כל שם משתנה אפשרי שהאינטגרציה עשויה להזריק —
-`KV_REST_API_URL` · `UPSTASH_REDIS_REST_URL` · `REDIS_REST_URL` · `STORAGE_*`,
-וגם כשה-Marketplace הוסיף קידומת עם שם המסד (למשל `REDIS_BOLE_BALL_KV_REST_API_URL`).
+---
 
-בלשונית **סקירה** בלוח הבקרה מופיעה שורת מצב חיבור: ירוק = מחובר (עם שם ה-host
-ושם משתנה הסביבה שזוהה), אדום = מנותק, עם הסבר מה חסר.
+## Forms
 
-בלי מסד מחובר הלוח עדיין עובד ומציג ספירה מקומית מהדפדפן.
+`contact.html`, `events.html` and `creators.html` POST to Web3Forms
+(`https://api.web3forms.com/submit`). Every form includes
+`cc = maordubel@gmail.com`, so submissions arrive there regardless of the
+Web3Forms dashboard setting. On success the browser is redirected to
+`https://www.dubelteam.com/success.html`.
 
-### תפקידים
+Access key: `a0f6ad4b-9a68-48c2-bb9b-d4d132e1fc24`
 
-| יכולת | בעלים | עורכת |
-|---|:---:|:---:|
-| נתוני צפייה מלאים | ✓ | — |
-| סיכום צפיות | ✓ | ✓ |
-| ניהול תיקים | ✓ | — |
-| סטודיו תמונות | ✓ | — |
-| עריכת העמוד האישי | ✓ | ✓ |
-| ניהול הרשאות | ✓ | — |
+**Email note:** all contact — form submissions (via `cc`) and every `mailto:`
+link — routes to `maordubel@gmail.com`. To make Gmail the *primary* Web3Forms
+recipient too (not just the cc), set the destination on the Web3Forms dashboard
+for access key `a0f6ad4b-9a68-48c2-bb9b-d4d132e1fc24`.
 
-## מדיניות תוכן
+---
 
-אין תצלומי נתיחה, חומר מיני או תיעוד גרפי של קורבנות. חומר מזירת אירוע מוצג מטושטש
-מאחורי אישור מפורש (`sens:1` בשדה `gal`). כשמאיה בחרה בפרק לא להציג משהו — הבחירה מכובדת גם כאן.
+## Deploy (GitHub Pages)
+
+1. Push all files to the repository (root of the branch you publish from).
+2. Repo → **Settings → Pages** → Source: `Deploy from a branch` → `main` / `(root)`.
+3. Under **Custom domain**, enter `www.dubelteam.com` (the `CNAME` file already sets this).
+4. Point DNS at GitHub Pages (see the DNS guide).
+5. Enable **Enforce HTTPS** once the certificate is issued.
+
+Always link internal pages with the `.html` extension — GitHub Pages does not
+rewrite clean URLs.
+
+## Brand voice
+
+Founder-led operator company — never a personal portfolio.
+- "Dubel Team is led by..." / "Every project shaped to the client." — yes.
+- "I founded businesses..." — no.
