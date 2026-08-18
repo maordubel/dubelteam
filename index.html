@@ -76,14 +76,12 @@
   .pt-flag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1.6s ease-in-out infinite}
 
   /* PLATFORMS — four products */
-  .ventures-grid{grid-template-columns:repeat(4, 1fr)!important}
   .ventures-intro{max-width:640px;font-family:var(--italic);font-style:italic;font-size:clamp(17px,1.4vw,21px);line-height:1.45;color:var(--ink-soft);font-variation-settings:"opsz" 144;margin:-16px 0 34px}
   .ventures-foot{margin-top:34px;padding-top:24px;border-top:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .ventures-foot .vf-line{font-family:var(--body);font-size:13.5px;line-height:1.55;color:var(--ink-soft);max-width:560px}
   .ventures-foot .vf-line strong{color:var(--ink)}
   @media (max-width:1180px){
     .practices-grid{grid-template-columns:repeat(2, 1fr)}
-    .ventures-grid{grid-template-columns:repeat(2, 1fr)!important}
   }
 
   /* WORK PREVIEW */
@@ -131,7 +129,6 @@
     .routing-section{padding:48px 0}
     .routing-intro{grid-template-columns:1fr;gap:18px;align-items:flex-start;margin-bottom:28px;padding-bottom:18px}
     .practices-grid{grid-template-columns:1fr;border-width:1.5px}
-    .ventures-grid{grid-template-columns:1fr!important}
     .ventures-foot{flex-direction:column;align-items:flex-start;gap:16px}
     .practice-tile{min-height:auto;padding:22px 20px}
     .pt-num{font-size:32px}
@@ -345,10 +342,12 @@
     <div class="block-head fade-up">
       <div class="head-left">
         <span class="num">/02</span>
-        <span class="label">Selected work</span>
+        <span class="label">Eleven projects · Four fields · 2007 — now</span>
       </div>
       <h2>THE <span class="it">receipts.</span></h2>
     </div>
+
+    <p class="ventures-intro fade-up" style="margin:-14px 0 30px">Three of them below. The full record — Hapoel Tel Aviv B.C. and F.C., HŠK Zrinjski Mostar, Tel Aviv and Athens nightlife, PLAY · BROWN · PAREA, ARTHINA, Pame Gallery, The Hub of Fine Arts, M.T. Abraham Group and Dubel Art — is <a href="work.html" style="color:var(--red)">in the archive</a>.</p>
 
     <div class="work-preview fade-up">
       <a href="work.html#arthina" class="wp-card">
@@ -375,7 +374,7 @@
     </div>
 
     <div class="work-preview-cta">
-      <a href="work.html" class="btn btn-secondary">All case studies →</a>
+      <a href="work.html" class="btn btn-primary">The full record — all 11 projects →</a>
     </div>
   </div>
 </section>
@@ -393,7 +392,7 @@
 
     <p class="ventures-intro fade-up">Nobody paid us to build these. We wanted them to exist, so we shipped them — four live products, four different problems, all running in public where you can use them right now.</p>
 
-    <div class="ventures-grid fade-up">
+    <div class="ventures-grid four fade-up">
       <a href="https://takemeout.dubelteam.com/" target="_blank" rel="noopener" class="venture-card">
         <div class="vc-top"><span class="vc-tag">Discovery · Athens</span><span class="vc-arrow" aria-hidden="true">↗</span></div>
         <div class="vc-name">TakeMeOut!</div>

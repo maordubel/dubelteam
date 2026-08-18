@@ -801,3 +801,104 @@ body.team-open{overflow:hidden}
 @media (max-width: 980px){
   .footer-apps .team-trigger{margin-left:0!important;width:100%;justify-content:center}
 }
+
+/* ============================================================
+   CAREER ARCHIVE (work.html)
+   Chapter bands + record cards + index strip
+   ============================================================ */
+
+/* Jump index under the hero */
+.archive-index{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  background:var(--ink);border:2px solid var(--ink);margin-top:34px;
+}
+.archive-index a{
+  background:var(--cream);padding:20px 18px;text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;gap:6px;transition:background .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.archive-index a:hover,.archive-index a:focus-visible{background:var(--ink)}
+.archive-index a:hover .ai-name,.archive-index a:focus-visible .ai-name{color:var(--cream)}
+.archive-index a:hover .ai-count,.archive-index a:focus-visible .ai-count{color:rgba(242,234,216,0.6)}
+.ai-num{font-family:var(--display);font-size:13px;letter-spacing:0.08em;color:var(--red)}
+.ai-name{font-family:var(--display);font-size:clamp(17px,1.5vw,22px);line-height:1;text-transform:uppercase;color:var(--ink);transition:color .2s}
+.ai-count{font-family:var(--body);font-size:10.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mute);transition:color .2s}
+
+/* Chapter header band */
+.chapter-head{
+  background:var(--ink);color:var(--cream);padding:44px 0;
+  border-top:2px solid var(--red);border-bottom:2px solid var(--red);
+  position:relative;overflow:hidden;
+}
+.chapter-head::before{
+  content:attr(data-watermark);position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-3deg);font-family:var(--display);
+  font-size:16vw;line-height:1;color:rgba(242,234,216,0.045);
+  white-space:nowrap;pointer-events:none;
+}
+.chapter-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:end}
+.chapter-head .ch-num{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.chapter-head .ch-num::before{content:"";width:26px;height:2px;background:var(--red)}
+.chapter-head h2{font-family:var(--display);font-size:clamp(34px,5.4vw,74px);line-height:0.92;text-transform:uppercase;color:var(--cream)}
+.chapter-head h2 .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144}
+.chapter-head p{font-family:var(--italic);font-style:italic;font-size:clamp(16px,1.35vw,20px);line-height:1.45;color:rgba(242,234,216,0.72);font-variation-settings:"opsz" 144;max-width:540px}
+
+/* Record card — one project */
+.records{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--ink);border:2px solid var(--ink)}
+.record{background:var(--cream);padding:30px 28px;display:flex;flex-direction:column;gap:12px}
+.record.wide{grid-column:1 / -1}
+.record.dark{background:var(--ink)}
+.rec-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.rec-idx{font-family:var(--display);font-size:30px;line-height:1;color:var(--red)}
+.rec-years{font-family:var(--body);font-size:10.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap}
+.record.dark .rec-years{color:rgba(242,234,216,0.55)}
+.rec-name{font-family:var(--display);font-size:clamp(24px,2.3vw,34px);line-height:0.96;text-transform:uppercase;color:var(--ink)}
+.record.dark .rec-name{color:var(--cream)}
+.rec-name .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-0.025em;color:var(--red);font-variation-settings:"opsz" 144}
+.rec-role{font-family:var(--italic);font-style:italic;font-size:16px;line-height:1.3;color:var(--red);font-variation-settings:"opsz" 144;margin-top:-4px}
+.rec-place{font-family:var(--body);font-size:10.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mute)}
+.record.dark .rec-place{color:rgba(242,234,216,0.5)}
+.rec-body{font-family:var(--body);font-size:15px;line-height:1.6;color:var(--ink-soft)}
+.record.dark .rec-body{color:rgba(242,234,216,0.78)}
+.rec-body strong{color:var(--ink);font-weight:700}
+.record.dark .rec-body strong{color:var(--cream)}
+.rec-metrics{display:flex;gap:26px;flex-wrap:wrap;padding-top:16px;margin-top:auto;border-top:1px solid var(--line)}
+.record.dark .rec-metrics{border-top-color:rgba(242,234,216,0.2)}
+.rec-metrics .m-num{font-family:var(--display);font-size:28px;line-height:1;color:var(--ink)}
+.record.dark .rec-metrics .m-num{color:var(--cream)}
+.rec-metrics .m-num .red{color:var(--red)}
+.rec-metrics .m-label{font-family:var(--body);font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--ink-mute);margin-top:5px;line-height:1.35}
+.record.dark .rec-metrics .m-label{color:rgba(242,234,216,0.5)}
+.rec-tags{display:flex;flex-wrap:wrap;gap:7px}
+.rec-tags span{font-family:var(--body);font-size:10.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line-strong);padding:6px 9px}
+.record.dark .rec-tags span{color:rgba(242,234,216,0.7);border-color:rgba(242,234,216,0.25)}
+.rec-link{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.rec-link:hover{color:var(--ink)}
+.record.dark .rec-link:hover{color:var(--cream)}
+.rec-media{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border:2px solid var(--ink);margin-bottom:4px}
+.record.dark .rec-media{border-color:rgba(242,234,216,0.3)}
+
+/* Photo band between chapters */
+.photo-band{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.photo-band img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+
+@media (max-width:1100px){
+  .archive-index{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .chapter-inner{grid-template-columns:1fr;gap:16px;align-items:flex-start}
+  .chapter-head{padding:32px 0}
+  .records{grid-template-columns:1fr}
+  .record{padding:24px 20px}
+  .photo-band{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+  .archive-index{grid-template-columns:1fr}
+  .rec-metrics{gap:18px}
+  .rec-metrics .m-num{font-size:24px}
+}
+
+/* Four-up platform grid (index / work / build / platforms) */
+.ventures-grid.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1180px){.ventures-grid.four{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:860px){.ventures-grid.four{grid-template-columns:1fr}}

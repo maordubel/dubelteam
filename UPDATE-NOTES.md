@@ -85,3 +85,63 @@ fake credentials, no implied employees.** The line the whole thing hangs on:
 Rendered every page at 1440px and 390px in a real browser: no horizontal overflow,
 no JavaScript errors, no broken internal links or anchors, modal opens/closes by
 click, backdrop and Esc. Reduced-motion rules still apply.
+
+
+---
+
+# Update 2 — The career archive
+
+## `work.html` is now the full record, not three case studies
+
+Everything that was buried in one sentence on the About page now has its own entry
+with a role, a place, a description and — where the numbers exist — a metric row.
+
+Four chapters, jump-linked from an index under the hero:
+
+**/01 Sport & Fan Culture** — Hapoel Tel Aviv B.C. (founder, 2007–2015, featured
+with image and metrics) · Hapoel Tel Aviv F.C. (brand & commercial) ·
+HŠK Zrinjski Mostar (organizational development)
+
+**/02 Nightlife & Hospitality** — Tel Aviv nightlife · Athens bars & nightlife ·
+PLAY · BROWN · PAREA (featured, with the 12+ / 3 / 100+ metrics)
+
+**/03 Art & Culture** — ARTHINA (featured) · Pame Gallery, Exarchia ·
+The Hub of Fine Arts, Mostar · M.T. Abraham Group · Dubel Art
+
+**/04 Digital & Product** — the four platforms, linking out to `platforms.html`
+and `build.html`
+
+Two full-bleed photo bands break the chapters up (hospitality photos after /02,
+ARTHINA photos after /03) so the page reads as a body of work rather than a list.
+
+Ends on a manifesto: *"A club. A gallery. A museum. A bar at 2am. Four products
+and a collection. Different rooms — the same person walking in and taking
+responsibility for what happens next."*
+
+## Routing so nothing is buried again
+
+- **`index.html`** — the work section is now labelled *"Eleven projects · Four
+  fields · 2007 — now"*, names every project in a line above the cards, and the
+  button reads **"The full record — all 11 projects →"**.
+- **`about.html`** — the partners paragraph is now a routed index: every name
+  links to its entry (`work.html#mta`, `#hub`, `#zrinjski`, `#hapoel-bc`,
+  `#pame`, `#arthina`, `#hospitality`), with a button to the full archive.
+  The Hub of Fine Arts and Pame Gallery were added — they were missing entirely.
+
+## Facts worth sharpening (nothing invented — these entries simply have no numbers yet)
+
+Send these over and they go straight in:
+
+1. **Hapoel Tel Aviv F.C.** — which years, and one number (campaign, membership,
+   merchandise or revenue).
+2. **HŠK Zrinjski Mostar** — years, and your exact title.
+3. **Tel Aviv nightlife** — venue names you're happy to publish, years, biggest
+   room capacity, staff led.
+4. **Athens bars** — venue names, opening dates, how many you've built.
+5. **Pame Gallery** — your exact role and the period; shows you'd like named.
+6. **The Hub of Fine Arts** — your role and years; collection size if public.
+7. **M.T. Abraham Group** — years, and whether "strategic advisory" is the title
+   you want on it.
+
+Where a number was missing I wrote the entry without one rather than estimating —
+each of those cards has an HTML comment marking where a metric row would drop in.
