@@ -7,8 +7,8 @@
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2094079368271424" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Contact — DUBEL TEAM · Bring Us a Mission</title>
-<meta name="description" content="Start a conversation with Dubel Team. Tell us what you're building — strategy, hospitality, events, sports or Greece market entry — and we'll come back with a plan.">
+<title>Contact — DUBEL TEAM · Tell Us the Idea</title>
+<meta name="description" content="Tell Dubel Team the idea. Strategy, operations, market entry, or build — product, web and apps, automation and AI. You don't need a business plan or a technical team; bring the idea and we'll work out what comes next.">
 <meta property="og:title" content="Contact — DUBEL TEAM">
 <meta property="og:description" content="Bring us a mission. Founder-led operator company based in Athens.">
 <meta property="og:type" content="website">
@@ -42,6 +42,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="services.html">Services</a></li>
       <li><a href="build.html">Build</a></li>
+      <li><a href="platforms.html">Products</a></li>
       <li><a href="work.html">Work</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="events.html">Events ↗</a></li>
@@ -105,18 +106,19 @@
       <div class="form-field">
         <label for="practice">What do you need?</label>
         <select id="practice" name="practice">
+          <option value="I have an idea">I have an idea — not sure what it is yet</option>
           <option value="Brand & Strategy">Brand &amp; Strategy</option>
           <option value="Hospitality & Venue Ops">Hospitality &amp; Venue Ops</option>
           <option value="Events & Production">Events &amp; Production</option>
           <option value="Sports & Fan Culture">Sports &amp; Fan Culture</option>
           <option value="Greece Market Entry">Greece Market Entry</option>
-          <option value="Tech & Digital Builds">Tech &amp; Digital Builds — site, app, automation or system</option>
+          <option value="Tech & Digital Builds">Build — product, site, app, automation or AI</option>
           <option value="Something else">Something else</option>
         </select>
       </div>
       <div class="form-field full">
         <label for="message">The brief</label>
-        <textarea id="message" name="message" placeholder="What are you building, and what does success look like?" required></textarea>
+        <textarea id="message" name="message" placeholder="What's the idea, or the problem? Rough is fine — you don't need a plan or a spec." required></textarea>
       </div>
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">Send it →</button>
@@ -139,7 +141,7 @@
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="build.html">Build</a>
-      <a href="platforms.html">Platforms</a>
+      <a href="platforms.html">Products</a>
       <a href="work.html">Work</a>
       <a href="about.html">About</a>
       <a href="events.html">Events ↗</a>
@@ -148,10 +150,12 @@
       <a href="https://www.linkedin.com/in/maorharel/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div class="footer-apps">
-      <span class="fa-label">Platforms:</span>
-      <a href="https://takemeout.dubelteam.com/" target="_blank" rel="noopener">TakeMeOut! ↗</a>
+      <span class="fa-label">Built by us:</span>
       <a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener">Offsides ↗</a>
+      <a href="https://takemeout.dubelteam.com/" target="_blank" rel="noopener">TakeMeOut! ↗</a>
+      <a href="https://dubid.dubelteam.com/" target="_blank" rel="noopener">Dubid ↗</a>
       <a href="https://retzach.dubelteam.com/" target="_blank" rel="noopener">Retzach ↗</a>
+      <a href="https://fuckyou.dubelteam.com/" target="_blank" rel="noopener">Fuck You ↗</a>
       <a href="https://art.dubelteam.com/" target="_blank" rel="noopener">Dubel Art ↗</a>
       <button class="team-trigger on-dark" type="button" data-team-open style="margin-left:auto"><span class="tt-dot"></span>Who's the team?</button>
     </div>
@@ -179,6 +183,7 @@
 /* Preselect the practice dropdown from ?practice= (e.g. build.html links with ?practice=tech) */
 (function(){
   var map = {
+    idea:'I have an idea', build:'Tech & Digital Builds',
     tech:'Tech & Digital Builds', strategy:'Brand & Strategy', hospitality:'Hospitality & Venue Ops',
     events:'Events & Production', sports:'Sports & Fan Culture', greece:'Greece Market Entry'
   };

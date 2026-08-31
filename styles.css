@@ -902,3 +902,160 @@ body.team-open{overflow:hidden}
 .ventures-grid.four{grid-template-columns:repeat(4,1fr)}
 @media (max-width:1180px){.ventures-grid.four{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:860px){.ventures-grid.four{grid-template-columns:1fr}}
+
+/* ============================================================
+   IDEA → REALITY — positioning layer (added with the BUILD update)
+   Pipeline strip, capability groups, product cards, idea CTA.
+   Nothing above this block was removed.
+   ============================================================ */
+
+/* ---- PIPELINE: Idea → Strategy → Product → Tech/AI → Launch → Operation ---- */
+.pipeline{
+  margin-top:44px;padding:22px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:0;flex-wrap:wrap;
+}
+.pipeline .pl-step{
+  display:flex;align-items:baseline;gap:9px;padding:6px 22px 6px 0;position:relative;
+}
+.pipeline .pl-step::after{
+  content:"→";margin-left:22px;color:var(--red);font-family:var(--display);font-size:17px;line-height:1;
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+}
+.pipeline .pl-step:last-child::after{content:none}
+.pipeline .pl-i{font-family:var(--display);font-size:12px;color:var(--red);letter-spacing:.06em}
+.pipeline .pl-t{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.pipeline .pl-step:last-child .pl-t{color:var(--red)}
+
+/* ---- CAPABILITY GROUP CHIP on practice tiles ---- */
+.pt-group{
+  display:inline-block;align-self:flex-start;font-family:var(--body);font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--cream-warm);
+  border:1px solid var(--line-strong);padding:4px 9px;
+}
+.practice-tile.feat .pt-group{background:transparent;color:var(--cream);border-color:rgba(242,234,216,.35)}
+.practice-tile:hover .pt-group,.practice-tile:focus-visible .pt-group{color:var(--cream)!important;border-color:rgba(242,234,216,.55);background:transparent}
+
+/* ---- CAPABILITY LEGEND ---- */
+.cap-legend{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+.cap-legend span{
+  font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-soft);border:1px solid var(--line-strong);padding:8px 12px;
+}
+.cap-legend span.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+/* ---- SERVICES PAGE — capability group divider ---- */
+.svc-group{
+  display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+  margin:56px 0 8px;padding-bottom:14px;border-bottom:2px solid var(--ink);
+}
+.svc-group:first-of-type{margin-top:8px}
+.svc-group h2{font-family:var(--display);font-size:clamp(30px,4vw,52px);line-height:.95;text-transform:uppercase;color:var(--ink);letter-spacing:.005em}
+.svc-group p{font-family:var(--italic);font-style:italic;font-size:clamp(15px,1.2vw,18px);color:var(--ink-soft);font-variation-settings:"opsz" 144;max-width:520px}
+
+/* ---- BUILD BLOCK — "we don't just advise, we build" ---- */
+.build-band{background:var(--ink);color:var(--cream);padding:80px 0;position:relative;overflow:hidden}
+.build-band::before{
+  content:"BUILD · BUILD · BUILD ·";position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-4deg);font-family:var(--display);font-size:22vw;line-height:1;
+  color:rgba(242,234,216,.045);white-space:nowrap;pointer-events:none;z-index:0;
+}
+.build-band .container{position:relative;z-index:1}
+.build-band .bb-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;padding-bottom:26px;border-bottom:2px solid var(--red);margin-bottom:36px}
+.build-band .bb-eyebrow{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.build-band h2{font-family:var(--display);font-size:clamp(48px,9vw,132px);line-height:.86;text-transform:uppercase;letter-spacing:-.005em}
+.build-band h2 .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-.025em;color:var(--red);font-variation-settings:"opsz" 144;display:block;font-size:.62em}
+.build-band .bb-claim{font-family:var(--italic);font-style:italic;font-size:clamp(19px,1.7vw,26px);line-height:1.4;color:var(--cream);font-variation-settings:"opsz" 144}
+.build-band .bb-claim strong{font-family:var(--body);font-style:normal;font-weight:700;color:var(--red)}
+.bring-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(242,234,216,.18);border:1px solid rgba(242,234,216,.18)}
+.bring-cell{background:var(--ink);padding:22px 18px;display:flex;flex-direction:column;gap:8px}
+.bring-cell .bn{font-family:var(--display);font-size:26px;line-height:1;color:var(--red)}
+.bring-cell .bt{font-family:var(--body);font-size:14.5px;font-weight:700;line-height:1.35;color:var(--cream)}
+.bring-cell .bd{font-family:var(--body);font-size:12.5px;line-height:1.5;color:rgba(242,234,216,.65)}
+.bb-out{margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.bb-out p{font-family:var(--body);font-size:14.5px;line-height:1.6;color:rgba(242,234,216,.8);max-width:600px}
+.bb-out p strong{color:var(--cream)}
+.bb-caps{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.bb-caps span{font-family:var(--body);font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(242,234,216,.85);border:1px solid rgba(242,234,216,.28);padding:8px 11px}
+.bb-caps span.hot{border-color:var(--red);color:var(--cream)}
+
+/* ---- PRODUCTS — built by Dubel Team ---- */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prod-card{
+  display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--cream);
+  border:2px solid var(--ink);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.prod-card:hover,.prod-card:focus-visible{transform:translateY(-5px);box-shadow:10px 10px 0 var(--ink)}
+.prod-shot{position:relative;aspect-ratio:4/3;overflow:hidden;border-bottom:2px solid var(--ink);background:var(--ink)}
+.prod-shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.prod-card:hover .prod-shot img,.prod-card:focus-visible .prod-shot img{transform:scale(1.04)}
+.prod-badge{
+  position:absolute;top:0;left:0;background:var(--red);color:var(--cream);
+  font-family:var(--body);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:7px 11px;z-index:2;
+}
+.prod-badge.soft{background:var(--ink)}
+.prod-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:9px;flex:1}
+.prod-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.prod-name{font-family:var(--display);font-size:clamp(26px,2.3vw,34px);line-height:.95;text-transform:uppercase;color:var(--ink);letter-spacing:.005em}
+.prod-name .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-.025em;color:var(--red);font-variation-settings:"opsz" 144}
+.prod-arrow{font-family:var(--display);font-size:22px;line-height:1;color:var(--red);transition:transform .25s}
+.prod-card:hover .prod-arrow,.prod-card:focus-visible .prod-arrow{transform:translate(3px,-3px)}
+.prod-line{font-family:var(--italic);font-style:italic;font-size:16px;line-height:1.3;color:var(--red);font-variation-settings:"opsz" 144;margin-top:-4px}
+.prod-desc{font-family:var(--body);font-size:13.5px;line-height:1.55;color:var(--ink-soft)}
+.prod-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.prod-cta{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.prod-url{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--ink-mute)}
+.prod-foot .prod-cta.muted{color:var(--ink-mute)}
+
+/* ---- PRODUCTS on the platforms page — media beside the write-up ---- */
+.plat-shot{display:block;width:100%;margin-top:18px;border:2px solid var(--ink)}
+
+/* ---- HAVE AN IDEA? CTA ---- */
+.idea-cta{padding:88px 0;background:var(--cream-warm);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.idea-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;max-width:1200px;margin:0 auto}
+.idea-inner h2{font-family:var(--display);font-size:clamp(46px,8.5vw,116px);line-height:.86;text-transform:uppercase;color:var(--ink);letter-spacing:-.005em}
+.idea-inner h2 .it{font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;letter-spacing:-.025em;color:var(--red);font-variation-settings:"opsz" 144}
+.idea-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+.idea-eyebrow::before{content:"";width:34px;height:1px;background:var(--red)}
+.idea-copy p{font-family:var(--body);font-size:clamp(16px,1.3vw,19px);line-height:1.62;color:var(--ink-soft);margin-bottom:18px}
+.idea-copy p.strike-list{font-family:var(--italic);font-style:italic;font-size:clamp(18px,1.5vw,23px);line-height:1.45;color:var(--ink);font-variation-settings:"opsz" 144;border-left:3px solid var(--red);padding-left:20px}
+.idea-copy .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+
+@media (max-width:1180px){
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .bring-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:980px){
+  .build-band .bb-head{grid-template-columns:1fr;gap:22px;align-items:flex-start}
+  .idea-inner{grid-template-columns:1fr;gap:28px}
+  .pipeline{margin-top:28px;padding:16px 0;gap:2px}
+  .pipeline .pl-step{padding:5px 16px 5px 0}
+  .pipeline .pl-step::after{margin-left:16px;font-size:14px}
+  .pipeline .pl-t{font-size:10.5px;letter-spacing:.12em}
+}
+@media (max-width:860px){
+  .prod-grid{grid-template-columns:1fr;gap:16px}
+  .bring-grid{grid-template-columns:1fr}
+  .build-band{padding:52px 0}
+  .idea-cta{padding:54px 0}
+  .svc-group{margin:38px 0 4px}
+  .prod-card:hover,.prod-card:focus-visible{transform:none;box-shadow:none}
+}
+@media (max-width:640px){
+  /* vertical rail on phones — the wrap-and-arrow layout reads badly at this width */
+  .pipeline{flex-direction:column;align-items:stretch;gap:0;padding:18px 0 14px}
+  .pipeline .pl-step{padding:0 0 0 20px;position:relative;gap:11px;align-items:baseline;min-height:34px}
+  .pipeline .pl-step::before{
+    content:"";position:absolute;left:3px;top:14px;bottom:-6px;width:1px;background:var(--line-strong);
+  }
+  .pipeline .pl-step:last-child::before{display:none}
+  .pipeline .pl-step::after{
+    content:"";position:absolute;left:0;top:9px;right:auto;transform:none;
+    width:7px;height:7px;background:var(--red);border-radius:50%;margin:0;
+  }
+  .pipeline .pl-step:last-child::after{content:"";background:var(--red)}
+  .pipeline .pl-t{font-size:11.5px;letter-spacing:.16em}
+}
+@media (prefers-reduced-motion: reduce){
+  .prod-card,.prod-shot img{transition:none}
+}

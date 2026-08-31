@@ -10,9 +10,10 @@ No build step, no framework — plain HTML/CSS/JS. Push to the repo and GitHub P
 ```
 /
 ├── index.html            Homepage (routing hub + work preview).
-├── services.html         The six practices.
-├── build.html            Practice 06 — custom tech solutions (sales page).
-├── platforms.html        The four in-house products (TakeMeOut!, Offsides, Retzach, Dubel Art).
+├── services.html         Four capabilities (Strategy / Operations / Markets / Build), six practices.
+├── build.html            Capability 04 — BUILD: product, technology & AI (sales page).
+├── platforms.html        The six in-house products (Offsides, TakeMeOut!, Dubid, Retzach, Fuck You, Dubel Art).
+├── prod-*.svg            Original product preview graphics, one per product.
 ├── work.html             Case studies (ARTHINA, hospitality, Hapoel B.C.).
 ├── about.html            The company. Founder-led.
 ├── contact.html          Contact form (Web3Forms) + mailto fallback → success.html
@@ -38,15 +39,17 @@ were built self-contained). Every other page shares `styles.css` + `app.js`.
 
 ## Subdomains (separate deployments)
 
-The four apps are hosted **separately** and pointed at subdomains via DNS:
+The six apps are hosted **separately** and pointed at subdomains via DNS:
 
-- `takemeout.dubelteam.com`
 - `offsides.dubelteam.com`
+- `takemeout.dubelteam.com`
+- `dubid.dubelteam.com`
 - `retzach.dubelteam.com`
+- `fuckyou.dubelteam.com`
 - `art.dubelteam.com`
 
-They are linked from the footer of every page, marketed on `platforms.html`, and used
-as proof on `build.html`. They are **not** part of this repo — each has its own
+They are linked from the footer of every page, marketed on `platforms.html` and on the
+homepage products section, and used as proof on `build.html` and `work.html`. They are **not** part of this repo — each has its own
 deployment. See the DNS guide handed over with this update.
 
 ---
@@ -101,3 +104,32 @@ rewrite clean URLs.
 Founder-led operator company — never a personal portfolio.
 - "Dubel Team is led by..." / "Every project shaped to the client." — yes.
 - "I founded businesses..." — no.
+
+
+---
+
+## Positioning (current)
+
+**We turn ideas into reality.** Dubel Team is not an AI agency and not a development
+studio — it is one company covering strategy, operations, creativity, technology, AI
+and execution, in this order:
+
+> Idea → Strategy → Product → Technology & AI → Launch → Operation
+
+The six practices are grouped into **four capabilities**, used on `index.html`
+(tile chips + legend) and `services.html` (group dividers):
+
+| Capability | Practices |
+| --- | --- |
+| **01 Strategy** | Brand & Strategy (brand, positioning, partnerships, business development) |
+| **02 Operations** | Hospitality & Venue Ops · Events & Production · Sports & Fan Culture |
+| **03 Markets** | Greece Market Entry (local partnerships, EU expansion, activation) |
+| **04 Build** | Product, Technology & AI — product development, web & app, digital products, MVPs & prototypes, custom technology, AI integration, AI-powered products, AI agents & assistants, business automation, intelligent workflows, custom AI systems |
+
+**AI rule:** AI is a capability *inside* BUILD, never the headline. No "AI consulting",
+"AI transformation" or "cutting-edge AI solutions" anywhere in the copy — only outcomes
+(integrate AI into an existing business, automate repetitive work, build an AI-powered
+product, turn an idea into a working system).
+
+**Main CTA:** `contact.html?practice=idea` — "Tell us the idea →". The dropdown option
+`I have an idea` is preselected by that query string.

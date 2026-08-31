@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Retzach — a stack of case files with a verified stamp and a timeline of evidence">
+<rect width="800" height="600" fill="#191512"/>
+<g opacity=".45"><rect x="70" y="80" width="300" height="410" fill="#D9CDB0" transform="rotate(-5 220 285)"/><rect x="128" y="96" width="300" height="410" fill="#E9DEC6" transform="rotate(3 278 301)"/></g>
+<rect x="190" y="66" width="330" height="452" fill="#F2EAD8" stroke="#141414" stroke-width="4"/>
+<g transform="translate(220,116)" fill="#141414"><rect width="180" height="13"/><rect y="36" width="250" height="8" opacity=".45"/><rect y="58" width="220" height="8" opacity=".45"/><rect y="80" width="242" height="8" opacity=".45"/><rect y="126" width="120" height="11"/><rect y="158" width="258" height="8" opacity=".45"/><rect y="180" width="200" height="8" opacity=".45"/><rect y="202" width="244" height="8" opacity=".45"/><rect y="248" width="150" height="11"/><rect y="280" width="228" height="8" opacity=".45"/><rect y="302" width="252" height="8" opacity=".45"/></g>
+<g transform="translate(440,150) rotate(-11)"><rect x="-96" y="-32" width="192" height="64" fill="none" stroke="#C8262A" stroke-width="5"/><text text-anchor="middle" y="13" font-family="Impact, 'Arial Black', sans-serif" font-size="34" letter-spacing="2" fill="#C8262A">VERIFIED</text></g>
+<path d="M600 150 V450" stroke="#C8262A" stroke-width="4" stroke-dasharray="10 12"/>
+<g fill="#C8262A"><circle cx="600" cy="190" r="10"/><circle cx="600" cy="300" r="10"/><circle cx="600" cy="410" r="10"/></g>
+<g fill="#F2EAD8" font-family="Impact, 'Arial Black', sans-serif" font-size="17" letter-spacing="3" opacity=".82"><text x="626" y="196">TIMELINE</text><text x="626" y="306">EVIDENCE</text><text x="626" y="416">SOURCES</text></g>
+</svg>

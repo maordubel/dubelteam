@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="TakeMeOut! — a plotted route across Athens from first coffee to last call">
+<rect width="800" height="600" fill="#1B4D8F"/>
+<g opacity=".16" stroke="#F2EAD8" stroke-width="2"><path d="M0 120 H800 M0 240 H800 M0 360 H800 M0 480 H800 M140 0 V600 M300 0 V600 M460 0 V600 M620 0 V600"/></g>
+<path d="M110 480 C 210 480, 190 356, 285 356 S 420 252, 490 252 S 630 160, 706 128" fill="none" stroke="#F2A007" stroke-width="9" stroke-linecap="round" stroke-dasharray="2 26"/>
+<g><g transform="translate(110,480)"><path d="M0-46C22-46 34-30 34-14 0 26 0 26 0 26S-34 2-34-14-22-46 0-46Z" fill="#F2EAD8"/><circle cy="-16" r="12" fill="#1B4D8F"/></g>
+<g transform="translate(285,356)"><path d="M0-46C22-46 34-30 34-14 0 26 0 26 0 26S-34 2-34-14-22-46 0-46Z" fill="#F2EAD8"/><circle cy="-16" r="12" fill="#1B4D8F"/></g>
+<g transform="translate(490,252)"><path d="M0-56C27-56 42-37 42-17 0 32 0 32 0 32S-42 3-42-17-27-56 0-56Z" fill="#C8262A"/><circle cy="-19" r="14" fill="#F2EAD8"/></g>
+<g transform="translate(706,128)"><path d="M0-46C22-46 34-30 34-14 0 26 0 26 0 26S-34 2-34-14-22-46 0-46Z" fill="#F2EAD8"/><circle cy="-16" r="12" fill="#1B4D8F"/></g></g>
+</svg>
