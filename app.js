@@ -19,6 +19,42 @@
     footerLinks.appendChild(privacyLink);
   }
 
+  // Keep the shared footer aligned with the six active products intended for monetization.
+  // This is intentionally a text/link change only — no layout or design change.
+  var footerApps = document.querySelector('.footer-apps');
+  if (footerApps) {
+    var artLink = footerApps.querySelector('a[href*="art.dubelteam.com"]');
+    if (artLink) {
+      artLink.href = 'https://theworker.dubelteam.com/';
+      artLink.textContent = 'The Worker ↗';
+    }
+  }
+
+  // Machine-readable map of the live product ecosystem.
+  // It is injected only on the main company/product pages and has no visual effect.
+  var path = window.location.pathname;
+  var isProductContext = path === '/' || /\/(index|platforms)\.html$/.test(path);
+  if (isProductContext && !document.getElementById('dubel-products-jsonld')) {
+    var productData = document.createElement('script');
+    productData.id = 'dubel-products-jsonld';
+    productData.type = 'application/ld+json';
+    productData.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      'name': 'Dubel Team live digital products',
+      'numberOfItems': 6,
+      'itemListElement': [
+        {'@type':'ListItem','position':1,'name':'The Worker','url':'https://theworker.dubelteam.com/'},
+        {'@type':'ListItem','position':2,'name':'TakeMeOut!','url':'https://takemeout.dubelteam.com/'},
+        {'@type':'ListItem','position':3,'name':'Dubid','url':'https://dubid.dubelteam.com/'},
+        {'@type':'ListItem','position':4,'name':'Offsides','url':'https://offsides.dubelteam.com/'},
+        {'@type':'ListItem','position':5,'name':'Retzach','url':'https://retzach.dubelteam.com/'},
+        {'@type':'ListItem','position':6,'name':'Fuck You','url':'https://fuckyou.dubelteam.com/'}
+      ]
+    });
+    document.head.appendChild(productData);
+  }
+
   // Sticky nav — add .scrolled once the page moves
   var nav = document.getElementById('nav');
   if (nav) {
