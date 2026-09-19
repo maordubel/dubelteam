@@ -1,25 +1,31 @@
 /* ============================================================
    DUBEL TEAM — Shared behaviour
-   Sticky nav · mobile menu · fade-up on scroll · stat counters
-   Guarded so the same file works on every page.
+   Sticky nav · mobile menu · fade-up · counters · shared footer
    ============================================================ */
 (function () {
   'use strict';
 
-  // Current year in footer
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Privacy link — keep the required policy reachable from shared pages
+  // Keep policy + games hub reachable from shared pages.
   var footerLinks = document.querySelector('.footer-links');
-  if (footerLinks && !footerLinks.querySelector('a[href$="privacy.html"]')) {
-    var privacyLink = document.createElement('a');
-    privacyLink.href = '/privacy.html';
-    privacyLink.textContent = 'Privacy';
-    footerLinks.appendChild(privacyLink);
+  if (footerLinks) {
+    if (!footerLinks.querySelector('a[href$="games.html"]')) {
+      var gamesLink = document.createElement('a');
+      gamesLink.href = '/games.html';
+      gamesLink.textContent = 'Games';
+      footerLinks.appendChild(gamesLink);
+    }
+    if (!footerLinks.querySelector('a[href$="privacy.html"]')) {
+      var privacyLink = document.createElement('a');
+      privacyLink.href = '/privacy.html';
+      privacyLink.textContent = 'Privacy';
+      footerLinks.appendChild(privacyLink);
+    }
   }
 
-  // Add The Worker to the shared footer without removing any existing product.
+  // The Worker belongs in the shared product footer without removing other work.
   var footerApps = document.querySelector('.footer-apps');
   if (footerApps && !footerApps.querySelector('a[href*="theworker.dubelteam.com"]')) {
     var workerFooterLink = document.createElement('a');
@@ -32,9 +38,36 @@
     else footerApps.appendChild(workerFooterLink);
   }
 
-  // Homepage: use the existing sixth product-card slot for The Worker.
-  // This changes content only; card markup/classes/layout stay exactly the same.
+  // Homepage: a compact bridge from the service/build story into recurring products.
+  // It sits inside the existing Products section, so no new page hierarchy or redesign.
   var homeProductGrid = document.querySelector('#products .prod-grid');
+  if (homeProductGrid && !document.getElementById('games-bridge')) {
+    var gamesBridge = document.createElement('div');
+    gamesBridge.id = 'games-bridge';
+    gamesBridge.className = 'fade-up';
+    gamesBridge.setAttribute('aria-label', 'Games and live products built by Dubel Team');
+    gamesBridge.style.cssText = 'margin:0 0 30px;padding:22px 24px;border:2px solid var(--ink);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;background:var(--cream-warm)';
+    gamesBridge.innerHTML =
+      '<div>' +
+        '<div style="font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:8px">Games & live products</div>' +
+        '<div style="font-family:var(--display);font-size:clamp(27px,3.5vw,46px);line-height:.95;text-transform:uppercase;color:var(--ink);margin-bottom:9px">WE BUILD OUR OWN, <span style="font-family:var(--italic);font-style:italic;font-weight:500;text-transform:none;color:var(--red)">too.</span></div>' +
+        '<p style="margin:0;max-width:760px;font-family:var(--body);font-size:14px;line-height:1.55;color:var(--ink-soft)">The Worker, Dubid and Offsides are recurring football products we build and operate ourselves — alongside tools, archives and experiments. New rounds, fresh data, expanding history and ongoing maintenance give people a reason to return.</p>' +
+        '<div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-family:var(--body);font-size:12px;font-weight:700">' +
+          '<a href="https://theworker.dubelteam.com/" target="_blank" rel="noopener" style="color:var(--ink)">The Worker ↗</a>' +
+          '<a href="https://dubid.dubelteam.com/" target="_blank" rel="noopener" style="color:var(--ink)">Dubid ↗</a>' +
+          '<a href="https://offsides.dubelteam.com/" target="_blank" rel="noopener" style="color:var(--ink)">Offsides ↗</a>' +
+        '</div>' +
+      '</div>' +
+      '<a href="games.html" class="btn btn-primary" style="white-space:nowrap">Explore our games →</a>';
+    homeProductGrid.parentNode.insertBefore(gamesBridge, homeProductGrid);
+
+    if (window.matchMedia && window.matchMedia('(max-width:700px)').matches) {
+      gamesBridge.style.gridTemplateColumns = '1fr';
+      gamesBridge.querySelector('.btn').style.justifySelf = 'start';
+    }
+  }
+
+  // Homepage: keep The Worker visible in the existing sixth card slot.
   if (homeProductGrid) {
     var artCard = homeProductGrid.querySelector('a[href*="art.dubelteam.com"]');
     if (artCard && !homeProductGrid.querySelector('a[href*="theworker.dubelteam.com"]')) {
@@ -87,9 +120,8 @@
   }
 
   // Machine-readable map of the live product ecosystem.
-  // It is injected only on the main company/product pages and has no visual effect.
   var path = window.location.pathname;
-  var isProductContext = path === '/' || /\/(index|platforms)\.html$/.test(path);
+  var isProductContext = path === '/' || /\/(index|platforms|games)\.html$/.test(path);
   if (isProductContext && !document.getElementById('dubel-products-jsonld')) {
     var productData = document.createElement('script');
     productData.id = 'dubel-products-jsonld';
@@ -111,7 +143,7 @@
     document.head.appendChild(productData);
   }
 
-  // Sticky nav — add .scrolled once the page moves
+  // Sticky nav.
   var nav = document.getElementById('nav');
   if (nav) {
     var onScroll = function () {
@@ -122,7 +154,7 @@
     onScroll();
   }
 
-  // Mobile menu toggle
+  // Mobile menu.
   var menuToggle = document.getElementById('menuToggle');
   var navLinks = document.getElementById('navLinks');
   if (menuToggle && navLinks) {
@@ -140,10 +172,9 @@
     });
   }
 
-  var reduceMotion = window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Fade-up on scroll
+  // Fade-up on scroll with fallbacks.
   var fadeEls = document.querySelectorAll('.fade-up');
   var revealAll = function () {
     fadeEls.forEach(function (el) { el.classList.add('in'); });
@@ -161,9 +192,6 @@
         });
       }, { threshold: 0, rootMargin: '0px 0px 20% 0px' });
       fadeEls.forEach(function (el) { io.observe(el); });
-
-      // Safety net: never leave content hidden if the observer is slow,
-      // the user scrolls fast, or anything else goes wrong.
       window.addEventListener('load', function () {
         setTimeout(function () {
           fadeEls.forEach(function (el) {
@@ -176,7 +204,7 @@
     }
   }
 
-  // Animated stat counters ([data-count])
+  // Animated counters.
   var counters = document.querySelectorAll('[data-count]');
   if (counters.length) {
     var runCount = function (el) {
@@ -196,7 +224,6 @@
       };
       requestAnimationFrame(step);
     };
-
     if (!('IntersectionObserver' in window)) {
       counters.forEach(runCount);
     } else {
@@ -212,11 +239,7 @@
     }
   }
 
-  /* ---------------------------------------------------------------
-     WHO'S THE TEAM — modal (present on every shared-CSS page)
-     Opens from any [data-team-open]; closes on backdrop, ✕ or Esc.
-     Focus is trapped to the panel and restored on close.
-     --------------------------------------------------------------- */
+  // Who's the team modal.
   var teamModal = document.getElementById('teamModal');
   if (teamModal) {
     var lastFocused = null;
