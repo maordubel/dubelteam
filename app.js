@@ -8,7 +8,7 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Keep policy + games hub reachable from shared pages.
+  // Keep policy, standards and games hub reachable from shared pages.
   var footerLinks = document.querySelector('.footer-links');
   if (footerLinks) {
     if (!footerLinks.querySelector('a[href$="games.html"]')) {
@@ -16,6 +16,12 @@
       gamesLink.href = '/games.html';
       gamesLink.textContent = 'Games';
       footerLinks.appendChild(gamesLink);
+    }
+    if (!footerLinks.querySelector('a[href$="standards.html"]')) {
+      var standardsLink = document.createElement('a');
+      standardsLink.href = '/standards.html';
+      standardsLink.textContent = 'Standards';
+      footerLinks.appendChild(standardsLink);
     }
     if (!footerLinks.querySelector('a[href$="privacy.html"]')) {
       var privacyLink = document.createElement('a');
