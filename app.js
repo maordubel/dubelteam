@@ -10,6 +10,15 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Privacy link — keep the required policy reachable from shared pages
+  var footerLinks = document.querySelector('.footer-links');
+  if (footerLinks && !footerLinks.querySelector('a[href$="privacy.html"]')) {
+    var privacyLink = document.createElement('a');
+    privacyLink.href = '/privacy.html';
+    privacyLink.textContent = 'Privacy';
+    footerLinks.appendChild(privacyLink);
+  }
+
   // Sticky nav — add .scrolled once the page moves
   var nav = document.getElementById('nav');
   if (nav) {
