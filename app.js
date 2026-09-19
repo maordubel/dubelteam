@@ -19,15 +19,71 @@
     footerLinks.appendChild(privacyLink);
   }
 
-  // Keep the shared footer aligned with the six active products intended for monetization.
-  // This is intentionally a text/link change only — no layout or design change.
+  // Add The Worker to the shared footer without removing any existing product.
   var footerApps = document.querySelector('.footer-apps');
-  if (footerApps) {
-    var artLink = footerApps.querySelector('a[href*="art.dubelteam.com"]');
-    if (artLink) {
-      artLink.href = 'https://theworker.dubelteam.com/';
-      artLink.textContent = 'The Worker ↗';
+  if (footerApps && !footerApps.querySelector('a[href*="theworker.dubelteam.com"]')) {
+    var workerFooterLink = document.createElement('a');
+    workerFooterLink.href = 'https://theworker.dubelteam.com/';
+    workerFooterLink.target = '_blank';
+    workerFooterLink.rel = 'noopener';
+    workerFooterLink.textContent = 'The Worker ↗';
+    var teamButton = footerApps.querySelector('[data-team-open]');
+    if (teamButton) footerApps.insertBefore(workerFooterLink, teamButton);
+    else footerApps.appendChild(workerFooterLink);
+  }
+
+  // Homepage: use the existing sixth product-card slot for The Worker.
+  // This changes content only; card markup/classes/layout stay exactly the same.
+  var homeProductGrid = document.querySelector('#products .prod-grid');
+  if (homeProductGrid) {
+    var artCard = homeProductGrid.querySelector('a[href*="art.dubelteam.com"]');
+    if (artCard && !homeProductGrid.querySelector('a[href*="theworker.dubelteam.com"]')) {
+      artCard.href = 'https://theworker.dubelteam.com/';
+      var badge = artCard.querySelector('.prod-badge');
+      if (badge) {
+        badge.classList.remove('soft');
+        badge.textContent = 'Interactive archive · Football';
+      }
+      var shot = artCard.querySelector('.prod-shot img');
+      if (shot) {
+        shot.src = 'prod-theworker.svg';
+        shot.alt = 'The Worker — interactive football history, supporter memories and archive';
+      }
+      var name = artCard.querySelector('.prod-name');
+      if (name) name.innerHTML = 'THE <span class="it">Worker</span>';
+      var line = artCard.querySelector('.prod-line');
+      if (line) line.textContent = 'Football history you can enter.';
+      var desc = artCard.querySelector('.prod-desc');
+      if (desc) desc.textContent = 'An interactive Hapoel Tel Aviv universe combining a narrative supporter game, historical archive, timeline, trivia, shirts, line-ups, memories and fan culture — built around real events and designed for repeat exploration.';
+      var cta = artCard.querySelector('.prod-cta');
+      if (cta) cta.textContent = 'Enter The Worker →';
+      var url = artCard.querySelector('.prod-url');
+      if (url) url.textContent = 'theworker.dubelteam.com';
     }
+  }
+
+  // Products page: append The Worker using the existing product article structure.
+  var platformList = document.querySelector('.plat-list');
+  if (platformList && /\/platforms\.html$/.test(window.location.pathname) && !document.getElementById('the-worker')) {
+    var workerArticle = document.createElement('article');
+    workerArticle.className = 'plat fade-up';
+    workerArticle.id = 'the-worker';
+    workerArticle.innerHTML =
+      '<div class="plat-left">' +
+        '<div class="pl-index">07</div>' +
+        '<div class="pl-tag">Interactive archive · Football</div>' +
+        '<a class="pl-url" href="https://theworker.dubelteam.com/" target="_blank" rel="noopener">theworker.dubelteam.com ↗</a>' +
+        '<img class="plat-shot" src="prod-theworker.svg" alt="The Worker — interactive football history, supporter memories and archive" loading="lazy" width="800" height="600">' +
+      '</div>' +
+      '<div>' +
+        '<h3>THE <span class="it">Worker</span></h3>' +
+        '<p class="pl-line">Football history you can enter.</p>' +
+        '<p>An interactive Hapoel Tel Aviv universe combining a narrative supporter game, historical archive, timeline, trivia, shirts, line-ups, memories and fan culture. It is built around real events and designed for exploration rather than a one-time visit.</p>' +
+        '<p>The product continues to grow with new eras, research, archive material and interactive gates, giving supporters reasons to return as the historical world expands.</p>' +
+        '<div class="pl-specs"><span>Narrative game</span><span>Historical archive</span><span>Timeline</span><span>Trivia &amp; fan culture</span></div>' +
+        '<a href="https://theworker.dubelteam.com/" target="_blank" rel="noopener" class="btn btn-primary">Enter The Worker →</a>' +
+      '</div>';
+    platformList.appendChild(workerArticle);
   }
 
   // Machine-readable map of the live product ecosystem.
@@ -112,12 +168,10 @@
         setTimeout(function () {
           fadeEls.forEach(function (el) {
             var r = el.getBoundingClientRect();
-            // Reveal anything already in or above the viewport
             if (r.top < window.innerHeight * 1.2) el.classList.add('in');
           });
         }, 300);
       });
-      // Absolute fallback — everything visible within 3s no matter what.
       setTimeout(revealAll, 3000);
     }
   }
@@ -135,7 +189,7 @@
       var step = function (ts) {
         if (start === null) start = ts;
         var p = Math.min((ts - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        var eased = 1 - Math.pow(1 - p, 3);
         el.textContent = Math.round(target * eased).toLocaleString('en-US');
         if (p < 1) requestAnimationFrame(step);
         else el.textContent = target.toLocaleString('en-US');
