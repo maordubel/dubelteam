@@ -8,7 +8,7 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Keep policy, standards and games hub reachable from shared pages.
+  // Keep policy, standards, field notes and games hub reachable from shared pages.
   var footerLinks = document.querySelector('.footer-links');
   if (footerLinks) {
     if (!footerLinks.querySelector('a[href$="games.html"]')) {
@@ -16,6 +16,12 @@
       gamesLink.href = '/games.html';
       gamesLink.textContent = 'Games';
       footerLinks.appendChild(gamesLink);
+    }
+    if (!footerLinks.querySelector('a[href$="field-notes.html"]')) {
+      var notesLink = document.createElement('a');
+      notesLink.href = '/field-notes.html';
+      notesLink.textContent = 'Field Notes';
+      footerLinks.appendChild(notesLink);
     }
     if (!footerLinks.querySelector('a[href$="standards.html"]')) {
       var standardsLink = document.createElement('a');
