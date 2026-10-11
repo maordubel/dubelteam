@@ -27,7 +27,7 @@
 <nav class="main" id="nav">
   <div class="container nav-inner">
     <a href="index.html" class="brand" aria-label="Dubel Team — homepage">
-      <img src="logo.png" alt="Dubel Team logo">
+      <img width="256" height="256" src="logo.png" alt="Dubel Team logo">
       <div class="brand-meta"><span class="brand-name">DUBEL TEAM</span><span class="brand-sub">Operator. Founder-led. Athens.</span></div>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -55,6 +55,27 @@
 <p>A player is in an offside position when any part of the head, body or feet is in the opponents' half of the pitch (not counting the halfway line itself) <em>and</em> any part of the head, body or feet is closer to the opponents' goal line than both the ball and the second-last opponent. The goalkeeper usually counts as one of the two opponents, which is why people casually say "the last defender" even though the law says second-last opponent.</p>
 <p>Which body parts count matters. Hands and arms of every player, including the goalkeeper, are ignored when judging position. For defenders and attackers alike, the arm line is taken from the bottom of the armpit. A striker whose shoulder is ahead of the last defender is offside position; a striker whose outstretched hand is ahead of him is not.</p>
 </section>
+<figure class="fig">
+<svg viewBox="0 0 640 340" role="img" aria-labelledby="offT offD" xmlns="http://www.w3.org/2000/svg">
+  <title id="offT">Offside position diagram</title>
+  <desc id="offD">A pitch seen from above, attacking right. The attacker nearest the goal is beyond the line of the second-last opponent when the ball is played, so he is in an offside position. The other attacker is level with the ball and behind the line, so he is onside.</desc>
+  <rect x="10" y="10" width="620" height="320" fill="none" stroke="var(--ink)" stroke-width="3"/>
+  <line x1="150" y1="10" x2="150" y2="330" stroke="var(--line)" stroke-width="2"/>
+  <rect x="540" y="105" width="90" height="130" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <rect x="626" y="150" width="8" height="40" fill="var(--ink)"/>
+  <line x1="450" y1="10" x2="450" y2="330" stroke="var(--red)" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="440" y="32" text-anchor="end" font-size="17" font-weight="700" fill="var(--red)">Second-last opponent line</text>
+  <path d="M338 200 L488 112" stroke="var(--ink)" stroke-width="3" stroke-dasharray="3 7" fill="none"/>
+  <path d="M481 108 l12 -8 l-3 14 z" fill="var(--ink)"/>
+  <circle cx="585" cy="170" r="14" fill="var(--ink)"/><text x="585" y="212" text-anchor="middle" font-size="16" fill="var(--ink)">GK</text>
+  <circle cx="450" cy="250" r="14" fill="var(--ink)"/><text x="450" y="288" text-anchor="middle" font-size="16" fill="var(--ink)">Defender</text>
+  <circle cx="300" cy="215" r="14" fill="var(--red)"/><text x="300" y="250" text-anchor="middle" font-size="16" fill="var(--ink)">Passer</text>
+  <circle cx="332" cy="198" r="7" fill="none" stroke="var(--ink)" stroke-width="3"/>
+  <circle cx="378" cy="105" r="14" fill="var(--red)"/><text x="378" y="82" text-anchor="middle" font-size="16" fill="var(--ink)">Onside</text>
+  <circle cx="500" cy="95" r="14" fill="var(--red)" stroke="var(--ink)" stroke-width="3"/><text x="468" y="62" text-anchor="start" font-size="16" font-weight="700" fill="var(--red)">Offside position</text>
+</svg>
+<figcaption>When the pass is played, the attacker beyond the dashed line (nearer the goal than both the ball and the second-last opponent) is in an offside position. The attacker behind the line is onside. Being in the position is only an offence if that player then becomes involved in play.</figcaption>
+</figure>
 <section class="doc-sec"><h2>The moment that counts</h2>
 <p>Position is judged <strong>at the moment the ball is played or touched by a teammate</strong> — not when the player receives it, and not when the pass was first intended. This is why a run that starts level and finishes five yards clear is perfectly legal, and why a player who was a half-step ahead when the pass left a teammate's foot is offside even if the defenders then run backwards and make him look level.</p>
 <p>It is also why the same camera freeze-frame is never quite as clear as it looks on television. The relevant instant is the first contact with the ball by the passer, which video referees now identify frame by frame. A decision can be right to the centimetre and still look wrong to a fan who is watching the receiver's eventual touch rather than the passer's.</p>
@@ -86,7 +107,7 @@
 </main>
 <footer>
   <div class="container footer-inner">
-    <div class="footer-mark"><img src="logo.png" alt=""><span>© <span id="year"></span> Dubel Team · Operating Since 2014</span></div>
+    <div class="footer-mark"><img width="256" height="256" src="logo.png" alt=""><span>© <span id="year"></span> Dubel Team · Operating Since 2014</span></div>
     <div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="build.html">Build</a><a href="platforms.html">Products</a><a href="games.html">Games</a><a href="guides.html">Guides</a><a href="field-notes.html">Field Notes</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="standards.html">Standards</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
   </div>
 </footer>

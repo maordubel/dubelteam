@@ -36,6 +36,7 @@ body{
 }
 ::selection{background:var(--red);color:var(--cream)}
 img{max-width:100%}
+img[width][height]{height:auto}
 a{color:var(--red)}
 
 /* Subtle film-grain overlay */
