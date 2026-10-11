@@ -62,3 +62,11 @@
 .gate-steps a{color:var(--red);text-decoration:underline}
 @media(min-width:760px){.gate-grid{grid-template-columns:repeat(2,1fr);gap:16px}.gate-steps{grid-template-columns:repeat(3,1fr);gap:20px}}
 @media(min-width:1100px){#choose .gate-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* screenshots */
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 20px}
+.shots figure{margin:0}
+.shots img{display:block;width:100%;height:auto;border:1px solid var(--line);background:#111}
+.shots figcaption{font-size:13px;line-height:1.45;color:var(--ink-mute);margin-top:6px}
+.shots.wide{grid-template-columns:1fr}
+@media(min-width:760px){.shots.wide{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
