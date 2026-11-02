@@ -23,7 +23,7 @@ export const SEASONS: Season[] = [
   { year: 2022, status: 'published', art: 'drift' },
   { year: 2023, status: 'published', art: 'fracture' },
   { year: 2024, status: 'published', art: 'war' },
-  { year: 2025, status: 'editing', art: 'river' },
+  { year: 2025, status: 'published', art: 'river' },
 ]
 
 /** Chapter illustrations, keyed by `${season}-${number}`. */
@@ -33,6 +33,7 @@ export type ChapterArtKey =
   | 'tornphoto' | 'story'
   | 'lights' | 'static' | 'silence'
   | 'sparks' | 'relegation' | 'radio' | 'candles'
+  | 'river' | 'pages' | 'notebook' | 'deal'
 
 export const CHAPTER_ART: Record<string, ChapterArtKey> = {
   '2020-1': 'terrace',
@@ -54,6 +55,10 @@ export const CHAPTER_ART: Record<string, ChapterArtKey> = {
   '2024-2': 'relegation',
   '2024-3': 'radio',
   '2024-4': 'candles',
+  '2025-1': 'river',
+  '2025-2': 'pages',
+  '2025-3': 'notebook',
+  '2025-4': 'deal',
 }
 
 export const ORIGIN = 'https://www.dubelteam.com'
