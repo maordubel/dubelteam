@@ -21,6 +21,7 @@ No build step, no framework — plain HTML/CSS/JS. Push to the repo and GitHub P
 ├── events.html           Private events landing page (self-contained styles).
 ├── creators.html         The Muse Residency landing page (self-contained styles).
 ├── 404.html              Custom not-found page.
+├── sw.js                 Retired service worker — unregisters an old app's worker, then removes itself.
 ├── styles.css            Shared design system (index/services/work/about/contact/success).
 ├── app.js                Shared JS — sticky nav, mobile menu, fade-up, stat counters.
 ├── CNAME                 GitHub Pages custom domain → dubelteam.com
