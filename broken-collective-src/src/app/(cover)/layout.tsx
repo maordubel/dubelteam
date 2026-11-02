@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: abs('/'), languages: { he: abs('/he/'), en: abs('/en/') } },
   openGraph: { type: 'book', images: [abs('/og.png')] },
   twitter: { card: 'summary_large_image', images: [abs('/og.png')] },
-  icons: { icon: `${BASE_PATH}/favicon.svg` },
+  icons: { icon: `${BASE_PATH}/favicon.svg`, apple: `${BASE_PATH}/apple-touch-icon.png` },
 }
 
 export const viewport: Viewport = { themeColor: '#f2eadb' }

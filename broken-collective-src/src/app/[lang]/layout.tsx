@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       images: [abs('/og.png')],
     },
     twitter: { card: 'summary_large_image', images: [abs('/og.png')] },
-    icons: { icon: `${BASE_PATH}/favicon.svg` },
+    icons: { icon: `${BASE_PATH}/favicon.svg`, apple: `${BASE_PATH}/apple-touch-icon.png` },
   }
 }
 

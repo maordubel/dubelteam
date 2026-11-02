@@ -17,6 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const other: Lang = lang === 'he' ? 'en' : 'he'
   return {
     title: t(lang, 'prologue.title'),
+    openGraph: {
+      type: 'book',
+      siteName: t(lang, 'book.title'),
+      locale: lang === 'he' ? 'he_IL' : 'en_US',
+      title: `${t(lang, 'prologue.title')} · ${t(lang, 'book.title')}`,
+      images: [{ url: abs(`/og/${lang}/prologue.jpg`), width: 1200, height: 630 }],
+    },
+    twitter: { card: 'summary_large_image', images: [abs(`/og/${lang}/prologue.jpg`)] },
     alternates: { canonical: abs(`/${lang}/prologue/`), languages: { [other]: abs(`/${other}/prologue/`) } },
   }
 }

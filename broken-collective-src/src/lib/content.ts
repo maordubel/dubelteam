@@ -111,3 +111,13 @@ export function publishedSeasons(): number[] {
 export function readingMinutes(words: number): number {
   return Math.max(1, Math.round(words / 200))
 }
+
+/** A clean excerpt of the opening paragraph, for meta descriptions and share cards. */
+export function excerpt(doc: ChapterDoc, max = 158): string {
+  const first = doc.blocks.find((b) => b.kind === 'p')
+  if (!first || first.kind !== 'p') return ''
+  const text = first.runs.map((r) => r.text).join('').replace(/\s+/g, ' ').trim()
+  if (text.length <= max) return text
+  const cut = text.slice(0, max)
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:–-]$/, '') + '…'
+}
