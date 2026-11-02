@@ -1,8 +1,8 @@
-:HL["/broken-collective/_next/static/chunks/10spudzb4kvdz.css","style"]
+:HL["/broken-collective/_next/static/chunks/06uidrx_-wdf4.css","style"]
 :HC["/",""]
 :HL["/logo.png","image"]
 4:[["children",{"s":"__PAGE__","h":160}]]
 3:[["children",{"s":{"n":"chapter","t":"d","k":"2","s":[]},"h":65632,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"season","t":"d","k":"2025","s":["about","prologue"]},"h":196704,"c":"$Q3"}]]
 1:[["children",{"s":{"n":"lang","t":"d","k":"he","s":[]},"h":196720,"c":"$Q2"}]]
-0:{"b":"5Jq8ry01sZz8iELQgLdRP","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"tp6h9yfJcEe5WjURUq18k","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
