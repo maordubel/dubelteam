@@ -49,7 +49,12 @@ jobs:
           git add broken-collective
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Broken Collective: publish rebuilt book"
-          git push
+          # main may have moved while we built (another merge) — replay on top, retry a few times
+          for i in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push && exit 0
+            sleep 5
+          done
+          exit 1
 
       - name: Ask GitHub Pages to redeploy
         continue-on-error: true
