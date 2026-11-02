@@ -505,15 +505,7 @@ export function BookReader({
   if (mode === null) return null
 
   if (mode === 'scroll') {
-    return (
-      <button
-        type="button"
-        onClick={() => switchMode('book')}
-        className="fixed bottom-[4.5rem] start-3 z-30 inline-flex min-h-11 items-center gap-2 border border-ink bg-paper px-4 font-display text-xl text-ink shadow-[4px_4px_0_var(--ink)] desk:bottom-10 desk:start-6"
-      >
-        <span aria-hidden="true">❦</span> {labels.toBook}
-      </button>
-    )
+    return <ToBookButton label={labels.toBook} onClick={() => switchMode('book')} />
   }
 
   const current = flip ? flip.from : view
@@ -776,5 +768,30 @@ export function BookReader({
         </div>
       )}
     </div>
+  )
+}
+
+/** Scroll mode's way back into the book. Steps aside while you read down, returns when you scroll up. */
+function ToBookButton({ label, onClick }: { label: string; onClick: () => void }) {
+  const [hidden, setHidden] = useState(false)
+  useEffect(() => {
+    let lastY = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      if (Math.abs(y - lastY) < 6) return
+      setHidden(y > lastY && y > 240)
+      lastY = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`to-book fixed bottom-[4.5rem] start-3 z-30 inline-flex min-h-11 items-center gap-2 border border-ink bg-paper px-4 font-display text-xl text-ink shadow-[4px_4px_0_var(--ink)] desk:bottom-10 desk:start-6 ${hidden ? 'is-hidden' : ''}`}
+    >
+      <span aria-hidden="true">❦</span> {label}
+    </button>
   )
 }

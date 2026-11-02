@@ -6,7 +6,7 @@ const he = {
   'book.author': 'מאור הראל',
   'book.tagline': 'ים אחד. שני חופים. חוט אדום אחד.',
   'book.pitch':
-    'שלושה צעירים – לוחם משוחרר מיפו, אחותו בת השש־עשרה, ונער ממחנה שאטי בעזה – וחמש שנים שבהן העולם נסדק: מגפה, מחאות, מלחמה. ביניהם רק חוט דק של כדורגל, אהבה וחירות.',
+    'שלושה צעירים – לוחם משוחרר מיפו, אחותו בת השש־עשרה, ונער ממחנה שאטי בעזה – ושש שנים שבהן העולם נסדק: מגפה, מחאות, מלחמה. ביניהם רק חוט דק של כדורגל, אהבה וחירות.',
   'book.free': 'קריאה חופשית. עונה אחר עונה.',
   'nav.home': 'הספר',
   'nav.read': 'להתחיל לקרוא',
@@ -78,7 +78,7 @@ const he = {
   'tools.progress': 'התקדמות בקריאה',
   'about.title': 'על הספר',
   'about.body1':
-    'קולקטיב שבור הוא רומן. הוא נכתב לאורך השנים 2020–2025, תוך כדי שהאירועים שהוא מתאר התרחשו. כל עונה היא שנה, וכל פרק לוכד רגע שבו העולם זז על צירו.',
+    'קולקטיב שבור הוא רומן שנכתב מאז 2020, תוך כדי שהאירועים שהוא מתאר קרו – והוא עדיין נכתב. כל עונה היא שנה, וכל פרק לוכד רגע שבו העולם זז על צירו.',
   'about.body2':
     'הדמויות המרכזיות והעלילה הן פרי דמיון. הספר מתרחש על רקע אירועים אמיתיים ומזכיר אישי ציבור; התיאור שלהם משקף את נקודת המבט של הדמויות, ואינו מתיימר להיות תיעוד היסטורי.',
   'about.body3': 'הספר מתפרסם כאן בחינם, בעברית ובאנגלית, עונה אחר עונה.',
@@ -86,7 +86,7 @@ const he = {
   'credit.label': 'הספר עוצב ונבנה ב־',
   'credit.aria': 'Dubel Team – הספר עוצב ונבנה ב־Dubel Team (נפתח בלשונית חדשה)',
   'meta.description':
-    'קולקטיב שבור – רומן מאת מאור הראל. שלושה צעירים, שני צדי הגדר, חמש שנים שבהן העולם נסדק. לקריאה חופשית בעברית ובאנגלית.',
+    'קולקטיב שבור – רומן מאת מאור הראל. שלושה צעירים, שני צדי הגדר, שש שנים שבהן העולם נסדק. לקריאה חופשית בעברית ובאנגלית.',
 } as const
 
 type Key = keyof typeof he
@@ -98,7 +98,7 @@ const en: Dict = {
   'book.author': 'Maor Harel',
   'book.tagline': 'One sea. Two shores. One red thread.',
   'book.pitch':
-    'Three young people – a discharged soldier in Jaffa, his sixteen-year-old sister, and a boy from Gaza’s Shati camp – and five years in which the world cracked: a pandemic, protest, war. Between them, only a thin thread of football, love and freedom.',
+    'Three young people – a discharged soldier in Jaffa, his sixteen-year-old sister, and a boy from Gaza’s Shati camp – and six years in which the world cracked: a pandemic, protest, war. Between them, only a thin thread of football, love and freedom.',
   'book.free': 'Free to read. One season at a time.',
   'nav.home': 'The book',
   'nav.read': 'Start reading',
@@ -170,7 +170,7 @@ const en: Dict = {
   'tools.progress': 'Reading progress',
   'about.title': 'About the book',
   'about.body1':
-    'Broken Collective is a novel. It was written across 2020–2025, while the events it describes were happening. Each season is a year, and each chapter captures a moment when the world shifted on its axis.',
+    'Broken Collective is a novel written since 2020, while the events it describes were happening – and it is still being written. Each season is a year, and each chapter captures a moment when the world shifted on its axis.',
   'about.body2':
     'The main characters and the plot are fiction. The book is set against real events and mentions public figures; how they are portrayed reflects the characters’ points of view and does not claim to be a historical record.',
   'about.body3': 'The book is published here for free, in Hebrew and English, one season at a time.',
@@ -178,7 +178,7 @@ const en: Dict = {
   'credit.label': 'Book designed and built by',
   'credit.aria': 'Dubel Team – book designed and built by Dubel Team (opens in a new tab)',
   'meta.description':
-    'Broken Collective – a novel by Maor Harel. Three young people, two sides of a fence, five years in which the world cracked. Free to read in Hebrew and English.',
+    'Broken Collective – a novel by Maor Harel. Three young people, two sides of a fence, six years in which the world cracked. Free to read in Hebrew and English.',
 }
 
 const dicts: Record<Lang, Dict> = { he, en }
