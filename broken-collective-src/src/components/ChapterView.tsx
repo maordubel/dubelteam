@@ -3,7 +3,9 @@ import type { ReactNode } from 'react'
 import { type Lang } from '@/lib/book'
 import type { ChapterDoc } from '@/lib/content'
 import { readingMinutes } from '@/lib/content'
+import { blocksToHtml, blocksToSpeech } from '@/lib/html'
 import { t } from '@/lib/i18n'
+import { BookReader } from './BookReader'
 import { ReaderTools } from './ReaderTools'
 import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
@@ -39,8 +41,63 @@ export function ChapterView({
   const scenes = doc.blocks.filter((b) => b.kind === 'scene')
   let firstPara = true
 
+  const minutes = t(lang, 'chapter.minutes', { n: readingMinutes(doc.words) })
+  const contentsHref = `/${lang}/#contents`
+
   return (
     <>
+      <BookReader
+        lang={lang}
+        html={blocksToHtml(doc.blocks)}
+        texts={blocksToSpeech(doc.blocks)}
+        kicker={kicker}
+        title={doc.title}
+        minutes={minutes}
+        art={art}
+        bookTitle={t(lang, 'book.title')}
+        chapterKey={`${lang}:${doc.id}`}
+        href={href}
+        contentsHref={contentsHref}
+        prev={prev}
+        next={next}
+        labels={{
+          book: t(lang, 'book.region'),
+          contents: t(lang, 'nav.contents'),
+          settings: t(lang, 'book.settings'),
+          close: t(lang, 'book.close'),
+          listen: t(lang, 'book.listen'),
+          pause: t(lang, 'book.pause'),
+          resume: t(lang, 'book.resume'),
+          stop: t(lang, 'book.stop'),
+          voice: t(lang, 'book.voice'),
+          noVoice: t(lang, 'book.noVoice'),
+          noVoiceHelp: t(lang, 'book.noVoiceHelp'),
+          preview: t(lang, 'book.preview'),
+          previewSample: t(lang, 'book.previewSample'),
+          speed: t(lang, 'book.speed'),
+          size: t(lang, 'tools.size'),
+          smaller: t(lang, 'tools.smaller'),
+          larger: t(lang, 'tools.larger'),
+          theme: t(lang, 'tools.theme'),
+          paper: t(lang, 'tools.paper'),
+          night: t(lang, 'tools.night'),
+          mode: t(lang, 'book.mode'),
+          modeBook: t(lang, 'book.modeBook'),
+          modeScroll: t(lang, 'book.modeScroll'),
+          page: t(lang, 'book.page'),
+          of: t(lang, 'book.of'),
+          next: t(lang, 'nav.next'),
+          prev: t(lang, 'nav.prev'),
+          swipeHint: t(lang, 'book.swipeHint'),
+          toBook: t(lang, 'book.toBook'),
+          minutes,
+          endNote: endNote ?? t(lang, 'chapter.end'),
+          nextChapter: t(lang, 'nav.next'),
+          backToBook: t(lang, 'nav.backToBook'),
+          glyph: lang === 'he' ? 'א' : 'A',
+        }}
+      />
+      <div className="scroll-only">
       <SiteHeader lang={lang} altHref={altHref} />
       <main id="main" className="mx-auto max-w-6xl px-5 desk:grid desk:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] desk:gap-16 desk:px-10">
         {/* desktop margin: plate, scene index, season chapters */}
@@ -83,7 +140,7 @@ export function ChapterView({
           <header className="pt-6 desk:pt-2">
             <p className="kicker">{kicker}</p>
             <h1 className="mt-2 font-display text-title text-ink">{doc.title}</h1>
-            <p className="mt-3 text-sm text-ink-faint">{t(lang, 'chapter.minutes', { n: readingMinutes(doc.words) })}</p>
+            <p className="mt-3 text-sm text-ink-faint">{minutes}</p>
           </header>
 
           {/* mobile plate */}
@@ -93,7 +150,7 @@ export function ChapterView({
             {doc.blocks.map((b, i) => {
               if (b.kind === 'scene') {
                 return (
-                  <h2 key={i} id={b.id} className={`scene scroll-mt-8 ${i === 0 ? 'scene-first mt-0!' : ''}`}>
+                  <h2 key={i} id={b.id} data-scroll-i={i} className={`scene scroll-mt-8 ${i === 0 ? 'scene-first mt-0!' : ''}`}>
                     {b.text}
                   </h2>
                 )
@@ -101,7 +158,7 @@ export function ChapterView({
               const cls = firstPara ? 'opener' : undefined
               firstPara = false
               return (
-                <p key={i} className={cls}>
+                <p key={i} className={cls} data-scroll-i={i}>
                   {b.runs.map((r, j) => (r.strong ? <strong key={j}>{r.text}</strong> : <span key={j}>{r.text}</span>))}
                 </p>
               )
@@ -156,6 +213,7 @@ export function ChapterView({
           glyph: lang === 'he' ? 'א' : 'A',
         }}
       />
+      </div>
     </>
   )
 }

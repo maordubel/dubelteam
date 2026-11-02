@@ -1,2 +1,2 @@
-/** Runs before paint so the saved reading mode and text size never flash. */
-export const THEME_SCRIPT = `try{var d=document.documentElement,t=localStorage.getItem('bc:theme');if(t==='night'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))d.dataset.theme='night';var s=[1.0625,1.1875,1.3125,1.4375][+localStorage.getItem('bc:size')];if(s)d.style.setProperty('--reader-size',s+'rem')}catch(e){}`
+/** Runs before paint so the saved theme, text size and book/scroll mode never flash. */
+export const THEME_SCRIPT = `try{var d=document.documentElement,t=localStorage.getItem('bc:theme');if(t==='night'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))d.dataset.theme='night';var s=[1.0625,1.1875,1.3125,1.4375][+localStorage.getItem('bc:size')];if(s)d.style.setProperty('--reader-size',s+'rem');d.dataset.mode=localStorage.getItem('bc:mode')==='scroll'?'scroll':'book'}catch(e){}`

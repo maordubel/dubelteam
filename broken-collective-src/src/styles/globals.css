@@ -194,3 +194,307 @@
 :root[data-theme='night'] .art-plate {
   filter: brightness(0.86) saturate(0.95);
 }
+
+/* ═══════════════════════ BOOK MODE ═══════════════════════
+   The chapter as a physical book: paged text, a spine on desktop,
+   pages that lift and turn. Scroll mode stays as the accessible fallback. */
+html.in-book body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+html[data-mode='book'] .scroll-only {
+  display: none !important;
+}
+
+.book-root {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+.book-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 2200px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.book {
+  position: relative;
+  transform-style: preserve-3d;
+}
+.book--single {
+  width: 100%;
+  height: 100%;
+}
+.book--spread {
+  width: min(1040px, calc(100% - 64px));
+  height: min(860px, calc(100% - 48px));
+  filter: drop-shadow(0 18px 30px rgb(0 0 0 / 0.22));
+}
+.book-base,
+.book-leaf {
+  position: absolute;
+  inset: 0;
+}
+.book-leaf {
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 2;
+}
+.book-leaf--end {
+  inset-inline-start: 50%;
+}
+.book-leaf--start {
+  inset-inline-end: 50%;
+}
+.leaf-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.leaf-back {
+  transform: rotateY(180deg);
+}
+.leaf-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg, rgb(0 0 0 / 0.28), rgb(0 0 0 / 0) 45%, rgb(255 255 255 / 0.08) 70%, rgb(0 0 0 / 0.18));
+  backface-visibility: hidden;
+}
+.book-spread {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.book-half {
+  width: 50%;
+  height: 100%;
+}
+
+.book-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11  0 0 0 0 0.1  0 0 0 0 0.12  0 0 0 0.09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 220px;
+}
+/* the gutter: a soft shadow where the page meets the spine */
+.book-page--start::after,
+.book-page--end::after,
+.book--single .book-page::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  width: 42px;
+  pointer-events: none;
+}
+.book-page--start::after {
+  inset-inline-end: 0;
+  background: linear-gradient(to left, rgb(0 0 0 / 0.16), transparent);
+}
+.book-page--end::after {
+  inset-inline-start: 0;
+  background: linear-gradient(to right, rgb(0 0 0 / 0.16), transparent);
+}
+[dir='rtl'] .book-page--start::after {
+  background: linear-gradient(to right, rgb(0 0 0 / 0.16), transparent);
+}
+[dir='rtl'] .book-page--end::after {
+  background: linear-gradient(to left, rgb(0 0 0 / 0.16), transparent);
+}
+/* single page on a phone: the edges of the pages still to come */
+.book--single .book-page::after {
+  width: 6px;
+  inset-inline-end: 0;
+  background: repeating-linear-gradient(to bottom, var(--rule) 0 1px, transparent 1px 3px);
+  opacity: 0.8;
+}
+.book-page--blank {
+  background-color: var(--paper);
+}
+:root[data-theme='night'] .book-page::after {
+  opacity: 0.5;
+}
+
+.book-flow {
+  max-width: none !important;
+  column-fill: auto;
+}
+.book-flow h2 {
+  break-after: avoid;
+  break-inside: avoid;
+}
+.book-flow .scene-first {
+  margin-top: 0 !important;
+}
+.book-flow p {
+  orphans: 2;
+  widows: 2;
+}
+.book-measure {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+.book-runhead,
+.book-folio {
+  position: absolute;
+  inset-inline: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  color: var(--ink-faint);
+  pointer-events: none;
+}
+.book-runhead {
+  top: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding-inline: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.book-folio {
+  bottom: 16px;
+  font-size: 1.05rem;
+}
+.book-folio::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 0 auto 6px;
+  background: var(--thread);
+}
+.is-reading {
+  background: color-mix(in srgb, var(--thread) 13%, transparent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--thread) 13%, transparent);
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+.book-chrome {
+  position: fixed;
+  inset-inline: 0;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 10px;
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  backdrop-filter: blur(6px);
+  border-color: var(--rule);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s var(--ease-ink),
+    transform 0.25s var(--ease-ink);
+}
+.book-chrome--top {
+  top: 0;
+  border-bottom-width: 1px;
+  padding-top: max(4px, env(safe-area-inset-top));
+  transform: translateY(-100%);
+}
+.book-chrome--bottom {
+  bottom: 0;
+  border-top-width: 1px;
+  padding-bottom: max(4px, env(safe-area-inset-bottom));
+  transform: translateY(100%);
+}
+.book-chrome.is-on {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.book-btn {
+  display: inline-flex;
+  min-height: 44px;
+  min-width: 56px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+.book-listen {
+  position: fixed;
+  z-index: 46;
+  bottom: max(6px, env(safe-area-inset-bottom));
+  inset-inline-end: 10px;
+  display: flex;
+  gap: 8px;
+}
+@media (min-width: 64rem) {
+  .book-listen {
+    bottom: 22px;
+    inset-inline-end: 28px;
+  }
+}
+.book-sheet {
+  width: 100%;
+  max-width: 520px;
+  max-height: 88dvh;
+  overflow-y: auto;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 18px 20px calc(20px + env(safe-area-inset-bottom));
+  border-top: 3px solid var(--thread);
+  animation: sheet-in 0.28s var(--ease-ink) both;
+}
+@media (min-width: 64rem) {
+  .book-sheet {
+    border: 2px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
+  }
+}
+@keyframes sheet-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+.sheet-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 60px;
+  border-bottom: 1px solid var(--rule);
+}
+.sheet-chip {
+  display: inline-flex;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 1px solid var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.sheet-chip[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.sheet-chip:disabled {
+  opacity: 0.35;
+}
