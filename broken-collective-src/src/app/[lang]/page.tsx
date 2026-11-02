@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ContinueReading } from '@/components/ContinueReading'
 import { CoverArt, SeasonEmblem } from '@/components/Illustrations'
+import { SeasonFold } from '@/components/SeasonFold'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
 import { ThreadRule } from '@/components/Thread'
@@ -112,19 +113,28 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
 
           <div className="mt-10 flex flex-col gap-10 desk:grid desk:grid-cols-[1.4fr_1fr] desk:items-start desk:gap-14">
             <div className="flex flex-col gap-14">
-            {SEASONS.filter((s) => s.status === 'published').map((s) => {
+            {SEASONS.filter((s) => s.status === 'published').map((s, si) => {
               const chapters = getSeasonChapters(lang, s.year)
               return (
-                <article key={s.year}>
-                  <header className="flex items-end gap-4">
+                <SeasonFold
+                  key={s.year}
+                  year={s.year}
+                  lang={lang}
+                  first={si === 0}
+                  count={chapters.length}
+                  countLabel={t(lang, 'season.chapters')}
+                  header={
+                  <span className="flex items-end gap-4 text-start">
                     <SeasonEmblem art={s.art} className="h-20 w-20 shrink-0 desk:h-28 desk:w-28" />
-                    <div>
-                      <p className="kicker">
+                    <span className="block">
+                      <span className="kicker block">
                         {t(lang, 'season.label')} {s.year}
-                      </p>
-                      <h3 className="font-display text-[2.5rem] leading-[0.95] desk:text-[3.25rem]">{seasonTitle(lang, s.year)}</h3>
-                    </div>
-                  </header>
+                      </span>
+                      <span className="block font-display text-[2.5rem] leading-[0.95] desk:text-[3.25rem]">{seasonTitle(lang, s.year)}</span>
+                    </span>
+                  </span>
+                  }
+                >
                   <ol className="mt-5">
                     {chapters.map((c) => (
                       <li key={c.id}>
@@ -139,7 +149,7 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
                       </li>
                     ))}
                   </ol>
-                </article>
+                </SeasonFold>
               )
             })}
             </div>

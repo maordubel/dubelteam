@@ -138,6 +138,16 @@
     text-indent: 0;
   }
   /* drop-cap-like opening: the first words of each chapter set in the display face */
+  html:lang(he) .prose-book .opener::first-line {
+    font-weight: 620;
+    color: var(--ink);
+  }
+  .prose-book p {
+    text-wrap: pretty;
+  }
+  .prose-book .scene {
+    text-wrap: balance;
+  }
   html:lang(en) .prose-book .opener::first-line {
     font-variant-caps: all-small-caps;
     letter-spacing: 0.02em;
@@ -719,4 +729,66 @@ html[data-theme='night'] .finale-bill {
 }
 @media (prefers-reduced-motion: reduce) {
   .writing-card__thread, .writing-card__nib { animation: none; }
+}
+
+/* ── contents: seasons fold on phones ── */
+.season-fold__head {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  text-align: start;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.season-fold__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  margin-inline-start: 6rem;
+  font-size: 0.8rem;
+  color: var(--color-ink-faint);
+}
+.season-fold__chev {
+  transition: transform 0.3s var(--ease-ink);
+}
+.season-fold[data-open='true'] .season-fold__chev {
+  transform: rotate(180deg);
+}
+@media (max-width: 63.99rem) {
+  .season-fold[data-open='false'] .season-fold__body {
+    display: none;
+  }
+  .season-fold[data-open='false'] .season-fold__head {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .season-fold[data-open='true'] .season-fold__body {
+    animation: fold-in 0.35s var(--ease-ink);
+  }
+}
+@media (min-width: 64rem) {
+  .season-fold__head {
+    pointer-events: none;
+    cursor: default;
+  }
+  .season-fold__count {
+    display: none;
+  }
+}
+@keyframes fold-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+.to-book {
+  transition: transform 0.3s var(--ease-ink), opacity 0.3s;
+}
+.to-book.is-hidden {
+  transform: translateY(140%);
+  opacity: 0;
+  pointer-events: none;
 }
