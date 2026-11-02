@@ -1,0 +1,5 @@
+# Files Cloudflare should not serve as public assets
+broken-collective-src
+.github
+.wrangler
+wrangler.jsonc
