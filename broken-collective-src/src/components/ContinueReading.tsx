@@ -27,7 +27,7 @@ export function ContinueReading({ lang, label }: { lang: string; label: string }
       className="group mt-4 flex min-h-11 items-center gap-3 border-s-[3px] border-thread ps-4 text-ink-soft hover:text-ink"
     >
       <span>{label}</span>
-      <span className="font-display text-2xl leading-none text-ink">{last.title}</span>
+      <span className="font-display text-h3 text-ink">{last.title}</span>
       <span className="text-sm tabular-nums">{Math.round(last.p * 100)}%</span>
     </Link>
   )

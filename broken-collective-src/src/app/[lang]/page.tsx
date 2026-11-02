@@ -52,12 +52,12 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
               )}
             </h1>
             <p className="mt-4 font-display text-[1.75rem] leading-tight text-ink-soft desk:text-[2.25rem]">{t(lang, 'book.tagline')}</p>
-            <p className="mt-5 max-w-[34em] text-[1.0625rem] leading-relaxed text-ink-soft">{t(lang, 'book.pitch')}</p>
+            <p className="mt-5 max-w-[34em] text-lead text-ink-soft">{t(lang, 'book.pitch')}</p>
 
             <div className="mt-7 flex flex-col gap-1">
               <Link
                 href={`/${lang}/prologue/`}
-                className="inline-flex min-h-14 w-full items-center justify-between gap-6 bg-ink px-6 font-display text-[1.75rem] leading-none text-paper transition-colors hover:bg-thread motion-reduce:transition-none desk:w-fit"
+                className="inline-flex min-h-14 w-full items-center justify-between gap-6 bg-ink px-6 font-display text-h3 text-paper transition-colors hover:bg-thread motion-reduce:transition-none desk:w-fit"
               >
                 <span>{t(lang, 'nav.read')}</span>
                 <span aria-hidden="true">{lang === 'he' ? '←' : '→'}</span>
@@ -88,7 +88,7 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
                   0{i + 1}
                 </span>
                 <div>
-                  <h3 className="font-display text-[2.25rem] leading-none">{t(lang, `chars.${c}.name` as const)}</h3>
+                  <h3 className="font-display text-h3">{t(lang, `chars.${c}.name` as const)}</h3>
                   <p className="mt-2 text-ink-soft">{t(lang, `chars.${c}.line` as const)}</p>
                 </div>
               </li>
@@ -107,7 +107,7 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
             href={`/${lang}/prologue/`}
             className="mt-6 flex min-h-14 items-baseline justify-between gap-4 border-b border-rule py-3 hover:text-thread"
           >
-            <span className="font-display text-[2rem] leading-none">{t(lang, 'prologue.title')}</span>
+            <span className="font-display text-h3">{t(lang, 'prologue.title')}</span>
             <span className="text-sm text-ink-faint">{t(lang, 'chapter.minutes', { n: readingMinutes(prologue.words) })}</span>
           </Link>
 
@@ -130,7 +130,7 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
                       <span className="kicker block">
                         {t(lang, 'season.label')} {s.year}
                       </span>
-                      <span className="block font-display text-[2.5rem] leading-[0.95] desk:text-[3.25rem]">{seasonTitle(lang, s.year)}</span>
+                      <span className="block font-display text-h2">{seasonTitle(lang, s.year)}</span>
                     </span>
                   </span>
                   }
@@ -142,8 +142,8 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
                           href={`/${lang}/${s.year}/${c.number}/`}
                           className="group flex min-h-16 items-center gap-4 border-b border-rule py-3 hover:border-ink"
                         >
-                          <span className="w-8 font-display text-3xl leading-none text-thread tabular-nums">{c.number}</span>
-                          <span className="flex-1 font-display text-[1.75rem] leading-none group-hover:text-thread">{c.title}</span>
+                          <span className="w-8 font-display text-h3 text-thread tabular-nums">{c.number}</span>
+                          <span className="flex-1 font-display text-h3 group-hover:text-thread">{c.title}</span>
                           <span className="text-sm text-ink-faint">{t(lang, 'chapter.minutes', { n: readingMinutes(c.words) })}</span>
                         </Link>
                       </li>
@@ -157,7 +157,7 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
             {SEASONS.every((s) => s.status === 'published') ? (
               <aside className="writing-card desk:sticky desk:top-8 desk:self-start">
                 <p className="kicker">{t(lang, 'season.label')} {SEASONS[SEASONS.length - 1].year + 1}</p>
-                <p className="mt-1 font-display text-[clamp(2.2rem,8vw,3rem)] leading-[0.95] text-ink">{t(lang, 'season.writingTitle')}</p>
+                <p className="mt-1 font-display text-h2 text-ink">{t(lang, 'season.writingTitle')}</p>
                 <svg viewBox="0 0 300 30" className="mt-3 h-6 w-full" aria-hidden="true">
                   <path className="writing-card__thread" d="M0 15 L60 13 L90 19 L130 11 L170 16 L200 9 L214 20 L226 12 L262 15" fill="none" stroke="var(--thread)" strokeWidth="2.5" strokeLinejoin="round" />
                   <circle className="writing-card__nib" cx="262" cy="15" r="4" fill="var(--thread)" />
@@ -173,7 +173,7 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
                 >
                   <SeasonEmblem art={s.art} muted className="h-12 w-12 opacity-70" />
                   <div>
-                    <p className="font-display text-[2rem] leading-none text-ink-soft">{s.year}</p>
+                    <p className="font-display text-h3 text-ink-soft">{s.year}</p>
                     <p className="text-sm text-ink-faint">{t(lang, 'season.editing')}</p>
                   </div>
                 </li>

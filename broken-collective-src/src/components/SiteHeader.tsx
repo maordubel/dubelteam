@@ -32,7 +32,7 @@ export function SiteHeader({ lang, altHref }: { lang: Lang; altHref: string }) {
             hrefLang={other}
             lang={other}
             aria-label={t(lang, 'nav.langSwitchLabel')}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center border border-ink px-3 font-display text-xl leading-none transition-colors hover:bg-ink hover:text-paper motion-reduce:transition-none"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center border border-ink px-3 font-display text-h4 transition-colors hover:bg-ink hover:text-paper motion-reduce:transition-none"
           >
             {t(lang, 'nav.langSwitch')}
           </Link>

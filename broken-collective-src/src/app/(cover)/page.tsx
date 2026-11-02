@@ -20,7 +20,7 @@ export default function Threshold() {
         <Link
           href="/he/"
           hrefLang="he"
-          className="mt-5 inline-flex min-h-14 w-full items-center justify-between bg-ink px-6 font-display text-[1.75rem] leading-none text-paper hover:bg-thread desk:w-auto desk:gap-10"
+          className="mt-5 inline-flex min-h-14 w-full items-center justify-between bg-ink px-6 font-display text-h3 text-paper hover:bg-thread desk:w-auto desk:gap-10"
         >
           <span>לקריאה בעברית</span>
           <span aria-hidden="true">←</span>
@@ -42,7 +42,7 @@ export default function Threshold() {
         <Link
           href="/en/"
           hrefLang="en"
-          className="mt-5 inline-flex min-h-14 w-full items-center justify-between bg-ink px-6 font-display text-[1.75rem] leading-none text-paper hover:bg-thread desk:w-auto desk:gap-10"
+          className="mt-5 inline-flex min-h-14 w-full items-center justify-between bg-ink px-6 font-display text-h3 text-paper hover:bg-thread desk:w-auto desk:gap-10"
         >
           <span>Read in English</span>
           <span aria-hidden="true">→</span>

@@ -68,6 +68,21 @@
   --text-kicker: 0.8125rem;
   --text-kicker--letter-spacing: 0.18em;
 
+  /* one type scale for the whole book — display (Karantina) */
+  --text-h1: clamp(2.6rem, 11vw, 4rem);
+  --text-h1--line-height: 0.92;
+  --text-h2: clamp(2.25rem, 9vw, 3.25rem);
+  --text-h2--line-height: 0.95;
+  --text-h3: 1.875rem;
+  --text-h3--line-height: 1;
+  --text-h4: 1.375rem;
+  --text-h4--line-height: 1.1;
+  /* body (Frank Ruhl / Literata) */
+  --text-lead: 1.0625rem;
+  --text-lead--line-height: 1.65;
+  --text-fine: 0.8125rem;
+  --text-fine--line-height: 1.45;
+
   --spacing-measure: 34em;
   --radius-shard: 2px;
 
@@ -138,10 +153,6 @@
     text-indent: 0;
   }
   /* drop-cap-like opening: the first words of each chapter set in the display face */
-  html:lang(he) .prose-book .opener::first-line {
-    font-weight: 620;
-    color: var(--ink);
-  }
   .prose-book p {
     text-wrap: pretty;
   }
@@ -533,8 +544,10 @@ html[data-theme='night'] .finale-bill {
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  font: 600 0.68rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.14em;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.12em;
   color: var(--color-ink-faint);
   border-bottom: 1.5px dashed var(--color-rule);
   padding-bottom: 10px;
@@ -559,7 +572,7 @@ html[data-theme='night'] .finale-bill {
 }
 .finale-tier__price {
   font-family: var(--font-display);
-  font-size: 1.7rem;
+  font-size: 1.875rem;
   line-height: 1;
   color: var(--color-thread);
 }
@@ -573,7 +586,8 @@ html[data-theme='night'] .finale-bill {
 }
 .finale-bill__foot {
   margin-top: 10px;
-  font: 0.72rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.45;
   color: var(--color-ink-faint);
   text-align: center;
 }
@@ -646,7 +660,7 @@ html[data-theme='night'] .finale-bill {
   gap: 4px;
   border: 1px solid var(--color-rule);
   padding: 6px 4px;
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   line-height: 1.15;
   transition: border-color 0.2s, color 0.2s;
 }
@@ -695,7 +709,7 @@ html[data-theme='night'] .finale-bill {
   flex-shrink: 0;
   border: 1px solid currentColor;
   padding: 0 6px;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   line-height: 1.5;
   letter-spacing: 0.04em;
 }
@@ -748,7 +762,7 @@ html[data-theme='night'] .finale-bill {
   gap: 6px;
   align-self: flex-start;
   margin-inline-start: 6rem;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: var(--color-ink-faint);
 }
 .season-fold__chev {
