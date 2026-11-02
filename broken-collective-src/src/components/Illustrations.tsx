@@ -937,6 +937,158 @@ export function CandlesArt(props: ArtProps) {
   )
 }
 
+/* ───────────────────────── Season 2025 plates ───────────────────────── */
+
+/** 2025·1 — from far above: a long column of bundles on the coast road, the thread on the waterline */
+export function RiverArt(props: ArtProps) {
+  const p = 'rv'
+  const dots = Array.from({ length: 70 }, (_, i) => i)
+  return (
+    <Plate p={p} {...props}>
+      {/* sea */}
+      <rect width="400" height="480" fill={C.sea} />
+      <rect width="400" height="480" fill={`url(#${p}-lines)`} opacity="0.35" />
+      {/* land */}
+      <path d="M150 -10 C 170 120, 200 220, 230 300 C 250 360, 262 420, 270 490 L410 490 L410 -10 Z" fill={C.deep} />
+      <path d="M150 -10 C 170 120, 200 220, 230 300 C 250 360, 262 420, 270 490 L410 490 L410 -10 Z" fill={`url(#${p}-dots-ink)`} opacity="0.18" />
+      {/* the thread along the waterline */}
+      <path d="M150 -10 C 170 120, 200 220, 230 300 C 250 360, 262 420, 270 490" fill="none" stroke={C.red} strokeWidth="3" />
+      {/* the coast road */}
+      <path d="M182 -10 C 200 120, 230 220, 258 300 C 276 360, 288 420, 296 490" fill="none" stroke={C.paper} strokeWidth="16" opacity="0.6" />
+      {/* bundles, mattresses, carts */}
+      {dots.map((i) => {
+        const t = i / dots.length
+        const y = -6 + t * 494
+        const x = 182 + 114 * Math.pow(t, 1.15) + Math.sin(i * 2.3) * 4
+        return i % 7 === 3 ? (
+          <rect key={i} x={x - 5} y={y - 2} width="10" height="5" fill={C.ink} transform={`rotate(${60 - t * 20} ${x} ${y})`} />
+        ) : (
+          <circle key={i} cx={x} cy={y} r={i % 3 ? 2.6 : 3.4} fill={i % 11 === 5 ? C.red : C.ink} />
+        )
+      })}
+      {/* rubble blocks inland */}
+      <g fill={C.soft}>
+        {[[320, 40], [360, 110], [300, 180], [350, 250], [330, 330], [370, 400], [320, 450]].map(([x, y], i) => (
+          <rect key={i} x={x} y={y} width={22 + (i % 3) * 8} height={14 + (i % 2) * 8} transform={`rotate(${i * 13} ${x} ${y})`} />
+        ))}
+      </g>
+    </Plate>
+  )
+}
+
+/** 2025·2 — an Athens pavement at dawn, pages blowing like moths, one caught on the red thread */
+export function PagesArt(props: ArtProps) {
+  const p = 'pg'
+  const pages: [number, number, number][] = [[70, 90, -18], [150, 60, 12], [300, 80, -6], [240, 150, 24], [100, 190, 8], [330, 210, -22], [190, 250, 4]]
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="300" fill={C.deep} />
+      <circle cx="320" cy="280" r="60" fill={C.paper} opacity="0.8" />
+      {/* street, tiles */}
+      <rect y="300" width="400" height="180" fill={C.soft} />
+      {Array.from({ length: 5 }, (_, r) =>
+        Array.from({ length: 9 }, (_, c) => (
+          <rect key={`${r}${c}`} x={-20 + c * 50 + (r % 2) * 25} y={308 + r * 36} width="46" height="32" fill="none" stroke={C.ink} strokeWidth="1.5" opacity="0.5" />
+        )),
+      )}
+      {/* lamp post */}
+      <rect x="44" y="120" width="6" height="190" fill={C.ink} />
+      <path d="M47 120 q 30 -20 54 4" fill="none" stroke={C.ink} strokeWidth="5" />
+      <rect x="92" y="122" width="18" height="12" fill={C.ink} />
+      {/* thread strung across */}
+      <path d="M-10 170 C 120 200, 260 140, 410 176" fill="none" stroke={C.red} strokeWidth="2.5" />
+      {pages.map(([x, y, r], i) => (
+        <g key={i} transform={`rotate(${r} ${x} ${y})`}>
+          <rect x={x - 16} y={y - 11} width="32" height="22" fill={C.paper} />
+          <g stroke={C.soft} strokeWidth="1.4">
+            <line x1={x - 11} y1={y - 4} x2={x + 11} y2={y - 4} />
+            <line x1={x - 11} y1={y + 2} x2={x + 7} y2={y + 2} />
+          </g>
+        </g>
+      ))}
+      {/* the caught page, larger, on the thread */}
+      <g transform="rotate(-6 200 176)">
+        <rect x="172" y="168" width="56" height="74" fill={C.paper} />
+        <g stroke={C.ink} strokeWidth="1.6">
+          {[184, 194, 204, 214, 224].map((y) => <line key={y} x1="180" y1={y} x2={y === 224 ? 206 : 220} y2={y} />)}
+        </g>
+        <rect x="196" y="164" width="8" height="10" fill={C.red} />
+      </g>
+      <rect y="460" width="400" height="20" fill={C.ink} />
+    </Plate>
+  )
+}
+
+/** 2025·3 — an open notebook on a bare bed, a cracked window with stars behind */
+export function NotebookArt(props: ArtProps) {
+  const p = 'nb'
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.ink} />
+      {/* window */}
+      <rect x="110" y="40" width="180" height="170" fill={C.sea} />
+      <rect x="110" y="40" width="180" height="170" fill={`url(#${p}-dots-ink)`} opacity="0.4" />
+      <g fill={C.paper}>
+        {[[140, 70], [200, 60], [260, 90], [170, 120], [240, 150], [150, 170]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r="2" />)}
+      </g>
+      <path d="M150 40 L176 96 L160 130 L196 180 L188 210 M176 96 L230 112" fill="none" stroke={C.paper} strokeWidth="2" />
+      <rect x="110" y="40" width="180" height="170" fill="none" stroke={C.soft} strokeWidth="8" />
+      <line x1="200" y1="40" x2="200" y2="210" stroke={C.soft} strokeWidth="6" />
+      {/* bed */}
+      <rect x="30" y="300" width="340" height="120" fill={C.soft} />
+      <rect x="30" y="300" width="340" height="120" fill={`url(#${p}-lines)`} opacity="0.25" />
+      <rect x="40" y="280" width="90" height="34" rx="10" fill={C.deep} />
+      <rect x="30" y="420" width="340" height="14" fill={C.deep} />
+      {/* open notebook */}
+      <g transform="translate(200 334) rotate(-6)">
+        <path d="M-80 -30 Q -40 -40 0 -30 L0 40 Q -40 30 -80 40 Z" fill={C.paper} />
+        <path d="M0 -30 Q 40 -40 80 -30 L80 40 Q 40 30 0 40 Z" fill={C.paper} />
+        <line x1="0" y1="-30" x2="0" y2="40" stroke={C.ink} strokeWidth="2" />
+        <g stroke={C.ink} strokeWidth="1.4" opacity="0.8">
+          {[-16, -6, 4, 14].map((y) => <line key={y} x1="-70" y1={y} x2="-10" y2={y - 2} />)}
+          <line x1="10" y1="-16" x2="64" y2="-18" />
+        </g>
+        <path d="M0 40 C 6 70, -20 80, -36 110" fill="none" stroke={C.red} strokeWidth="2.5" strokeLinecap="round" />
+      </g>
+    </Plate>
+  )
+}
+
+/** 2025·4 — three screens glowing in three windows, one thread between them, first light */
+export function DealArt(props: ArtProps) {
+  const p = 'dl'
+  const wins: [number, number][] = [[50, 150], [170, 250], [290, 120]]
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.ink} />
+      {/* first light on the horizon */}
+      <rect y="400" width="400" height="80" fill={C.deep} />
+      <rect y="392" width="400" height="10" fill={C.red} opacity="0.55" />
+      <rect y="380" width="400" height="12" fill={C.red} opacity="0.2" />
+      {/* three blocks, three windows */}
+      <rect x="20" y="110" width="120" height="290" fill={C.soft} opacity="0.55" />
+      <rect x="140" y="210" width="120" height="190" fill={C.soft} opacity="0.4" />
+      <rect x="260" y="80" width="120" height="320" fill={C.soft} opacity="0.55" />
+      {wins.map(([x, y], i) => (
+        <g key={i}>
+          <rect x={x} y={y} width="60" height="70" fill={C.ink} />
+          <rect x={x + 16} y={y + 22} width="28" height="40" rx="4" fill={C.paper} />
+          <rect x={x + 16} y={y + 22} width="28" height="40" rx="4" fill={C.paper} opacity="0.25" transform={`translate(-6 -6) scale(1)`} />
+          <line x1={x + 21} y1={y + 32} x2={x + 39} y2={y + 32} stroke={C.ink} strokeWidth="2" />
+          <line x1={x + 21} y1={y + 40} x2={x + 35} y2={y + 40} stroke={C.ink} strokeWidth="2" />
+        </g>
+      ))}
+      {/* the thread joins them */}
+      <path d="M80 184 C 120 240, 160 300, 200 294 C 240 290, 280 200, 320 154" fill="none" stroke={C.red} strokeWidth="3" strokeLinecap="round" />
+      <g fill={C.red}>
+        <circle cx="80" cy="184" r="4" />
+        <circle cx="200" cy="294" r="4" />
+        <circle cx="320" cy="154" r="4" />
+      </g>
+    </Plate>
+  )
+}
+
 /* ───────────────────────── Season emblems (contents page) ───────────────────────── */
 
 /** Emblems sit on the page itself, so unlike the plates they follow the reading theme. */
@@ -1050,4 +1202,8 @@ export const ChapterArt = {
   relegation: RelegationArt,
   radio: RadioArt,
   candles: CandlesArt,
+  river: RiverArt,
+  pages: PagesArt,
+  notebook: NotebookArt,
+  deal: DealArt,
 }

@@ -695,3 +695,28 @@ html[data-theme='night'] .finale-bill {
 .voice-tier--good {
   color: var(--color-ink-faint);
 }
+.writing-card {
+  border: 2px solid var(--color-ink);
+  padding: 18px 18px 20px;
+  background: color-mix(in oklab, var(--color-paper) 85%, white);
+  margin-bottom: 16px;
+}
+.writing-card__thread {
+  stroke-dasharray: 300;
+  animation: writing-line 4.5s var(--ease-ink) infinite;
+}
+.writing-card__nib {
+  animation: writing-nib 4.5s var(--ease-ink) infinite;
+}
+@keyframes writing-line {
+  0% { stroke-dashoffset: 300; }
+  70%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes writing-nib {
+  0%, 60% { opacity: 0; }
+  70% { opacity: 1; }
+  90%, 100% { opacity: 0.2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .writing-card__thread, .writing-card__nib { animation: none; }
+}

@@ -144,6 +144,17 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
             })}
             </div>
 
+            {SEASONS.every((s) => s.status === 'published') ? (
+              <aside className="writing-card desk:sticky desk:top-8 desk:self-start">
+                <p className="kicker">{t(lang, 'season.label')} {SEASONS[SEASONS.length - 1].year + 1}</p>
+                <p className="mt-1 font-display text-[clamp(2.2rem,8vw,3rem)] leading-[0.95] text-ink">{t(lang, 'season.writingTitle')}</p>
+                <svg viewBox="0 0 300 30" className="mt-3 h-6 w-full" aria-hidden="true">
+                  <path className="writing-card__thread" d="M0 15 L60 13 L90 19 L130 11 L170 16 L200 9 L214 20 L226 12 L262 15" fill="none" stroke="var(--thread)" strokeWidth="2.5" strokeLinejoin="round" />
+                  <circle className="writing-card__nib" cx="262" cy="15" r="4" fill="var(--thread)" />
+                </svg>
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{t(lang, 'season.writingBody')}</p>
+              </aside>
+            ) : null}
             <ul className="grid grid-cols-2 gap-3 desk:grid-cols-1 desk:gap-0">
               {SEASONS.filter((s) => s.status !== 'published').map((s) => (
                 <li
