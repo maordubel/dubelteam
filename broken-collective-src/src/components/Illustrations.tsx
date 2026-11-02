@@ -792,6 +792,151 @@ export function SilenceArt(props: ArtProps) {
   )
 }
 
+/* ───────────────────────── Season 2024 plates ───────────────────────── */
+
+/** 2024·1 — interception trails over flat rooftops, a shelter door ajar */
+export function SparksArt(props: ArtProps) {
+  const p = 'sp'
+  const trails: [number, number, number, number][] = [
+    [40, 300, 150, 90], [120, 310, 210, 70], [260, 300, 190, 60], [340, 290, 300, 110], [90, 300, 60, 150],
+  ]
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.ink} />
+      {trails.map(([x1, y1, x2, y2], i) => (
+        <g key={i}>
+          <path d={`M${x1} ${y1} Q ${(x1 + x2) / 2 + (i % 2 ? 30 : -30)} ${(y1 + y2) / 2} ${x2} ${y2}`} fill="none" stroke={C.soft} strokeWidth="2" strokeDasharray="1 5" strokeLinecap="round" />
+          <circle cx={x2} cy={y2} r={i === 1 ? 16 : 9} fill={i === 1 ? C.red : C.paper} opacity={i === 1 ? 0.9 : 0.75} />
+          <circle cx={x2} cy={y2} r={i === 1 ? 30 : 18} fill={i === 1 ? C.red : C.paper} opacity="0.15" />
+        </g>
+      ))}
+      {/* flat rooftops */}
+      <path d="M0 300 H60 V270 H120 V292 H170 V256 H236 V284 H290 V262 H350 V280 H400 V480 H0 Z" fill={C.soft} />
+      <path d="M0 300 H60 V270 H120 V292 H170 V256 H236 V284 H290 V262 H350 V280 H400 V480 H0 Z" fill={`url(#${p}-dots-ink)`} opacity="0.45" />
+      <g fill={C.ink}>
+        {[[24, 330], [84, 300], [196, 290], [310, 300], [360, 330], [140, 340], [250, 330]].map(([x, y]) => (
+          <rect key={`${x}${y}`} x={x} y={y} width="16" height="20" />
+        ))}
+        <rect x="236" y="246" width="4" height="12" />
+        <rect x="70" y="258" width="26" height="12" />
+      </g>
+      {/* the shelter door, ajar, with a warm light */}
+      <rect x="140" y="380" width="120" height="100" fill={C.ink} />
+      <polygon points="166,404 222,404 222,480 166,480" fill={C.paper} opacity="0.85" />
+      <polygon points="222,404 244,398 244,480 222,480" fill={C.deep} />
+      <path d="M0 470 C 80 460, 140 476, 194 466" fill="none" stroke={C.red} strokeWidth="2.5" />
+    </Plate>
+  )
+}
+
+/** 2024·2 — an empty red stand, red smoke, one scarf left on a seat */
+export function RelegationArt(props: ArtProps) {
+  const p = 'rl'
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.ink} />
+      {/* smoke */}
+      <g fill={C.red} opacity="0.35">
+        <circle cx="90" cy="120" r="70" />
+        <circle cx="170" cy="80" r="60" />
+        <circle cx="300" cy="130" r="80" />
+        <circle cx="230" cy="170" r="50" />
+      </g>
+      <rect width="400" height="220" fill={`url(#${p}-dots-red)`} opacity="0.25" />
+      {/* terraces */}
+      {Array.from({ length: 7 }, (_, r) => (
+        <g key={r}>
+          <rect y={210 + r * 38} width="400" height="38" fill={r % 2 ? C.ink : C.soft} />
+          {Array.from({ length: 10 }, (_, c) => (
+            <rect key={c} x={14 + c * 39 + (r % 2) * 12} y={218 + r * 38} width="26" height="16" rx="3" fill={r % 2 ? C.soft : C.ink} opacity="0.85" />
+          ))}
+        </g>
+      ))}
+      {/* the scarf left behind */}
+      <g transform="translate(212 296) rotate(-8)">
+        <rect width="120" height="22" fill={C.red} />
+        <rect x="0" y="22" width="18" height="46" fill={C.red} />
+        <g fill={C.paper}>
+          {[22, 46, 70, 94].map((x) => <rect key={x} x={x} y="7" width="10" height="8" />)}
+        </g>
+        <g stroke={C.red} strokeWidth="2">
+          {[2, 7, 12].map((x) => <line key={x} x1={x} y1="68" x2={x} y2="78" />)}
+        </g>
+      </g>
+    </Plate>
+  )
+}
+
+/** 2024·3 — a battery radio on a shrapnel-pitted wall, a drone as a speck in an orange sky */
+export function RadioArt(props: ArtProps) {
+  const p = 'ra'
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="200" fill={C.red} opacity="0.75" />
+      <rect width="400" height="200" fill={`url(#${p}-dots-ink)`} opacity="0.2" />
+      <circle cx="300" cy="150" r="46" fill={C.paper} opacity="0.65" />
+      {/* drone speck */}
+      <g transform="translate(110 70) rotate(45)" fill={C.ink}>
+        <rect x="-7" y="-1.2" width="14" height="2.4" />
+        <rect x="-1.2" y="-7" width="2.4" height="14" />
+        <rect x="-3" y="-3" width="6" height="6" />
+        {[[-7, 0], [7, 0], [0, -7], [0, 7]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r="3" fill="none" stroke={C.ink} strokeWidth="1.4" />)}
+      </g>
+      {/* wall */}
+      <rect y="200" width="400" height="280" fill={C.soft} />
+      <g fill={C.ink} opacity="0.85">
+        {[[40, 240, 4], [70, 262, 3], [320, 230, 5], [350, 270, 3], [210, 236, 3], [96, 330, 4], [300, 344, 3], [40, 400, 5], [360, 410, 4], [250, 270, 2]].map(([x, y, r]) => (
+          <circle key={`${x}${y}`} cx={x} cy={y} r={r} />
+        ))}
+      </g>
+      <path d="M0 200 L60 196 L120 204 L200 194 L280 202 L400 196" fill="none" stroke={C.ink} strokeWidth="3" />
+      {/* shelf and radio */}
+      <rect x="80" y="380" width="240" height="10" fill={C.ink} />
+      <rect x="120" y="296" width="160" height="84" rx="8" fill={C.ink} />
+      <circle cx="164" cy="338" r="26" fill={C.sea} />
+      <circle cx="164" cy="338" r="26" fill={`url(#${p}-dots-ink)`} opacity="0.6" />
+      <rect x="206" y="314" width="58" height="18" fill={C.paper} />
+      <line x1="236" y1="314" x2="236" y2="332" stroke={C.red} strokeWidth="2" />
+      <circle cx="220" cy="354" r="7" fill={C.soft} />
+      <circle cx="250" cy="354" r="7" fill={C.soft} />
+      <line x1="270" y1="296" x2="320" y2="220" stroke={C.ink} strokeWidth="3" strokeLinecap="round" />
+      {/* the voice, travelling */}
+      <path d="M322 214 q 18 -8 30 6 M330 198 q 24 -12 42 10" fill="none" stroke={C.red} strokeWidth="2.5" strokeLinecap="round" />
+    </Plate>
+  )
+}
+
+/** 2024·4 — three telephone wires crossing in the dark, knotting into the red thread, one candle */
+export function CandlesArt(props: ArtProps) {
+  const p = 'cd'
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.ink} />
+      {/* three wires converge */}
+      <path d="M-10 60 C 120 80, 160 180, 200 230" fill="none" stroke={C.soft} strokeWidth="3" />
+      <path d="M410 90 C 280 110, 240 180, 200 230" fill="none" stroke={C.soft} strokeWidth="3" />
+      <path d="M200 -10 C 190 80, 214 150, 200 230" fill="none" stroke={C.soft} strokeWidth="3" />
+      {/* the knot */}
+      <path d="M200 230 C 176 250, 186 272, 204 262 C 222 252, 214 230, 196 244 C 184 254, 200 290, 200 316" fill="none" stroke={C.red} strokeWidth="3.5" strokeLinecap="round" />
+      {/* hanukkiah base with one light */}
+      <rect x="96" y="392" width="208" height="10" fill={C.soft} />
+      <rect x="194" y="402" width="12" height="54" fill={C.soft} />
+      <rect x="150" y="456" width="100" height="10" fill={C.soft} />
+      <g fill={C.soft}>
+        {Array.from({ length: 9 }, (_, i) => <rect key={i} x={102 + i * 23} y={i === 4 ? 352 : 368} width="10" height={i === 4 ? 40 : 24} />)}
+      </g>
+      {/* shamash and the first candle lit (from the right) */}
+      <rect x="290" y="340" width="8" height="28" fill={C.paper} />
+      <path d="M294 316 q 10 12 0 24 q -10 -12 0 -24z" fill={C.red} />
+      <circle cx="294" cy="330" r="22" fill={C.red} opacity="0.18" />
+      <rect x="199" y="326" width="8" height="26" fill={C.paper} />
+      <path d="M203 302 q 10 12 0 24 q -10 -12 0 -24z" fill={C.red} />
+      <circle cx="203" cy="316" r="22" fill={C.red} opacity="0.18" />
+      <line x1="200" y1="316" x2="203" y2="318" stroke={C.red} strokeWidth="2" />
+    </Plate>
+  )
+}
+
 /* ───────────────────────── Season emblems (contents page) ───────────────────────── */
 
 /** Emblems sit on the page itself, so unlike the plates they follow the reading theme. */
@@ -901,4 +1046,8 @@ export const ChapterArt = {
   lights: LightsArt,
   static: StaticArt,
   silence: SilenceArt,
+  sparks: SparksArt,
+  relegation: RelegationArt,
+  radio: RadioArt,
+  candles: CandlesArt,
 }
