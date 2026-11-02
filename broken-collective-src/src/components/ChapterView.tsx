@@ -131,7 +131,7 @@ export function ChapterView({
                     <Link
                       href={c.href}
                       aria-current={c.current ? 'page' : undefined}
-                      className={`flex min-h-10 items-center font-display text-xl leading-none ${c.current ? 'text-thread' : 'text-ink-soft hover:text-ink'}`}
+                      className={`flex min-h-10 items-center font-display text-h4 ${c.current ? 'text-thread' : 'text-ink-soft hover:text-ink'}`}
                     >
                       {c.label}
                     </Link>
@@ -176,7 +176,7 @@ export function ChapterView({
           ) : (
             <div className="mt-14 flex flex-col items-center gap-3 text-ink-faint">
               <ThreadKnot />
-              <p className="font-display text-xl">{endNote ?? t(lang, 'chapter.end')}</p>
+              <p className="font-display text-h4">{endNote ?? t(lang, 'chapter.end')}</p>
             </div>
           )}
 
@@ -184,7 +184,7 @@ export function ChapterView({
             {prev ? (
               <Link href={prev.href} className="group flex min-h-20 flex-col justify-center border border-rule p-4 hover:border-ink">
                 <span className="text-sm text-ink-faint">{back} {prev.label}</span>
-                <span className="font-display text-2xl leading-tight">{prev.title}</span>
+                <span className="font-display text-h3">{prev.title}</span>
               </Link>
             ) : (
               <span className="hidden desk:block" />
@@ -195,10 +195,10 @@ export function ChapterView({
                 className="group flex min-h-20 flex-col justify-center border border-ink bg-ink p-4 text-paper hover:bg-thread hover:border-thread desk:text-end"
               >
                 <span className="text-sm opacity-80">{next.label} {fwd}</span>
-                <span className="font-display text-2xl leading-tight">{next.title}</span>
+                <span className="font-display text-h3">{next.title}</span>
               </Link>
             ) : (
-              <Link href={`/${lang}/#contents`} className="flex min-h-20 items-center justify-center border border-rule p-4 font-display text-2xl hover:border-ink">
+              <Link href={`/${lang}/#contents`} className="flex min-h-20 items-center justify-center border border-rule p-4 font-display text-h3 hover:border-ink">
                 {t(lang, 'nav.backToBook')}
               </Link>
             )}

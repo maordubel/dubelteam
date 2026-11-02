@@ -264,6 +264,17 @@ export function BookReader({
   )
   const speech = useSpeech(lang, texts, goToBlock)
 
+  /* turning a page puts the chrome away, like lifting your eyes back to the text */
+  const firstView = useRef(true)
+  useEffect(() => {
+    if (firstView.current) {
+      firstView.current = false
+      return
+    }
+    if (speech.status !== 'playing') setChrome(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [view])
+
   useEffect(() => {
     const root = stageRef.current
     if (!root) return
@@ -417,10 +428,10 @@ export function BookReader({
         <div className={`book-page ${edge}`} style={frame}>
           <div className="flex h-full flex-col">
             <p className="kicker">{kicker}</p>
-            <h1 className="mt-1 font-display text-[clamp(2.6rem,11vw,4.2rem)] leading-[0.9] text-ink">{title}</h1>
+            <h1 className="mt-1 font-display text-h1 text-ink">{title}</h1>
             <p className="mt-2 text-sm text-ink-faint">{minutes}</p>
             <div className="mt-5 min-h-0 flex-1 overflow-hidden border border-ink/80">{art}</div>
-            <p className="mt-4 flex items-center justify-center gap-2 text-xs text-ink-faint">
+            <p className="mt-4 flex items-center justify-center gap-2 text-fine text-ink-faint">
               <span aria-hidden="true">{rtl ? '←' : '→'}</span>
               {labels.swipeHint}
             </p>
@@ -456,11 +467,11 @@ export function BookReader({
             <svg viewBox="0 0 120 40" className="h-10 w-28" aria-hidden="true">
               <path d="M0 20 L34 18 L46 26 C 60 40, 74 2, 58 8 C 44 14, 66 34, 80 22 L120 20" fill="none" stroke="var(--thread)" strokeWidth="2.5" strokeLinecap="round" />
             </svg>
-            <p className="font-display text-2xl text-ink-soft">{labels.endNote}</p>
+            <p className="font-display text-h3 text-ink-soft">{labels.endNote}</p>
             {next ? (
               <Link href={next.href} className="mt-2 flex min-h-14 w-full flex-col justify-center bg-ink px-5 py-3 text-paper hover:bg-thread">
                 <span className="text-sm opacity-80">{next.label}</span>
-                <span className="font-display text-3xl leading-tight">{next.title}</span>
+                <span className="font-display text-h3">{next.title}</span>
               </Link>
             ) : null}
             <Link href={contentsHref} className="inline-flex min-h-11 items-center underline decoration-rule underline-offset-4 hover:decoration-thread">
@@ -615,7 +626,7 @@ export function BookReader({
       <div className={`book-chrome book-chrome--top ${chrome || sheet ? 'is-on' : ''}`}>
         <Link href={contentsHref} className="inline-flex min-h-11 min-w-11 items-center gap-2 px-2 text-ink" aria-label={labels.contents}>
           <span aria-hidden="true">{rtl ? '→' : '←'}</span>
-          <span className="font-display text-xl leading-none">{bookTitle}</span>
+          <span className="font-display text-h4">{bookTitle}</span>
         </Link>
         <span className="hidden truncate font-display text-lg text-ink-soft desk:block">{title}</span>
         <button type="button" onClick={() => setSheet(true)} className="inline-flex min-h-11 min-w-11 items-center justify-center font-display text-2xl text-ink" aria-label={labels.settings} aria-haspopup="dialog">
@@ -737,7 +748,7 @@ export function BookReader({
                               </span>
                             ) : null}
                           </span>
-                          <span className="block text-xs text-ink-faint" dir="ltr">
+                          <span className="block text-fine text-ink-faint" dir="ltr">
                             {v.lang}
                             {v.localService ? '' : ' · online'}
                           </span>
@@ -751,7 +762,7 @@ export function BookReader({
                 </ul>
               )}
               {speech.voices.length > 0 && !speech.voices.some((v) => voiceTier(v) === 'natural') ? (
-                <p className="mt-3 text-xs leading-relaxed text-ink-faint">{labels.betterVoice}</p>
+                <p className="mt-3 text-fine leading-relaxed text-ink-faint">{labels.betterVoice}</p>
               ) : null}
               <div className="sheet-row">
                 <span>{labels.speed}</span>
@@ -789,7 +800,7 @@ function ToBookButton({ label, onClick }: { label: string; onClick: () => void }
     <button
       type="button"
       onClick={onClick}
-      className={`to-book fixed bottom-[4.5rem] start-3 z-30 inline-flex min-h-11 items-center gap-2 border border-ink bg-paper px-4 font-display text-xl text-ink shadow-[4px_4px_0_var(--ink)] desk:bottom-10 desk:start-6 ${hidden ? 'is-hidden' : ''}`}
+      className={`to-book fixed bottom-[4.5rem] start-3 z-30 inline-flex min-h-11 items-center gap-2 border border-ink bg-paper px-4 font-display text-h4 text-ink shadow-[4px_4px_0_var(--ink)] desk:bottom-10 desk:start-6 ${hidden ? 'is-hidden' : ''}`}
     >
       <span aria-hidden="true">❦</span> {label}
     </button>

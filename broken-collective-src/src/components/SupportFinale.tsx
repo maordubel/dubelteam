@@ -103,11 +103,11 @@ export function FinaleIntro({ lang, note, compact = false }: { lang: Lang; note?
       </svg>
       {note ? <p className="text-sm text-ink-faint">{note}</p> : null}
       <p className="kicker text-thread!">{c.kicker}</p>
-      <h2 className="font-display text-[clamp(2.2rem,12vw,4rem)] leading-[0.9] text-ink">{c.title}</h2>
-      <p className="max-w-[30ch] font-display text-[clamp(1.1rem,5.4vw,1.35rem)] leading-snug text-ink-soft">{c.lead}</p>
-      <p className="max-w-[34ch] text-[clamp(0.9rem,4.2vw,0.98rem)] leading-relaxed text-ink-soft">{c.body}</p>
+      <h2 className="font-display text-h1 text-ink">{c.title}</h2>
+      <p className="max-w-[30ch] font-display text-h4 text-ink-soft">{c.lead}</p>
+      <p className="max-w-[34ch] text-base leading-relaxed text-ink-soft">{c.body}</p>
       {compact ? (
-        <p className="finale-nudge mt-2 flex items-center gap-2 text-xs text-ink-faint">
+        <p className="finale-nudge mt-2 flex items-center gap-2 text-fine text-ink-faint">
           {c.turn}
           <span aria-hidden="true">{lang === 'he' ? '←' : '→'}</span>
         </p>
@@ -122,7 +122,7 @@ export function FinaleBill({ lang, compact = false }: { lang: Lang; compact?: bo
   return (
     <div className={`flex flex-col ${compact ? 'h-full justify-center' : ''}`}>
       <p className="kicker text-center">{c.billKicker}</p>
-      <h2 className="mt-1 text-center font-display text-[clamp(2.3rem,10vw,3.4rem)] leading-[0.95] text-ink">{c.billTitle}</h2>
+      <h2 className="mt-1 text-center font-display text-h2 text-ink">{c.billTitle}</h2>
       <div className="finale-bill mt-4" role="list">
         <p className="finale-bill__bar" aria-hidden="true">
           <span>{c.billBar}</span>
@@ -138,8 +138,8 @@ export function FinaleBill({ lang, compact = false }: { lang: Lang; compact?: bo
             rel="noopener noreferrer"
           >
             <span className="flex min-w-0 flex-col">
-              <span className="font-display text-[1.3rem] leading-tight">{tier.item}</span>
-              <span className="text-xs text-ink-faint">= {tier.gets}</span>
+              <span className="font-display text-h4">{tier.item}</span>
+              <span className="text-fine text-ink-faint">= {tier.gets}</span>
             </span>
             <span className="finale-tier__dots" aria-hidden="true" />
             <span className="finale-tier__price tabular-nums" dir="ltr">
@@ -149,7 +149,7 @@ export function FinaleBill({ lang, compact = false }: { lang: Lang; compact?: bo
         ))}
         <p className="finale-bill__foot">{c.billFoot}</p>
       </div>
-      <p className="mt-3 flex items-center justify-center gap-2 text-[0.72rem] text-ink-faint">
+      <p className="mt-3 flex items-center justify-center gap-2 text-fine text-ink-faint">
         <PayPalMark />
         {c.billSecure}
       </p>
@@ -215,15 +215,15 @@ export function FinaleThread({ lang, backHref, compact = false }: { lang: Lang; 
   return (
     <div className={`flex flex-col items-center text-center ${compact ? 'h-full justify-center' : ''}`}>
       <p className="kicker">{c.freeKicker}</p>
-      <h2 className="mt-1 font-display text-[clamp(2.3rem,10vw,3.4rem)] leading-[0.95] text-ink">{c.freeTitle}</h2>
-      <p className="mt-2 max-w-[30ch] text-[0.98rem] leading-relaxed text-ink-soft">{c.freeBody}</p>
+      <h2 className="mt-1 font-display text-h2 text-ink">{c.freeTitle}</h2>
+      <p className="mt-2 max-w-[30ch] text-base leading-relaxed text-ink-soft">{c.freeBody}</p>
 
       <button type="button" onClick={tie} className={`finale-knot mt-4 ${tied ? 'is-tied' : ''}`} aria-pressed={tied}>
         <svg viewBox="0 0 240 70" className="h-16 w-full" aria-hidden="true">
           <path className="finale-knot__loose" d="M0 35 C 40 30, 70 44, 110 34 S 170 30, 240 36" />
           <path className="finale-knot__tight" d="M0 35 L84 32 L98 44 C 120 66, 142 6, 116 14 C 92 22, 130 58, 150 38 L240 35" />
         </svg>
-        <span className="font-display text-xl leading-tight">{tied ? c.tied : c.tie}</span>
+        <span className="font-display text-h4">{tied ? c.tied : c.tie}</span>
       </button>
 
       <div className="mt-4 grid w-full grid-cols-3 gap-2">

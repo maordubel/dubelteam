@@ -116,7 +116,7 @@ export function ReaderTools({
 
   const pct = Math.round(progress * 100)
   const btn =
-    'inline-flex min-h-11 min-w-11 items-center justify-center font-display text-xl leading-none text-ink transition-colors hover:text-thread disabled:opacity-35 motion-reduce:transition-none'
+    'inline-flex min-h-11 min-w-11 items-center justify-center font-display text-h4 text-ink transition-colors hover:text-thread disabled:opacity-35 motion-reduce:transition-none'
 
   return (
     <>
