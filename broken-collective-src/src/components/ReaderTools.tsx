@@ -53,7 +53,8 @@ export function ReaderTools({
   const saveTimer = useRef<number | undefined>(undefined)
 
   useEffect(() => {
-    const s = Number(store(KEY_SIZE))
+    const rawSize = store(KEY_SIZE)
+    const s = rawSize === null ? NaN : Number(rawSize)
     if (Number.isInteger(s) && s >= 0 && s < SIZES.length) setSize(s)
     setNight(document.documentElement.dataset.theme === 'night')
     const pos = Number(store(KEY_POS + chapterKey))

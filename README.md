@@ -152,6 +152,12 @@ prod-brokencollective.svg Book graphic used on index.html and platforms.html.
 .github/workflows/broken-collective.yml   Rebuilds /broken-collective/ on every change to the source.
 ```
 
+**Reading views.** Chapters open in *Book mode* by default: the text is paginated with CSS
+columns and pages turn with a 3D flip (swipe, tap the page edge, or arrow keys; an open
+two-page spread on wide screens). *Listen* reads the chapter aloud with the device's own
+voices (Web Speech API) and turns the pages by itself; the reader picks the voice and speed.
+*Scroll mode* stays available from the settings sheet and is what renders without JavaScript.
+
 **To fix a typo or edit a chapter:** open the chapter file under
 `broken-collective-src/content/` on GitHub, click the pencil, edit, commit to `main`.
 The workflow rebuilds and publishes the book within a few minutes (Actions tab).
