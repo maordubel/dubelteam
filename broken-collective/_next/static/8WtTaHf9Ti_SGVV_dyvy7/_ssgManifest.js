@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002F[lang]","\u002F[lang]\u002F[season]\u002F[chapter]","\u002F[lang]\u002Fabout","\u002F[lang]\u002Fprologue"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
