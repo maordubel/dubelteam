@@ -21,7 +21,7 @@ export const SEASONS: Season[] = [
   { year: 2020, status: 'published', art: 'lockdown' },
   { year: 2021, status: 'published', art: 'vaccine' },
   { year: 2022, status: 'published', art: 'drift' },
-  { year: 2023, status: 'editing', art: 'fracture' },
+  { year: 2023, status: 'published', art: 'fracture' },
   { year: 2024, status: 'editing', art: 'war' },
   { year: 2025, status: 'editing', art: 'river' },
 ]
@@ -31,6 +31,7 @@ export type ChapterArtKey =
   | 'terrace' | 'tea' | 'bar' | 'raid'
   | 'isolation' | 'nightmatch' | 'sky' | 'athens' | 'screens' | 'antenna'
   | 'tornphoto' | 'story'
+  | 'lights' | 'static' | 'silence'
 
 export const CHAPTER_ART: Record<string, ChapterArtKey> = {
   '2020-1': 'terrace',
@@ -45,6 +46,9 @@ export const CHAPTER_ART: Record<string, ChapterArtKey> = {
   '2021-6': 'antenna',
   '2022-1': 'tornphoto',
   '2022-2': 'story',
+  '2023-1': 'lights',
+  '2023-2': 'static',
+  '2023-3': 'silence',
 }
 
 export const ORIGIN = 'https://www.dubelteam.com'

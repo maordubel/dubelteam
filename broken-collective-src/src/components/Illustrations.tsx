@@ -666,6 +666,132 @@ export function StoryArt(props: ArtProps) {
   )
 }
 
+/* ───────────────────────── Season 2023 plates ───────────────────────── */
+
+/** 2023·1 — party lights strung over a dark sea, one lookout tower on the far horizon */
+export function LightsArt(props: ArtProps) {
+  const p = 'lg'
+  const bulbs = Array.from({ length: 13 }, (_, i) => i)
+  const sag = (x: number) => 96 + 0.0016 * (x - 200) * (x - 200) * -1 + 60
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.ink} />
+      <g fill={C.paper} opacity="0.7">
+        {[[34, 40], [90, 24], [150, 52], [312, 30], [366, 70], [250, 18]].map(([x, y]) => (
+          <circle key={`${x}${y}`} cx={x} cy={y} r="1.8" />
+        ))}
+      </g>
+      {/* sea */}
+      <rect y="300" width="400" height="180" fill={C.sea} />
+      <rect y="300" width="400" height="180" fill={`url(#${p}-dots-ink)`} opacity="0.4" />
+      <g stroke={C.paper} strokeWidth="2" opacity="0.35">
+        <line x1="40" y1="340" x2="120" y2="340" />
+        <line x1="210" y1="368" x2="330" y2="368" />
+        <line x1="90" y1="410" x2="170" y2="410" />
+      </g>
+      {/* far horizon, a tiny lookout tower on the far shore */}
+      <rect y="292" width="400" height="10" fill={C.soft} />
+      <g fill={C.soft}>
+        <rect x="318" y="244" width="6" height="50" />
+        <rect x="310" y="232" width="22" height="14" />
+        <polygon points="306,232 336,232 321,222" />
+      </g>
+      <circle cx="321" cy="239" r="2.4" fill={C.red} />
+      {/* string of lights: the red thread itself */}
+      <path d={`M-10 120 Q 200 ${sag(200) + 60} 410 120`} fill="none" stroke={C.red} strokeWidth="2.5" />
+      {bulbs.map((i) => {
+        const t = (i + 0.5) / bulbs.length
+        const x = -10 + t * 420
+        const y = (1 - t) * (1 - t) * 120 + 2 * (1 - t) * t * (sag(200) + 60) + t * t * 120
+        return (
+          <g key={i}>
+            <circle cx={x} cy={y + 9} r="9" fill={C.paper} opacity="0.18" />
+            <circle cx={x} cy={y + 9} r="4.5" fill={i % 3 === 1 ? C.red : C.paper} />
+          </g>
+        )
+      })}
+      {/* two glasses on a ledge */}
+      <rect y="430" width="400" height="50" fill={C.ink} />
+      <g fill="none" stroke={C.paper} strokeWidth="2.5">
+        <path d="M150 396 l8 34 h14 l8 -34 z" />
+        <path d="M206 392 l8 38 h14 l8 -38 z" />
+      </g>
+      <path d="M154 404 h22 l-3 14 h-16z M210 402 h22 l-3 16 h-16z" fill={C.red} opacity="0.85" />
+    </Plate>
+  )
+}
+
+/** 2023·2 — a wall of screens gone to static, the red thread cut in the middle */
+export function StaticArt(props: ArtProps) {
+  const p = 'sc'
+  const cells = Array.from({ length: 12 }, (_, i) => i)
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.ink} />
+      {cells.map((i) => {
+        const col = i % 3
+        const row = Math.floor(i / 3)
+        const x = 30 + col * 118
+        const y = 34 + row * 96
+        const dark = i === 4 || i === 7
+        return (
+          <g key={i}>
+            <rect x={x} y={y} width="104" height="80" fill={dark ? C.ink : C.soft} stroke={C.paper} strokeWidth="2" />
+            {!dark ? <rect x={x} y={y} width="104" height="80" fill={`url(#${p}-dots-ink)`} opacity="0.75" /> : null}
+            {!dark ? (
+              <g stroke={C.paper} strokeWidth="1.5" opacity="0.55">
+                {[14, 31, 52, 66].map((dy) => <line key={dy} x1={x + 6} y1={y + dy} x2={x + 98 - (dy % 3) * 12} y2={y + dy} />)}
+              </g>
+            ) : null}
+          </g>
+        )
+      })}
+      {/* the thread, cut */}
+      <path d="M-10 452 C 60 440, 120 462, 186 446" fill="none" stroke={C.red} strokeWidth="3" strokeLinecap="round" />
+      <path d="M214 450 C 270 462, 330 438, 410 450" fill="none" stroke={C.red} strokeWidth="3" strokeLinecap="round" />
+      <path d="M186 446 l6 -8 M214 450 l-5 9" stroke={C.red} strokeWidth="2" strokeLinecap="round" />
+    </Plate>
+  )
+}
+
+/** 2023·3 — an empty dance floor at first light, a speaker on its side, the thread laid down like a ribbon */
+export function SilenceArt(props: ArtProps) {
+  const p = 'si'
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.deep} />
+      <rect width="400" height="250" fill={`url(#${p}-dots)`} opacity="0.35" />
+      {/* first light */}
+      <circle cx="200" cy="262" r="70" fill={C.paper} />
+      <rect y="262" width="400" height="218" fill={C.soft} />
+      {/* trees at the edge of the field */}
+      <g fill={C.ink}>
+        {[20, 62, 300, 344, 380].map((x, i) => (
+          <path key={x} d={`M${x} 262 q${8 + (i % 2) * 4} -${44 + i * 6} ${18 + (i % 3) * 4} 0z`} />
+        ))}
+      </g>
+      {/* the empty stage frame */}
+      <g stroke={C.ink} strokeWidth="5" fill="none">
+        <path d="M96 262 V150 H304 V262" />
+        <line x1="96" y1="172" x2="304" y2="172" />
+      </g>
+      <g fill={C.paper} opacity="0.85">
+        {[120, 160, 200, 240, 280].map((x) => <circle key={x} cx={x} cy="186" r="4" />)}
+      </g>
+      {/* speaker on its side */}
+      <g transform="translate(232 352) rotate(-90)">
+        <rect x="-34" y="-54" width="68" height="108" fill={C.ink} />
+        <circle cx="0" cy="-20" r="20" fill={C.soft} />
+        <circle cx="0" cy="-20" r="8" fill={C.ink} />
+        <circle cx="0" cy="30" r="11" fill={C.soft} />
+      </g>
+      {/* the thread laid down on the field as a memorial ribbon */}
+      <path d="M40 430 C 110 412, 150 446, 190 426 C 210 416, 196 396, 182 408 C 170 420, 206 440, 236 424 C 280 404, 330 438, 372 420" fill="none" stroke={C.red} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <rect y="460" width="400" height="20" fill={C.ink} />
+    </Plate>
+  )
+}
+
 /* ───────────────────────── Season emblems (contents page) ───────────────────────── */
 
 /** Emblems sit on the page itself, so unlike the plates they follow the reading theme. */
@@ -772,4 +898,7 @@ export const ChapterArt = {
   antenna: AntennaArt,
   tornphoto: TornPhotoArt,
   story: StoryArt,
+  lights: LightsArt,
+  static: StaticArt,
+  silence: SilenceArt,
 }
