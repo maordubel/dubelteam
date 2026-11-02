@@ -9,6 +9,7 @@ import { BookReader } from './BookReader'
 import { ReaderTools } from './ReaderTools'
 import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
+import { SupportFinale } from './SupportFinale'
 import { ThreadKnot } from './Thread'
 
 export type NavLink = { href: string; label: string; title: string } | null
@@ -36,6 +37,7 @@ export function ChapterView({
   sideList?: { href: string; label: string; current: boolean }[]
   endNote?: string
 }) {
+  const finale = !next
   const back = lang === 'he' ? '→' : '←'
   const fwd = lang === 'he' ? '←' : '→'
   const scenes = doc.blocks.filter((b) => b.kind === 'scene')
@@ -60,6 +62,7 @@ export function ChapterView({
         contentsHref={contentsHref}
         prev={prev}
         next={next}
+        finale={finale}
         labels={{
           book: t(lang, 'book.region'),
           contents: t(lang, 'nav.contents'),
@@ -165,10 +168,14 @@ export function ChapterView({
             })}
           </div>
 
-          <div className="mt-14 flex flex-col items-center gap-3 text-ink-faint">
-            <ThreadKnot />
-            <p className="font-display text-xl">{endNote ?? t(lang, 'chapter.end')}</p>
-          </div>
+          {finale ? (
+            <SupportFinale lang={lang} backHref={contentsHref} note={endNote} />
+          ) : (
+            <div className="mt-14 flex flex-col items-center gap-3 text-ink-faint">
+              <ThreadKnot />
+              <p className="font-display text-xl">{endNote ?? t(lang, 'chapter.end')}</p>
+            </div>
+          )}
 
           <nav className="mt-12 grid gap-3 desk:grid-cols-2" aria-label={t(lang, 'nav.contents')}>
             {prev ? (

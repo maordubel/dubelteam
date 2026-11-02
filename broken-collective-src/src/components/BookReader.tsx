@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { FinaleBill, FinaleIntro, FinaleStamp, FinaleThread } from './SupportFinale'
 import { useSpeech } from './useSpeech'
 
 export type BookLabels = {
@@ -85,6 +86,7 @@ export function BookReader({
   prev,
   next,
   labels,
+  finale = false,
 }: {
   lang: 'he' | 'en'
   html: string
@@ -100,6 +102,8 @@ export function BookReader({
   prev: NavTarget
   next: NavTarget
   labels: BookLabels
+  /** last published chapter: end with "to be continued", the bar tab and the red thread */
+  finale?: boolean
 }) {
   const rtl = lang === 'he'
   const router = useRouter()
@@ -196,7 +200,8 @@ export function BookReader({
     return () => window.removeEventListener('resize', onResize)
   }, [mode, measure, size])
 
-  const totalPages = textPages + 2 // title page + text + end page
+  const endPage = textPages + 1
+  const totalPages = textPages + 2 + (finale ? 2 : 0) // title page + text + end page (+ bill + thread)
   const perView = geo?.spread ? 2 : 1
   const views = Math.ceil(totalPages / perView)
   const pagesOf = useCallback((v: number) => (perView === 2 ? [2 * v, 2 * v + 1] : [v]), [perView])
@@ -419,7 +424,28 @@ export function BookReader({
         </div>
       )
     }
-    if (n === totalPages - 1) {
+    if (finale && n === endPage) {
+      return (
+        <div className={`book-page ${edge}`} style={frame}>
+          <FinaleIntro lang={lang} note={labels.endNote} compact />
+        </div>
+      )
+    }
+    if (finale && n === endPage + 1) {
+      return (
+        <div className={`book-page ${edge}`} style={frame}>
+          <FinaleBill lang={lang} compact />
+        </div>
+      )
+    }
+    if (finale && n === endPage + 2) {
+      return (
+        <div className={`book-page ${edge}`} style={frame}>
+          <FinaleThread lang={lang} backHref={contentsHref} compact />
+        </div>
+      )
+    }
+    if (n === endPage) {
       return (
         <div className={`book-page ${edge}`} style={frame}>
           <div className="flex h-full flex-col items-center justify-center gap-6 text-center">
@@ -440,6 +466,12 @@ export function BookReader({
         </div>
       )
     }
+    if (finale && n === totalPages)
+      return (
+        <div className={`book-page ${edge}`} style={frame}>
+          <FinaleStamp lang={lang} />
+        </div>
+      )
     if (n < 0 || n >= totalPages) return <div className={`book-page book-page--blank ${edge}`} />
     const k = n - 1
     const shift = k * (geo.W + GAP) * (rtl ? 1 : -1)
