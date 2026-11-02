@@ -24,7 +24,7 @@ No build step, no framework — plain HTML/CSS/JS. Push to the repo and GitHub P
 ├── styles.css            Shared design system (index/services/work/about/contact/success).
 ├── app.js                Shared JS — sticky nav, mobile menu, fade-up, stat counters.
 ├── CNAME                 GitHub Pages custom domain → dubelteam.com
-├── .nojekyll             Serve files as-is (disables Jekyll).
+├── .nojekyll             Serve files as-is (disables Jekyll). Required: the book ships a `_next/` folder.
 ├── robots.txt            Indexing rules + sitemap link.
 ├── sitemap.xml           Public URLs for search engines.
 ├── _redirects            INERT on GitHub Pages (Netlify-only). Kept for reference.
@@ -133,3 +133,26 @@ product, turn an idea into a working system).
 
 **Main CTA:** `contact.html?practice=idea` — "Tell us the idea →". The dropdown option
 `I have an idea` is preselected by that query string.
+
+---
+
+## Broken Collective — the book (`/broken-collective/`)
+
+Maor Harel's novel, published free in Hebrew and English at
+`https://www.dubelteam.com/broken-collective/`.
+
+```
+broken-collective-src/   Source — Next.js (static export), TypeScript, Tailwind v4.
+  content/he/…, content/en/…   One Markdown file per chapter. "## " starts a scene.
+  src/lib/book.ts              Seasons (published / editing) and chapter illustrations.
+broken-collective/        Built output — generated, never edit by hand.
+prod-brokencollective.svg Book graphic used on index.html and platforms.html.
+.github/workflows/broken-collective.yml   Rebuilds /broken-collective/ on every change to the source.
+```
+
+**To fix a typo or edit a chapter:** open the chapter file under
+`broken-collective-src/content/` on GitHub, click the pencil, edit, commit to `main`.
+The workflow rebuilds and publishes the book within a few minutes (Actions tab).
+
+**To publish the next season:** add its chapter files in both languages and set the
+season's `status` to `'published'` in `src/lib/book.ts`.

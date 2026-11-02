@@ -1,0 +1,7 @@
+:HL["/broken-collective/_next/static/chunks/3s9xga4-uywuv.css","style"]
+:HC["/",""]
+:HL["/logo.png","image"]
+3:[["children",{"s":"__PAGE__","h":160}]]
+2:[["children",{"s":"about","h":96,"c":"$Q3"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"he","s":[]},"h":112,"c":"$Q2"}]]
+0:{"b":"8WtTaHf9Ti_SGVV_dyvy7","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
