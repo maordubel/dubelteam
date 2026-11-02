@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { FinaleBill, FinaleIntro, FinaleStamp, FinaleThread } from './SupportFinale'
+import { voiceTier } from '@/lib/speech-he'
 import { useSpeech } from './useSpeech'
 
 export type BookLabels = {
@@ -42,6 +43,9 @@ export type BookLabels = {
   nextChapter: string
   backToBook: string
   glyph: string
+  tierNatural: string
+  tierGood: string
+  betterVoice: string
 }
 
 type NavTarget = { href: string; title: string; label: string } | null
@@ -733,7 +737,14 @@ export function BookReader({
                           onChange={() => speech.setVoice(v.voiceURI)}
                         />
                         <span className="min-w-0">
-                          <span className="block truncate">{v.name.replace(/\s*\(.*?\)\s*/g, ' ').trim()}</span>
+                          <span className="flex items-center gap-2">
+                            <span className="truncate">{v.name.replace(/\s*\(.*?\)\s*/g, ' ').trim()}</span>
+                            {voiceTier(v) !== 'basic' ? (
+                              <span className={`voice-tier voice-tier--${voiceTier(v)}`}>
+                                {voiceTier(v) === 'natural' ? labels.tierNatural : labels.tierGood}
+                              </span>
+                            ) : null}
+                          </span>
                           <span className="block text-xs text-ink-faint" dir="ltr">
                             {v.lang}
                             {v.localService ? '' : ' · online'}
@@ -747,6 +758,9 @@ export function BookReader({
                   ))}
                 </ul>
               )}
+              {speech.voices.length > 0 && !speech.voices.some((v) => voiceTier(v) === 'natural') ? (
+                <p className="mt-3 text-xs leading-relaxed text-ink-faint">{labels.betterVoice}</p>
+              ) : null}
               <div className="sheet-row">
                 <span>{labels.speed}</span>
                 <div className="flex gap-2">
