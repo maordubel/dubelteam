@@ -148,6 +148,7 @@ broken-collective-src/   Source — Next.js (static export), TypeScript, Tailwin
   src/lib/book.ts              Seasons (published / editing) and chapter illustrations.
 broken-collective/        Built output — generated, never edit by hand.
 prod-brokencollective.svg Book graphic used on index.html and platforms.html.
+.assetsignore             Keeps the book source and CI files out of the Cloudflare assets upload.
 .github/workflows/broken-collective.yml   Rebuilds /broken-collective/ on every change to the source.
 ```
 

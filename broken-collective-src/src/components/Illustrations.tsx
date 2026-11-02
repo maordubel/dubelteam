@@ -584,6 +584,88 @@ export function AntennaArt(props: ArtProps) {
   )
 }
 
+/* ───────────────────────── Season 2022 plates ───────────────────────── */
+
+/** 2022·1 — a family photo torn in two, broken china, a sunflower behind */
+export function TornPhotoArt(props: ArtProps) {
+  const p = 'tp'
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.deep} />
+      {/* sunflower */}
+      <g transform="translate(300 120)">
+        {Array.from({ length: 14 }, (_, i) => (
+          <ellipse key={i} cx="0" cy="-48" rx="13" ry="30" fill={C.paper} stroke={C.ink} strokeWidth="2.5" transform={`rotate(${i * (360 / 14)})`} />
+        ))}
+        <circle r="30" fill={C.ink} />
+        <circle r="30" fill={`url(#${p}-dots-red)`} opacity="0.5" />
+      </g>
+      <line x1="300" y1="150" x2="300" y2="300" stroke={C.sea} strokeWidth="7" />
+      <path d="M300 230 q-36 -6 -48 -30 q30 -2 48 30z" fill={C.sea} />
+      {/* the torn photo: left half */}
+      <g transform="rotate(-7 120 300)">
+        <path d="M40 210 L162 210 L150 240 L168 270 L148 300 L166 336 L152 390 L40 390 Z" fill={C.paper} stroke={C.ink} strokeWidth="3" />
+        <rect x="54" y="224" width="96" height="152" fill={C.sea} opacity="0.85" />
+        <g fill={C.ink}>
+          <circle cx="82" cy="276" r="16" /><path d="M58 376 q0 -70 24 -76 q24 6 24 76z" />
+          <circle cx="128" cy="290" r="13" /><path d="M110 376 q0 -58 18 -62 q18 4 18 62z" />
+        </g>
+      </g>
+      {/* right half, drifting away */}
+      <g transform="rotate(9 270 360)">
+        <path d="M206 300 L330 300 L330 480 L212 480 L226 430 L208 396 L226 360 L210 330 Z" fill={C.paper} stroke={C.ink} strokeWidth="3" />
+        <rect x="222" y="314" width="96" height="152" fill={C.red} opacity="0.85" />
+        <g fill={C.ink}>
+          <circle cx="252" cy="372" r="16" /><path d="M228 466 q0 -66 24 -72 q24 6 24 72z" />
+          <circle cx="294" cy="380" r="13" /><path d="M276 466 q0 -56 18 -60 q18 4 18 60z" />
+        </g>
+      </g>
+      {/* china shards */}
+      <g fill={C.paper} stroke={C.ink} strokeWidth="2">
+        <polygon points="40,440 70,428 64,456" />
+        <polygon points="96,452 120,440 126,466 104,470" />
+        <polygon points="160,430 176,420 182,444" />
+        <polygon points="350,420 372,410 378,436 360,440" />
+      </g>
+      <path d="M44 446 q10 -6 18 -2" stroke={C.sea} strokeWidth="2" fill="none" />
+    </Plate>
+  )
+}
+
+/** 2022·2 — a story posted from Athens: a red flag before the Acropolis, a red heart in reply */
+export function StoryArt(props: ArtProps) {
+  const p = 'st'
+  return (
+    <Plate p={p} {...props}>
+      <rect width="400" height="480" fill={C.ink} />
+      {/* phone */}
+      <rect x="86" y="24" width="228" height="432" rx="28" fill={C.soft} />
+      <rect x="100" y="44" width="200" height="392" rx="16" fill={C.deep} />
+      <g fill={C.paper} opacity="0.9">
+        {[0, 1, 2, 3].map((i) => <rect key={i} x={110 + i * 46} y="54" width="40" height="4" rx="2" />)}
+      </g>
+      {/* acropolis */}
+      <path d="M100 300 Q 170 250 200 256 Q 240 250 300 290 L300 436 L100 436 Z" fill={C.sea} />
+      <g fill={C.ink}>
+        <polygon points="150,226 250,226 200,208" />
+        <rect x="146" y="226" width="108" height="6" />
+        {Array.from({ length: 6 }, (_, i) => <rect key={i} x={152 + i * 17} y="234" width="7" height="26" />)}
+        <rect x="142" y="260" width="116" height="6" />
+      </g>
+      {/* the red flag */}
+      <line x1="128" y1="96" x2="128" y2="250" stroke={C.ink} strokeWidth="4" />
+      <path d="M130 98 Q 180 86 228 104 Q 250 112 270 104 L270 168 Q 240 178 214 168 Q 170 152 130 164 Z" fill={C.red} />
+      <path d="M130 98 Q 180 86 228 104 Q 250 112 270 104 L270 168 Q 240 178 214 168 Q 170 152 130 164 Z" fill={`url(#${p}-dots-ink)`} opacity="0.25" />
+      {/* reply bubble with a heart */}
+      <g transform="translate(176 340)">
+        <rect width="112" height="58" rx="20" fill={C.paper} />
+        <path d="M18 58 l-10 16 l26 -16z" fill={C.paper} />
+        <path d="M44 24 c0 -11 16 -11 16 0 c0 -11 16 -11 16 0 c0 14 -16 22 -16 26 c0 -4 -16 -12 -16 -26z" fill={C.red} />
+      </g>
+    </Plate>
+  )
+}
+
 /* ───────────────────────── Season emblems (contents page) ───────────────────────── */
 
 /** Emblems sit on the page itself, so unlike the plates they follow the reading theme. */
@@ -688,4 +770,6 @@ export const ChapterArt = {
   athens: AthensArt,
   screens: ScreensArt,
   antenna: AntennaArt,
+  tornphoto: TornPhotoArt,
+  story: StoryArt,
 }
