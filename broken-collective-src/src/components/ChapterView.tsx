@@ -98,6 +98,9 @@ export function ChapterView({
           nextChapter: t(lang, 'nav.next'),
           backToBook: t(lang, 'nav.backToBook'),
           glyph: lang === 'he' ? 'א' : 'A',
+          tierNatural: t(lang, 'book.tierNatural'),
+          tierGood: t(lang, 'book.tierGood'),
+          betterVoice: t(lang, 'book.betterVoice'),
         }}
       />
       <div className="scroll-only">

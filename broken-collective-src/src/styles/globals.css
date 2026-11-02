@@ -681,3 +681,17 @@ html[data-theme='night'] .finale-bill {
   opacity: 0.8;
   letter-spacing: 0.04em;
 }
+.voice-tier {
+  flex-shrink: 0;
+  border: 1px solid currentColor;
+  padding: 0 6px;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+.voice-tier--natural {
+  color: var(--color-thread);
+}
+.voice-tier--good {
+  color: var(--color-ink-faint);
+}

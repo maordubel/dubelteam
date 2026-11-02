@@ -1,10 +1,9 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { normalizeHebrew, segmentHebrew, voiceScore } from '@/lib/speech-he'
 
-type Chunk = { block: number; text: string }
-
-const PREFERRED = /natural|neural|enhanced|premium|online|google|siri/i
+type Chunk = { block: number; text: string; lang: 'he' | 'en' }
 
 function store(key: string, value?: string): string | null {
   try {
@@ -16,23 +15,34 @@ function store(key: string, value?: string): string | null {
   return null
 }
 
-/** Split long paragraphs into sentence-sized chunks: some engines stop after ~15s of one utterance. */
-function chunk(texts: string[], from: number): Chunk[] {
+/**
+ * Split paragraphs into sentence-sized chunks (some engines stop after ~15s of one utterance).
+ * Hebrew is normalised for speech and English runs are split out for an English voice.
+ */
+function chunk(texts: string[], from: number, lang: 'he' | 'en'): Chunk[] {
   const out: Chunk[] = []
   for (let i = from; i < texts.length; i++) {
-    const parts = texts[i].match(/[^.!?…:;]+[.!?…:;]*["”']?\s*/g) ?? [texts[i]]
+    const text = lang === 'he' ? normalizeHebrew(texts[i]) : texts[i]
+    const parts = text.match(/[^.!?…:;]+[.!?…:;]*["”']?\s*/g) ?? [text]
+    const sentences: string[] = []
     let buf = ''
     for (const s of parts) {
-      if ((buf + s).length > 220 && buf) {
-        out.push({ block: i, text: buf.trim() })
+      if ((buf + s).length > 200 && buf) {
+        sentences.push(buf.trim())
         buf = ''
       }
       buf += s
     }
-    if (buf.trim()) out.push({ block: i, text: buf.trim() })
+    if (buf.trim()) sentences.push(buf.trim())
+    for (const sentence of sentences) {
+      if (lang === 'he') for (const seg of segmentHebrew(sentence)) out.push({ block: i, ...seg })
+      else out.push({ block: i, text: sentence, lang })
+    }
   }
   return out
 }
+
+const byQuality = (a: SpeechSynthesisVoice, b: SpeechSynthesisVoice) => voiceScore(b) - voiceScore(a) || a.name.localeCompare(b.name)
 
 export type SpeechState = {
   supported: boolean
@@ -58,6 +68,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
     block: null,
   })
   const queue = useRef<Chunk[]>([])
+  const english = useRef<SpeechSynthesisVoice | null>(null)
   const pos = useRef(0)
   const runId = useRef(0)
   const onBlockRef = useRef(onBlock)
@@ -72,7 +83,11 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
       const all = synth.getVoices()
       const mine = all
         .filter((v) => v.lang.toLowerCase().startsWith(lang === 'he' ? 'he' : 'en') || (lang === 'he' && v.lang.toLowerCase().startsWith('iw')))
-        .sort((a, b) => Number(PREFERRED.test(b.name)) - Number(PREFERRED.test(a.name)) || a.name.localeCompare(b.name))
+        .sort(byQuality)
+      english.current =
+        all.filter((v) => /^en[-_](gb|us|ie|au)/i.test(v.lang)).sort(byQuality)[0] ??
+        all.find((v) => v.lang.toLowerCase().startsWith('en')) ??
+        null
       const saved = store(`bc:voice:${lang}`)
       const rate = Number(store('bc:rate')) || 1
       setState((s) => ({
@@ -107,16 +122,22 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
         pos.current = k
         const u = new SpeechSynthesisUtterance(c.text)
         const { voices, voiceURI, rate } = stateRef.current
-        const v = voices.find((x) => x.voiceURI === voiceURI)
+        const own = voices.find((x) => x.voiceURI === voiceURI)
+        const v = c.lang !== lang && english.current ? english.current : own
         if (v) u.voice = v
-        u.lang = v?.lang ?? (lang === 'he' ? 'he-IL' : 'en-GB')
+        u.lang = v?.lang ?? (c.lang === 'he' ? 'he-IL' : 'en-GB')
         u.rate = rate
         u.onstart = () => {
           if (id !== runId.current) return
           setState((s) => (s.block === c.block ? s : { ...s, block: c.block }))
           onBlockRef.current(c.block)
         }
-        u.onend = () => run(k + 1)
+        u.onend = () => {
+          const nxt = queue.current[k + 1]
+          // a breath between paragraphs, like a reader turning to the next one
+          if (nxt && nxt.block !== c.block) window.setTimeout(() => run(k + 1), 320)
+          else run(k + 1)
+        }
         u.onerror = (e) => {
           if (e.error === 'interrupted' || e.error === 'canceled') return
           run(k + 1)
@@ -131,10 +152,10 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
 
   const play = useCallback(
     (fromBlock: number) => {
-      queue.current = chunk(texts, Math.max(0, fromBlock))
+      queue.current = chunk(texts, Math.max(0, fromBlock), lang)
       speakFrom(0)
     },
-    [texts, speakFrom],
+    [texts, speakFrom, lang],
   )
 
   const pause = useCallback(() => {
@@ -175,7 +196,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
       const synth = window.speechSynthesis
       synth.cancel()
       const v = stateRef.current.voices.find((x) => x.voiceURI === uri)
-      const u = new SpeechSynthesisUtterance(sample)
+      const u = new SpeechSynthesisUtterance(lang === 'he' ? normalizeHebrew(sample) : sample)
       if (v) u.voice = v
       u.lang = v?.lang ?? (lang === 'he' ? 'he-IL' : 'en-GB')
       u.rate = stateRef.current.rate
