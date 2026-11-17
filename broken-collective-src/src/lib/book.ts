@@ -67,3 +67,25 @@ export const SITE_URL = `${ORIGIN}${BASE_PATH}`
 
 /** Absolute URL for a path inside the book (paths start with '/'). */
 export const abs = (path: string) => `${SITE_URL}${path}`
+
+/**
+ * Payments run on FAN LIFE's server and its Stripe account (the book site is static): plain links/forms to these doors.
+ * PRINT mirrors fanlife/lib/book/catalog.ts (PAPERBACK + REGIONS) for the running total only — the server's numbers are
+ * what Stripe charges. Change both together.
+ */
+export const PAY_URL = 'https://fanlife.dubelteam.com/api/book'
+export const PRINT = {
+  cents: 1800,
+  regions: {
+    il: { label: { he: 'ישראל', en: 'Israel' }, ship: { standard: { cents: 1100, days: [12, 25] }, express: { cents: 2600, days: [5, 9] } } },
+    eu: { label: { he: 'אירופה ובריטניה', en: 'Europe & UK' }, ship: { standard: { cents: 700, days: [7, 14] }, express: { cents: 1900, days: [3, 6] } } },
+    na: { label: { he: 'ארה״ב וקנדה', en: 'USA & Canada' }, ship: { standard: { cents: 700, days: [6, 12] }, express: { cents: 1900, days: [3, 5] } } },
+    world: { label: { he: 'שאר העולם', en: 'Rest of the world' }, ship: { standard: { cents: 1300, days: [12, 28] }, express: { cents: 3000, days: [5, 9] } } },
+  },
+} as const
+
+/** the book's own goods (mirrors fanlife/lib/book/catalog.ts GOODS — the server's numbers are what Stripe charges) */
+export const GOODS = {
+  tee: { cents: 3200, sizes: ['S', 'M', 'L', 'XL', '2XL'], ship: { il: 900, eu: 600, na: 600, world: 1100 } },
+  cap: { cents: 2800, sizes: ['One size'], ship: { il: 900, eu: 600, na: 600, world: 1100 } },
+} as const
