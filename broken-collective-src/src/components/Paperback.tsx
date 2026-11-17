@@ -80,7 +80,8 @@ export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boo
       setError(new URLSearchParams(location.search).get('pay') === 'error')
     } catch {}
   }, [])
-  const post = PRINT.regions[region].ship[ship]
+  const options = (['standard', 'express'] as const).filter((s) => PRINT.regions[region].ship[s])
+  const post = PRINT.regions[region].ship[ship] ?? PRINT.regions[region].ship.standard!
   const total = PRINT.cents + post.cents
 
   return (
@@ -123,11 +124,11 @@ export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boo
         <fieldset className="pb-set">
           <legend>{c.ship}</legend>
           <div className="pb-chips">
-            {(['standard', 'express'] as const).map((s) => {
-              const o = PRINT.regions[region].ship[s]
+            {options.map((s) => {
+              const o = PRINT.regions[region].ship[s]!
               return (
                 <label key={s} className="pb-radio pb-radio--wide">
-                  <input type="radio" name="ship" value={s} checked={ship === s} onChange={() => setShip(s)} />
+                  <input type="radio" name="ship" value={s} checked={(PRINT.regions[region].ship[ship] ? ship : 'standard') === s} onChange={() => setShip(s)} />
                   <span>
                     <span>
                       {c[s]} · <bdi dir="ltr">{eur(o.cents)}</bdi>

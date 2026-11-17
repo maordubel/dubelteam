@@ -74,15 +74,18 @@ export const abs = (path: string) => `${SITE_URL}${path}`
  * what Stripe charges. Change both together.
  */
 export const PAY_URL = 'https://fanlife.dubelteam.com/api/book'
-export const PRINT = {
+export const PRINT: {
+  cents: number
+  regions: Record<'il' | 'eu' | 'na' | 'world', { label: { he: string; en: string }; ship: Partial<Record<'standard' | 'express', { cents: number; days: readonly [number, number] }>> }>
+} = {
   cents: 1800,
   regions: {
-    il: { label: { he: 'ישראל', en: 'Israel' }, ship: { standard: { cents: 1100, days: [12, 25] }, express: { cents: 2600, days: [5, 9] } } },
-    eu: { label: { he: 'אירופה ובריטניה', en: 'Europe & UK' }, ship: { standard: { cents: 700, days: [7, 14] }, express: { cents: 1900, days: [3, 6] } } },
-    na: { label: { he: 'ארה״ב וקנדה', en: 'USA & Canada' }, ship: { standard: { cents: 700, days: [6, 12] }, express: { cents: 1900, days: [3, 5] } } },
-    world: { label: { he: 'שאר העולם', en: 'Rest of the world' }, ship: { standard: { cents: 1300, days: [12, 28] }, express: { cents: 3000, days: [5, 9] } } },
+    il: { label: { he: 'ישראל', en: 'Israel' }, ship: { standard: { cents: 3200, days: [6, 12] } } },
+    eu: { label: { he: 'אירופה ובריטניה', en: 'Europe & UK' }, ship: { standard: { cents: 700, days: [7, 14] }, express: { cents: 1400, days: [4, 8] } } },
+    na: { label: { he: 'ארה״ב וקנדה', en: 'USA & Canada' }, ship: { standard: { cents: 600, days: [6, 12] }, express: { cents: 1900, days: [3, 6] } } },
+    world: { label: { he: 'שאר העולם', en: 'Rest of the world' }, ship: { standard: { cents: 900, days: [12, 28] }, express: { cents: 1600, days: [5, 9] } } },
   },
-} as const
+}
 
 /** the book's own goods (mirrors fanlife/lib/book/catalog.ts GOODS — the server's numbers are what Stripe charges).
  * Made in the EU: Stanley/Stella Creator 2.0 by OPT OnDemand, the distressed dad cap embroidered by Printful.
