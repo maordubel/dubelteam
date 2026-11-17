@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { FinaleBill, FinaleIntro, FinaleStamp, FinaleThread } from './SupportFinale'
+import { Paperback } from './Paperback'
 import { voiceTier } from '@/lib/speech-he'
 import { useSpeech } from './useSpeech'
 
@@ -205,7 +206,7 @@ export function BookReader({
   }, [mode, measure, size])
 
   const endPage = textPages + 1
-  const totalPages = textPages + 2 + (finale ? 2 : 0) // title page + text + end page (+ bill + thread)
+  const totalPages = textPages + 2 + (finale ? 3 : 0) // title page + text + end page (+ bill + paperback + thread)
   const perView = geo?.spread ? 2 : 1
   const views = Math.ceil(totalPages / perView)
   const pagesOf = useCallback((v: number) => (perView === 2 ? [2 * v, 2 * v + 1] : [v]), [perView])
@@ -454,6 +455,15 @@ export function BookReader({
       )
     }
     if (finale && n === endPage + 2) {
+      return (
+        <div className={`book-page ${edge}`} style={frame}>
+          <div className="h-full overflow-y-auto">
+            <Paperback lang={lang} compact />
+          </div>
+        </div>
+      )
+    }
+    if (finale && n === endPage + 3) {
       return (
         <div className={`book-page ${edge}`} style={frame}>
           <FinaleThread lang={lang} backHref={contentsHref} compact />

@@ -806,3 +806,81 @@ html[data-theme='night'] .finale-bill {
   opacity: 0;
   pointer-events: none;
 }
+
+/* ── tip jar: your own amount ── */
+.finale-tier--own { align-items: center; flex-wrap: wrap }
+.finale-own { display: inline-flex; align-items: center; gap: 2px; font-family: var(--font-display); font-size: 1.5rem; color: var(--color-thread) }
+.finale-own input { width: 3.6ch; min-height: 44px; border: 0; border-bottom: 2px solid var(--color-thread); background: transparent;
+  font: inherit; color: inherit; text-align: center; -moz-appearance: textfield }
+.finale-own input::-webkit-inner-spin-button, .finale-own input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0 }
+.finale-own__go { min-height: 44px; padding: 0 14px; background: var(--color-ink); color: var(--color-paper); font-size: 1.15rem }
+.finale-own__go:hover, .finale-own__go:focus-visible { background: var(--color-thread) }
+
+/* ── the paperback: a book object beside a docket, mobile first ── */
+.pb { display: flex; flex-direction: column; gap: 28px }
+.pb-book { position: relative; width: min(62vw, 250px); aspect-ratio: 600 / 760; margin-inline: auto; transform: rotate(-3deg);
+  filter: drop-shadow(0 22px 26px rgb(0 0 0 / .28)) }
+.pb-book__cover { position: absolute; inset: 0; overflow: hidden; border-inline-start: 7px solid var(--art-ink); z-index: 1 }
+[dir='rtl'] .pb-book__cover { border-inline-start: 0; border-inline-end: 7px solid var(--art-ink) }
+.pb-book__band { position: absolute; inset-inline: 0; top: 16%; padding: 8px 6px 6px; background: var(--art-paper); color: var(--art-ink);
+  text-align: center; font-size: clamp(1.4rem, 6vw, 1.9rem); line-height: 1; border-top: 3px solid var(--art-red) }
+.pb-book__pages { position: absolute; inset: 4px -7px 4px auto; width: 12px; z-index: 0;
+  background: repeating-linear-gradient(90deg, #f6efdf 0 1px, #ddd1b8 1px 2px) }
+[dir='rtl'] .pb-book__pages { inset: 4px auto 4px -7px }
+.pb-specs { display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--font-display); font-size: 1rem; letter-spacing: .08em; color: var(--color-ink-faint) }
+.pb-specs li + li::before { content: '·'; margin-inline-end: 14px; color: var(--color-thread) }
+.pb-set { margin-top: 18px; border: 0; padding: 0 }
+.pb-set legend { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: .14em; margin-bottom: 8px }
+.pb-chips { display: flex; flex-wrap: wrap; gap: 8px }
+.pb-radio { position: relative; display: inline-flex }
+.pb-radio input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer }
+.pb-radio > span { display: inline-flex; flex-direction: column; justify-content: center; min-height: 44px; padding: 6px 12px;
+  border: 1px solid var(--color-ink); font-family: var(--font-display); font-size: 1.1rem; line-height: 1.05 }
+.pb-radio--wide { flex: 1 1 140px }
+.pb-radio--wide > span { width: 100%; min-height: 56px }
+.pb-radio small { font-family: var(--font-he), var(--font-en); font-size: .75rem; letter-spacing: 0; color: var(--color-ink-faint) }
+.pb-radio input:checked + span { background: var(--color-ink); color: var(--color-paper) }
+.pb-radio input:checked + span small { color: color-mix(in oklab, var(--color-paper) 75%, transparent) }
+.pb-radio input:focus-visible + span { outline: 2px solid var(--color-thread); outline-offset: 2px }
+.pb-sum { margin-top: 20px; border-top: 1.5px dashed var(--color-rule); padding-top: 10px }
+.pb-sum div { display: flex; justify-content: space-between; padding: 3px 0; color: var(--color-ink-soft) }
+.pb-sum dd { font-family: var(--font-display); font-size: 1.2rem }
+.pb-sum__total { border-top: 1px solid var(--color-ink); margin-top: 6px; padding-top: 8px !important; color: var(--color-ink) !important }
+.pb-sum__total dt { font-family: var(--font-display); font-size: 1.4rem }
+.pb-sum__total dd { font-size: 2rem !important; color: var(--color-thread) }
+.pb-buy { margin-top: 14px; display: flex; width: 100%; min-height: 56px; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 0 20px; background: var(--color-ink); color: var(--color-paper); font-size: 1.5rem; transition: background .2s }
+.pb-buy:hover, .pb-buy:focus-visible { background: var(--color-thread) }
+.pb--compact .pb-set { margin-top: 12px }
+.pb--compact .pb-sum { margin-top: 12px }
+@media (min-width: 64rem) {
+  .pb:not(.pb--compact) { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); align-items: center; gap: 64px }
+  .pb:not(.pb--compact) .pb-book { width: 300px }
+  .pb:not(.pb--compact) .pb-form { max-width: 480px }
+}
+
+/* ── back from Stripe ── */
+.pb-thanks { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+  background: var(--color-ink); color: var(--color-paper); border-bottom: 3px solid var(--color-thread) }
+.pb-thanks p { flex: 1; font-size: .95rem; line-height: 1.4 }
+.pb-thanks button { min-width: 44px; min-height: 44px; font-size: 1.5rem; line-height: 1 }
+
+/* ── the goods: two cards, stacked on a phone, side by side on a desk ── */
+.gd-grid { display: grid; gap: 28px }
+.gd-card { display: flex; flex-direction: column; border: 1.5px solid var(--color-ink); background: color-mix(in oklab, var(--color-paper) 75%, white) }
+.gd-figure { position: relative; aspect-ratio: 4 / 3.2; background: var(--color-paper-deep); border-bottom: 1.5px solid var(--color-ink); overflow: hidden }
+.gd-garment { position: absolute; inset: 8% 14%; width: 72%; height: 84% }
+.gd-print { position: absolute; pointer-events: none }
+.gd-print--back { left: 50%; top: 26%; width: 30%; transform: translateX(-50%) }
+.gd-figure--cap .gd-garment { inset: 18% 12%; width: 76%; height: 64% }
+.gd-print--cap { left: 50%; top: 40%; width: 20%; transform: translateX(-50%) }
+.gd-tag { position: absolute; inset-inline-end: 12px; bottom: 10px; font-size: .95rem; letter-spacing: .2em; color: var(--color-ink-faint) }
+.gd-body { padding: 16px 16px 18px }
+.gd-price { font-size: 1.8rem; color: var(--color-thread) }
+.gd-region { display: flex; flex-direction: column; gap: 6px; margin-top: 16px }
+.gd-region span { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: .14em }
+.gd-region select { min-height: 48px; padding: 0 12px; border: 1px solid var(--color-ink); background: var(--color-paper); color: var(--color-ink); font: inherit }
+@media (min-width: 64rem) {
+  .gd-grid { grid-template-columns: 1fr 1fr; gap: 40px }
+  .gd-figure { aspect-ratio: 4 / 3 }
+}

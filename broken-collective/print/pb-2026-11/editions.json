@@ -1,0 +1,26 @@
+{
+  "en": {
+    "sku": "0550X0850BWSTDPB060UC444MXX",
+    "pages": 214,
+    "spine_in": 0.542,
+    "cover_in": [
+      11.792,
+      8.75
+    ],
+    "interior": "broken-collective-en-interior.pdf",
+    "cover": "broken-collective-en-cover.pdf",
+    "binding": "left-to-right"
+  },
+  "he": {
+    "sku": "0550X0850BWSTDPB060UC444MXX",
+    "pages": 188,
+    "spine_in": 0.4834,
+    "cover_in": [
+      11.7334,
+      8.75
+    ],
+    "interior": "broken-collective-he-interior.pdf",
+    "cover": "broken-collective-he-cover.pdf",
+    "binding": "right-to-left"
+  }
+}

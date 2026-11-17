@@ -1,3 +1,5 @@
+import { Paperback, ThanksNote } from '@/components/Paperback'
+import { Goods } from '@/components/Goods'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -31,6 +33,7 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
   return (
     <>
       <SiteHeader lang={lang} altHref={`/${other}/`} />
+      <ThanksNote lang={lang} />
       <main id="main">
         {/* ── hero ─────────────────────────────────────────── */}
         <section className="mx-auto max-w-6xl px-5 desk:grid desk:grid-cols-[1.05fr_1fr] desk:items-center desk:gap-14 desk:px-10 desk:pt-6">
@@ -94,6 +97,23 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
               </li>
             ))}
           </ol>
+        </section>
+
+        {/* ── the paperback (and the tip jar's way home) ─────── */}
+        <section id="paperback" className="mx-auto mt-16 max-w-6xl scroll-mt-6 px-5 desk:mt-28 desk:px-10">
+          <span id="support" className="block scroll-mt-6" aria-hidden="true" />
+          <ThreadRule />
+          <div className="mt-8">
+            <Paperback lang={lang} />
+          </div>
+        </section>
+
+        {/* ── the goods ─────────────────────────────────────── */}
+        <section id="goods" className="mx-auto mt-16 max-w-6xl scroll-mt-6 px-5 desk:mt-28 desk:px-10">
+          <ThreadRule />
+          <div className="mt-8">
+            <Goods lang={lang} />
+          </div>
         </section>
 
         {/* ── contents ─────────────────────────────────────── */}

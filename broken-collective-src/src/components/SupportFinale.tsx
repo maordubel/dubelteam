@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { SITE_URL, type Lang } from '@/lib/book'
+import { PAY_URL, SITE_URL, type Lang } from '@/lib/book'
+import { Paperback } from './Paperback'
 
 /* ─────────────────────────────────────────────────────────────
    The end of what is written so far.
-   Three beats: "to be continued" → the bar tab (PayPal) → the red thread (free).
+   Four beats: "to be continued" → the bar tab (Stripe) → the paperback → the red thread (free).
    Works as three book pages, or stacked at the end of the scroll view.
    ───────────────────────────────────────────────────────────── */
 
@@ -23,7 +24,10 @@ const COPY = {
     billTitle: 'החשבון, בבקשה.',
     billBar: 'THE ONE · שולחן 7',
     billFoot: '* טיפ לא חובה. הקריאה כאן חינם, תמיד.',
-    billSecure: 'התשלום ב־PayPal, מאובטח. נפתח בחלון חדש.',
+    billSecure: 'תשלום מאובטח ב־Stripe · כרטיס, Apple Pay, Google Pay.',
+    own: 'סכום',
+    ownGo: 'לתשלום',
+    orPaypal: 'או ב־PayPal',
     tiers: [
       { amount: 3, item: 'אספרסו בפסירי', gets: 'פסקה אחת קדימה' },
       { amount: 6, item: 'בירה ב־The One', gets: 'סצנה שלמה' },
@@ -55,7 +59,10 @@ const COPY = {
     billTitle: 'The bill, please.',
     billBar: 'THE ONE · TABLE 7',
     billFoot: '* Tipping optional. Reading here is free, always.',
-    billSecure: 'Secure via PayPal. Opens in a new tab.',
+    billSecure: 'Secure payment by Stripe · card, Apple Pay, Google Pay.',
+    own: 'Amount',
+    ownGo: 'Pay',
+    orPaypal: 'or PayPal',
     tiers: [
       { amount: 3, item: 'An espresso in Psiri', gets: 'one more paragraph' },
       { amount: 6, item: 'A beer at The One', gets: 'a whole scene' },
@@ -128,32 +135,57 @@ export function FinaleBill({ lang, compact = false }: { lang: Lang; compact?: bo
           <span>{c.billBar}</span>
           <span>№ 2026</span>
         </p>
-        {c.tiers.map((tier) => (
-          <a
-            key={tier.item}
-            role="listitem"
-            className="finale-tier"
-            href={paypalHref(c.ppItem, tier.amount)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="flex min-w-0 flex-col">
-              <span className="font-display text-h4">{tier.item}</span>
-              <span className="text-fine text-ink-faint">= {tier.gets}</span>
-            </span>
-            <span className="finale-tier__dots" aria-hidden="true" />
-            <span className="finale-tier__price tabular-nums" dir="ltr">
-              {tier.amount > 0 ? `${c.currency}${tier.amount}` : '€ ?'}
-            </span>
-          </a>
-        ))}
+        {c.tiers.map((tier) =>
+          tier.amount > 0 ? (
+            <a key={tier.item} role="listitem" className="finale-tier" href={giveHref(lang, tier.amount)}>
+              <span className="flex min-w-0 flex-col">
+                <span className="font-display text-h4">{tier.item}</span>
+                <span className="text-fine text-ink-faint">= {tier.gets}</span>
+              </span>
+              <span className="finale-tier__dots" aria-hidden="true" />
+              <span className="finale-tier__price tabular-nums" dir="ltr">{`${c.currency}${tier.amount}`}</span>
+            </a>
+          ) : (
+            <form key={tier.item} role="listitem" className="finale-tier finale-tier--own" method="get" action={`${PAY_URL}/give`}>
+              <input type="hidden" name="lang" value={lang} />
+              <span className="flex min-w-0 flex-col">
+                <span className="font-display text-h4">{tier.item}</span>
+                <span className="text-fine text-ink-faint">= {tier.gets}</span>
+              </span>
+              <span className="finale-tier__dots" aria-hidden="true" />
+              <label className="finale-own" dir="ltr">
+                <span className="sr-only">{c.own}</span>
+                <span aria-hidden="true">€</span>
+                <input name="amount" type="number" inputMode="decimal" min={2} max={500} step={1} defaultValue={10} required />
+              </label>
+              <button type="submit" className="finale-own__go font-display">{c.ownGo}</button>
+            </form>
+          ),
+        )}
         <p className="finale-bill__foot">{c.billFoot}</p>
       </div>
       <p className="mt-3 flex items-center justify-center gap-2 text-fine text-ink-faint">
-        <PayPalMark />
+        <StripeMark />
         {c.billSecure}
       </p>
+      <p className="mt-1 text-center text-fine">
+        <a href={paypalHref(c.ppItem, 0)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 text-ink-faint underline decoration-rule underline-offset-4 hover:text-thread">
+          <PayPalMark />
+          {c.orPaypal}
+        </a>
+      </p>
     </div>
+  )
+}
+
+const giveHref = (lang: Lang, amount: number) => `${PAY_URL}/give?lang=${lang}&amount=${amount}`
+
+function StripeMark() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0" aria-hidden="true">
+      <rect x="2" y="5" width="20" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M2 9.5h20M6 15h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
   )
 }
 
@@ -257,10 +289,13 @@ export function FinaleThread({ lang, backHref, compact = false }: { lang: Lang; 
 /* ── scroll view: all three beats, stacked ── */
 export function SupportFinale({ lang, backHref, note }: { lang: Lang; backHref: string; note?: string }) {
   return (
-    <section className="finale-scroll mt-14" aria-label={COPY[lang].kicker}>
+    <section id="support" className="finale-scroll mt-14 scroll-mt-6" aria-label={COPY[lang].kicker}>
       <FinaleIntro lang={lang} note={note} />
       <div className="mx-auto mt-12 max-w-md">
         <FinaleBill lang={lang} />
+      </div>
+      <div id="paperback" className="mx-auto mt-12 max-w-md scroll-mt-6">
+        <Paperback lang={lang} compact />
       </div>
       <div className="finale-free mx-auto mt-12 max-w-md">
         <FinaleThread lang={lang} backHref={backHref} />
