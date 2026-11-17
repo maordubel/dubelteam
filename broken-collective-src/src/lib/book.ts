@@ -76,14 +76,16 @@ export const abs = (path: string) => `${SITE_URL}${path}`
 export const PAY_URL = 'https://fanlife.dubelteam.com/api/book'
 export const PRINT: {
   cents: number
-  regions: Record<'il' | 'eu' | 'na' | 'world', { label: { he: string; en: string }; ship: Partial<Record<'standard' | 'express', { cents: number; days: readonly [number, number] }>> }>
+  pairCents: number
+  regions: Record<'il' | 'eu' | 'na' | 'world', { label: { he: string; en: string }; ship: Partial<Record<'standard' | 'express', { cents: number; pair: number; days: readonly [number, number] }>> }>
 } = {
   cents: 1800,
+  pairCents: 3200,
   regions: {
-    il: { label: { he: 'ישראל', en: 'Israel' }, ship: { standard: { cents: 3200, days: [6, 12] } } },
-    eu: { label: { he: 'אירופה ובריטניה', en: 'Europe & UK' }, ship: { standard: { cents: 700, days: [7, 14] }, express: { cents: 1400, days: [4, 8] } } },
-    na: { label: { he: 'ארה״ב וקנדה', en: 'USA & Canada' }, ship: { standard: { cents: 600, days: [6, 12] }, express: { cents: 1900, days: [3, 6] } } },
-    world: { label: { he: 'שאר העולם', en: 'Rest of the world' }, ship: { standard: { cents: 900, days: [12, 28] }, express: { cents: 1600, days: [5, 9] } } },
+    il: { label: { he: 'ישראל', en: 'Israel' }, ship: { standard: { cents: 3200, pair: 600, days: [6, 12] } } },
+    eu: { label: { he: 'אירופה ובריטניה', en: 'Europe & UK' }, ship: { standard: { cents: 700, pair: 300, days: [7, 14] }, express: { cents: 1400, pair: 400, days: [4, 8] } } },
+    na: { label: { he: 'ארה״ב וקנדה', en: 'USA & Canada' }, ship: { standard: { cents: 600, pair: 300, days: [6, 12] }, express: { cents: 1900, pair: 500, days: [3, 6] } } },
+    world: { label: { he: 'שאר העולם', en: 'Rest of the world' }, ship: { standard: { cents: 900, pair: 400, days: [12, 28] }, express: { cents: 1600, pair: 500, days: [5, 9] } } },
   },
 }
 

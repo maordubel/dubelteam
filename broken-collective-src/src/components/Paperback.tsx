@@ -19,6 +19,9 @@ const COPY = {
     lead: 'מהדורה ראשונה בכריכה רכה: כל שש העונות, מודפס על נייר קרם, נכרך ונשלח עד אליכם.',
     specs: ['עונות \u20662020–2025\u2069', '14×21.6 ס״מ', 'נייר קרם · כריכה מט'],
     edition: 'מהדורה',
+    both: 'שתיהן',
+    bothNote: 'עברית ואנגלית, בחבילה אחת ובחיוב אחד. חוסכים €4 על הספרים.',
+    books2: 'שני הספרים',
     region: 'לאן שולחים?',
     ship: 'משלוח',
     standard: 'דואר רגיל',
@@ -38,6 +41,9 @@ const COPY = {
     lead: 'First paperback edition: all six seasons, printed on cream paper, bound and posted to your door.',
     specs: ['Seasons 2020–2025', '5.5 × 8.5 in', 'Cream paper · matte cover'],
     edition: 'Edition',
+    both: 'Both',
+    bothNote: 'Hebrew and English in one parcel, one charge. You save €4 on the books.',
+    books2: 'Both books',
     region: 'Where to?',
     ship: 'Post',
     standard: 'Standard',
@@ -55,23 +61,30 @@ const COPY = {
 
 const eur = (cents: number) => `€${(cents / 100).toFixed(cents % 100 ? 2 : 0)}`
 
-function BookPhoto({ edition }: { edition: Lang }) {
-  return (
-    <div className="pb-photo">
-      <img
-        src={`${BASE_PATH}/print/book-${edition}.webp`}
-        alt={edition === 'he' ? 'קולקטיב שבור — הספר המודפס' : 'Broken Collective — the paperback'}
-        width={687}
-        height={900}
-        loading="lazy"
-      />
-    </div>
+function BookPhoto({ edition }: { edition: Lang | 'both' }) {
+  const img = (l: Lang, cls = '') => (
+    <img
+      className={cls}
+      src={`${BASE_PATH}/print/book-${l}.webp`}
+      alt={l === 'he' ? 'קולקטיב שבור — הספר המודפס, עברית' : 'Broken Collective — the paperback, English'}
+      width={687}
+      height={900}
+      loading="lazy"
+    />
   )
+  if (edition === 'both')
+    return (
+      <div className="pb-photo pb-photo--pair">
+        {img('he', 'pb-photo__back')}
+        {img('en', 'pb-photo__front')}
+      </div>
+    )
+  return <div className="pb-photo">{img(edition)}</div>
 }
 
 export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boolean }) {
   const c = COPY[lang]
-  const [edition, setEdition] = useState<Lang>(lang)
+  const [edition, setEdition] = useState<Lang | 'both'>(lang)
   const [region, setRegion] = useState<Region>(lang === 'he' ? 'il' : 'eu')
   const [ship, setShip] = useState<Ship>('standard')
   const [error, setError] = useState(false)
@@ -82,7 +95,10 @@ export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boo
   }, [])
   const options = (['standard', 'express'] as const).filter((s) => PRINT.regions[region].ship[s])
   const post = PRINT.regions[region].ship[ship] ?? PRINT.regions[region].ship.standard!
-  const total = PRINT.cents + post.cents
+  const both = edition === 'both'
+  const books = both ? PRINT.pairCents : PRINT.cents
+  const postCents = post.cents + (both ? post.pair : 0)
+  const total = books + postCents
 
   return (
     <div className={`pb ${compact ? 'pb--compact' : ''}`}>
@@ -96,7 +112,8 @@ export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boo
             <li key={s}>{s}</li>
           ))}
         </ul>
-        <input type="hidden" name="lang" value={edition} />
+        <input type="hidden" name="lang" value={lang} />
+        <input type="hidden" name="ed" value={edition} />
 
         <fieldset className="pb-set">
           <legend>{c.edition}</legend>
@@ -106,8 +123,13 @@ export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boo
                 {c.langs[l]}
               </button>
             ))}
+            <button type="button" className="sheet-chip pb-both" aria-pressed={both} onClick={() => setEdition('both')}>
+              {c.both} · <bdi dir="ltr">{eur(PRINT.pairCents)}</bdi>
+            </button>
           </div>
         </fieldset>
+
+        {both ? <p className="mt-2 text-sm text-ink-soft">{c.bothNote}</p> : null}
 
         <fieldset className="pb-set">
           <legend>{c.region}</legend>
@@ -131,7 +153,7 @@ export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boo
                   <input type="radio" name="ship" value={s} checked={(PRINT.regions[region].ship[ship] ? ship : 'standard') === s} onChange={() => setShip(s)} />
                   <span>
                     <span>
-                      {c[s]} · <bdi dir="ltr">{eur(o.cents)}</bdi>
+                      {c[s]} · <bdi dir="ltr">{eur(o.cents + (both ? o.pair : 0))}</bdi>
                     </span>
                     <small>
                       {o.days[0]}–{o.days[1]} {c.days}
@@ -145,12 +167,12 @@ export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boo
 
         <dl className="pb-sum">
           <div>
-            <dt>{c.book}</dt>
-            <dd dir="ltr">{eur(PRINT.cents)}</dd>
+            <dt>{both ? c.books2 : c.book}</dt>
+            <dd dir="ltr">{eur(books)}</dd>
           </div>
           <div>
             <dt>{c.post}</dt>
-            <dd dir="ltr">{eur(post.cents)}</dd>
+            <dd dir="ltr">{eur(postCents)}</dd>
           </div>
           <div className="pb-sum__total">
             <dt>{c.total}</dt>

@@ -893,3 +893,10 @@ html[data-theme='night'] .finale-bill {
 .tp-cta:hover, .tp-cta:focus-visible { background: var(--color-ink); color: var(--color-paper) }
 .ch-tape { display: flex; align-items: center; gap: 14px; min-height: 64px; margin-top: 40px; padding: 12px 16px; border: 1.5px solid var(--color-ink); background: color-mix(in oklab, var(--color-paper) 70%, white) }
 .ch-tape:hover, .ch-tape:focus-visible { border-color: var(--color-thread) }
+
+/* both editions: the Hebrew stands behind, the English leans in front */
+.pb-photo--pair { position: relative; aspect-ratio: 687 / 900 }
+.pb-photo--pair img { position: absolute; width: 82% }
+.pb-photo__back { inset-inline-start: 0; top: 0; transform: rotate(-4deg) }
+.pb-photo__front { inset-inline-end: 0; bottom: 0; transform: rotate(3deg) }
+.pb-both[aria-pressed='true'] { background: var(--color-thread); border-color: var(--color-thread); color: var(--color-paper) }
