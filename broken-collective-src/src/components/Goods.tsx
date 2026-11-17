@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { BASE_PATH, GOODS, PAY_URL, PRINT, type Lang } from '@/lib/book'
+import { GOODS, PAY_URL, PRINT, type Lang } from '@/lib/book'
 
 /* ─────────────────────────────────────────────────────────────
    The book's own goods: one shirt, one cap. Made to order and posted.
@@ -20,6 +20,8 @@ const COPY = {
     tee: { name: 'החולצה', line: 'כותנה כבדה בצביעת בגד, שנהב. מקדימה הקשר, מאחור הסדק — תפור בחוט אדום.' },
     cap: { name: 'הכובע', line: 'כובע אבא רקום. חוט אדום אחד, קשר אחד.' },
     size: 'מידה',
+    colour: 'צבע',
+    colours: { Khaki: 'חאקי', Black: 'שחור', Ivory: 'שנהב' },
     region: 'לאן?',
     post: 'משלוח',
     buy: 'להזמנה',
@@ -30,8 +32,10 @@ const COPY = {
     title: 'The thread, worn.',
     lead: 'Two pieces, printed and embroidered to order and posted straight to you.',
     tee: { name: 'The shirt', line: 'Heavy garment-dyed cotton, ivory. The knot on the chest, the crack on the back — stitched in red.' },
-    cap: { name: 'The cap', line: 'Embroidered dad cap. One red thread, one knot.' },
+    cap: { name: 'The cap', line: 'Embroidered dad cap, khaki or black. One red thread, one knot.' },
     size: 'Size',
+    colour: 'Colour',
+    colours: { Khaki: 'Khaki', Black: 'Black', Ivory: 'Ivory' },
     region: 'Where to?',
     post: 'post',
     buy: 'Order',
@@ -40,32 +44,13 @@ const COPY = {
 } as const
 
 const eur = (c: number) => `€${(c / 100).toFixed(c % 100 ? 2 : 0)}`
-const art = (f: string) => `${BASE_PATH}/merch/v1/${f}`
 
-function TeeShape({ lang }: { lang: Lang }) {
+function Photos({ item, lang }: { item: Item; lang: Lang }) {
+  const [main, second] = GOODS[item].photos
   return (
-    <div className="gd-figure gd-figure--tee" aria-hidden="true">
-      <svg viewBox="0 0 400 420" className="gd-garment">
-        <path d="M120 20 Q200 52 280 20 L380 70 L350 160 L310 145 L310 405 L90 405 L90 145 L50 160 L20 70 Z" fill="#F4EBDA" stroke="var(--color-ink)" strokeWidth="3" strokeLinejoin="round" />
-        <path d="M150 28 Q200 62 250 28" fill="none" stroke="var(--color-ink)" strokeWidth="3" />
-      </svg>
-      <img className="gd-print gd-print--back" src={art('show-tee-back.png')} alt="" loading="lazy" />
-      <span className="gd-tag font-display">{lang === 'he' ? 'גב' : 'back'}</span>
-    </div>
-  )
-}
-
-function CapShape() {
-  return (
-    <div className="gd-figure gd-figure--cap" aria-hidden="true">
-      <svg viewBox="0 0 400 300" className="gd-garment">
-        <path d="M78 196 C 70 96, 140 52, 200 52 C 260 52, 330 96, 322 196 Z" fill="#CFC3A8" stroke="var(--color-ink)" strokeWidth="3" strokeLinejoin="round" />
-        <path d="M200 54 C 186 100, 182 150, 186 196 M200 54 C 214 100, 218 150, 214 196" fill="none" stroke="var(--color-ink)" strokeWidth="1.5" opacity=".35" />
-        <path d="M66 196 C 130 214, 270 214, 334 196 C 344 222, 312 262, 200 266 C 88 262, 56 222, 66 196 Z" fill="#BFB295" stroke="var(--color-ink)" strokeWidth="3" strokeLinejoin="round" />
-        <path d="M86 216 C 150 232, 250 232, 314 216" fill="none" stroke="var(--color-ink)" strokeWidth="1.2" strokeDasharray="4 5" opacity=".5" />
-        <circle cx="200" cy="52" r="6" fill="#BFB295" stroke="var(--color-ink)" strokeWidth="2" />
-      </svg>
-      <img className="gd-print gd-print--cap" src={art('show-cap.png')} alt="" loading="lazy" />
+    <div className="gd-figure">
+      <img className="gd-photo" src={main} alt={lang === 'he' ? (item === 'tee' ? 'החולצה, מאחור' : 'הכובע') : item === 'tee' ? 'The shirt, back' : 'The cap'} loading="lazy" width={1200} height={1200} />
+      <img className="gd-photo gd-photo--alt" src={second} alt="" aria-hidden="true" loading="lazy" width={1200} height={1200} />
     </div>
   )
 }
@@ -75,19 +60,33 @@ function Card({ lang, item }: { lang: Lang; item: Item }) {
   const g = GOODS[item]
   const [size, setSize] = useState<string>(g.sizes.length > 1 ? 'M' : g.sizes[0])
   const [region, setRegion] = useState<Region>(lang === 'he' ? 'il' : 'eu')
+  const [colour, setColour] = useState<string>(g.colours[0])
   const post = g.ship[region]
   return (
     <form className="gd-card" method="get" action={`${PAY_URL}/goods`}>
       <input type="hidden" name="item" value={item} />
       <input type="hidden" name="lang" value={lang} />
       <input type="hidden" name="size" value={size} />
-      {item === 'tee' ? <TeeShape lang={lang} /> : <CapShape />}
+      <input type="hidden" name="colour" value={colour} />
+      <Photos item={item} lang={lang} />
       <div className="gd-body">
         <div className="flex items-baseline justify-between gap-3">
           <h3 className="font-display text-h3">{c[item].name}</h3>
           <span className="gd-price font-display" dir="ltr">{eur(g.cents)}</span>
         </div>
         <p className="mt-1 text-sm leading-relaxed text-ink-soft">{c[item].line}</p>
+        {g.colours.length > 1 ? (
+          <fieldset className="pb-set">
+            <legend>{c.colour}</legend>
+            <div className="pb-chips">
+              {g.colours.map((x) => (
+                <button key={x} type="button" className="sheet-chip" aria-pressed={colour === x} onClick={() => setColour(x)}>
+                  {c.colours[x as keyof typeof c.colours] ?? x}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+        ) : null}
         {g.sizes.length > 1 ? (
           <fieldset className="pb-set">
             <legend>{c.size}</legend>

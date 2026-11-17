@@ -84,8 +84,22 @@ export const PRINT = {
   },
 } as const
 
-/** the book's own goods (mirrors fanlife/lib/book/catalog.ts GOODS — the server's numbers are what Stripe charges) */
+/** the book's own goods (mirrors fanlife/lib/book/catalog.ts GOODS — the server's numbers are what Stripe charges).
+ * Photos are Printify's own mockups of the two real products in the "Broken Collective" store. */
+const MOCK = 'https://images.printify.com/mockup'
 export const GOODS = {
-  tee: { cents: 3200, sizes: ['S', 'M', 'L', 'XL', '2XL'], ship: { il: 900, eu: 600, na: 600, world: 1100 } },
-  cap: { cents: 2800, sizes: ['One size'], ship: { il: 900, eu: 600, na: 600, world: 1100 } },
+  tee: {
+    cents: 4500,
+    colours: ['Ivory'],
+    sizes: ['S', 'M', 'L', 'XL', '2XL'],
+    ship: { il: 1500, eu: 1100, na: 700, world: 1500 },
+    photos: [`${MOCK}/6afc0ca1fd4d7f230d0ac10b/78993/98446/broken-collective-tee.jpg`, `${MOCK}/6afc0ca1fd4d7f230d0ac10b/78993/126094/broken-collective-tee.jpg`],
+  },
+  cap: {
+    cents: 3500,
+    colours: ['Khaki', 'Black'],
+    sizes: ['One size'],
+    ship: { il: 1300, eu: 1000, na: 700, world: 1300 },
+    photos: [`${MOCK}/6afc0ecbf17cef87cb02ee8e/105375/102307/broken-collective-cap.jpg`, `${MOCK}/6afc0ecbf17cef87cb02ee8e/105375/112104/broken-collective-cap.jpg`],
+  },
 } as const
