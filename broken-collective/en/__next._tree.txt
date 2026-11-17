@@ -1,6 +1,6 @@
-:HL["/broken-collective/_next/static/chunks/3oqjf7f42_3jv.css","style"]
+:HL["/broken-collective/_next/static/chunks/0ag1-ry-yjejk.css","style"]
 :HC["/",""]
 :HL["/logo.png","image"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"lang","t":"d","k":"en","s":[]},"h":112,"c":"$Q2"}]]
-0:{"b":"H7VuysHPF4KFobRwVB8xA","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"zmUfW2_9WJMdpun30voPE","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
