@@ -100,6 +100,6 @@ export const GOODS = {
     colours: ['Khaki', 'Black'],
     sizes: ['One size'],
     ship: { il: 1300, eu: 1000, na: 700, world: 1300 },
-    photos: [`${MOCK}/6afc0ecbf17cef87cb02ee8e/105375/102307/broken-collective-cap.jpg`, `${MOCK}/6afc0ecbf17cef87cb02ee8e/105375/112104/broken-collective-cap.jpg`],
+    photos: [`${MOCK}/6afc0ecbf17cef87cb02ee8e/105375/102307/broken-collective-cap.jpg`, `${MOCK}/6afc0ecbf17cef87cb02ee8e/105375/102724/broken-collective-cap.jpg`],
   },
 } as const
