@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { CoverArt } from './Illustrations'
-import { PAY_URL, PRINT, type Lang } from '@/lib/book'
+import { BASE_PATH, PAY_URL, PRINT, type Lang } from '@/lib/book'
 
 /* ─────────────────────────────────────────────────────────────
    The paperback. The book you read here, printed on cream paper and posted.
@@ -18,7 +17,7 @@ const COPY = {
     kicker: 'הספר המודפס',
     title: 'להחזיק אותו ביד.',
     lead: 'מהדורה ראשונה בכריכה רכה: כל שש העונות, מודפס על נייר קרם, נכרך ונשלח עד אליכם.',
-    specs: ['עונות 2020–2025', '14×21.6 ס״מ', 'נייר קרם · כריכה מט'],
+    specs: ['עונות \u20662020–2025\u2069', '14×21.6 ס״מ', 'נייר קרם · כריכה מט'],
     edition: 'מהדורה',
     region: 'לאן שולחים?',
     ship: 'משלוח',
@@ -56,14 +55,16 @@ const COPY = {
 
 const eur = (cents: number) => `€${(cents / 100).toFixed(cents % 100 ? 2 : 0)}`
 
-function BookObject({ lang }: { lang: Lang }) {
+function BookPhoto({ edition }: { edition: Lang }) {
   return (
-    <div className="pb-book" aria-hidden="true">
-      <div className="pb-book__cover">
-        <CoverArt className="h-full w-full" />
-        <span className="pb-book__band font-display">{lang === 'he' ? 'קולקטיב שבור' : 'Broken Collective'}</span>
-      </div>
-      <div className="pb-book__pages" />
+    <div className="pb-photo">
+      <img
+        src={`${BASE_PATH}/print/book-${edition}.webp`}
+        alt={edition === 'he' ? 'קולקטיב שבור — הספר המודפס' : 'Broken Collective — the paperback'}
+        width={687}
+        height={900}
+        loading="lazy"
+      />
     </div>
   )
 }
@@ -84,7 +85,7 @@ export function Paperback({ lang, compact = false }: { lang: Lang; compact?: boo
 
   return (
     <div className={`pb ${compact ? 'pb--compact' : ''}`}>
-      {!compact ? <BookObject lang={lang} /> : null}
+      <BookPhoto edition={edition} />
       <form className="pb-form" method="get" action={`${PAY_URL}/paperback`}>
         <p className="kicker text-thread!">{c.kicker}</p>
         <h2 className={`mt-1 font-display ${compact ? 'text-h2' : 'text-h1'} text-ink`}>{c.title}</h2>

@@ -68,6 +68,20 @@ export default async function BookHome({ params }: { params: Promise<{ lang: str
               <ContinueReading lang={lang} label={t(lang, 'nav.continue')} />
               <p className="mt-3 text-sm text-ink-faint">{t(lang, 'book.free')}</p>
             </div>
+            <div className="mt-6 grid grid-cols-2 gap-2 desk:flex desk:w-fit">
+              <Link href={`/${lang}/#paperback`} className="tp-cta justify-between">
+                <span>{lang === 'he' ? 'הספר המודפס' : 'The paperback'}</span>
+                <span className="text-thread" dir="ltr">€18</span>
+              </Link>
+              <Link href={`/${lang}/tapes/`} className="tp-cta justify-between">
+                <span>{lang === 'he' ? 'הקלטות' : 'The tapes'}</span>
+                <span className="tp-rec" aria-hidden="true" />
+              </Link>
+              <Link href={`/${lang}/#goods`} className="tp-cta col-span-2 justify-between desk:col-span-1">
+                <span>{lang === 'he' ? 'החולצה והכובע' : 'Shirt & cap'}</span>
+                <span className="text-thread" dir="ltr">€29</span>
+              </Link>
+            </div>
           </div>
 
           {/* mobile: full-bleed cover shards; desktop: a tilted print */}

@@ -85,21 +85,34 @@ export const PRINT = {
 } as const
 
 /** the book's own goods (mirrors fanlife/lib/book/catalog.ts GOODS — the server's numbers are what Stripe charges).
- * Photos are Printify's own mockups of the two real products in the "Broken Collective" store. */
+ * Made in the EU: Stanley/Stella Creator 2.0 by OPT OnDemand, the distressed dad cap embroidered by Printful.
+ * Photos are Printify's mockups of the two real products in the "Broken Collective" store. */
 const MOCK = 'https://images.printify.com/mockup'
 export const GOODS = {
   tee: {
-    cents: 4500,
-    colours: ['Ivory'],
-    sizes: ['S', 'M', 'L', 'XL', '2XL'],
-    ship: { il: 1500, eu: 1100, na: 700, world: 1500 },
-    photos: [`${MOCK}/6afc0ca1fd4d7f230d0ac10b/78993/98446/broken-collective-tee.jpg`, `${MOCK}/6afc0ca1fd4d7f230d0ac10b/78993/126094/broken-collective-tee.jpg`],
+    cents: 2900,
+    colours: ['Natural Raw'],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+    ship: { il: 1000, eu: 500, na: 900, world: 1100 },
+    photos: [`${MOCK}/6afc1aa78235d40d740c8687/106014/102331/broken-collective-tee.jpg`, `${MOCK}/6afc1aa78235d40d740c8687/106014/103511/broken-collective-tee.jpg`],
   },
   cap: {
-    cents: 3500,
-    colours: ['Khaki', 'Black'],
+    cents: 2900,
+    colours: ['Black', 'Khaki'],
     sizes: ['One size'],
-    ship: { il: 1300, eu: 1000, na: 700, world: 1300 },
-    photos: [`${MOCK}/6afc0ecbf17cef87cb02ee8e/105375/102307/broken-collective-cap.jpg`, `${MOCK}/6afc0ecbf17cef87cb02ee8e/105375/102724/broken-collective-cap.jpg`],
+    ship: { il: 1000, eu: 500, na: 900, world: 1100 },
+    photos: [`${MOCK}/6afc1c5655472a51c00eeb8e/118238/109493/broken-collective-cap.jpg`, `${MOCK}/6afc1c5655472a51c00eeb8e/118238/110016/broken-collective-cap.jpg`],
   },
 } as const
+
+/** The Kypseli Tapes — the book read as a series on YouTube, one tape every Sunday at 19:00 (Athens). Newest last. */
+export const CHANNEL = { url: 'https://www.youtube.com/@TheKypseliTapes', uploads: 'UUEfldw4qlzEAxBoNmgaWd7g' }
+export type Tape = { n: number; id: string; chapter: string; title: { he: string; en: string }; date: string }
+export const TAPES: Tape[] = [
+  { n: 0, id: 'Ya1CSJyEF1g', chapter: 'intro', title: { he: 'מבוא', en: 'Prologue' }, date: '2026-11-13' },
+  { n: 1, id: 'TsEOmP-VLgU', chapter: '2020-01', title: { he: 'הסדק במראה', en: 'The Crack in the Mirror' }, date: '2026-11-15' },
+]
+export const tapeFor = (chapterId: string) => TAPES.find((x) => x.chapter === chapterId) ?? null
+/** the player: Hebrew pages open with the Hebrew subtitles on */
+export const tapeEmbed = (id: string, lang: Lang) =>
+  `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}`

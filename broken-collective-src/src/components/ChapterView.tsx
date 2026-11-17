@@ -10,6 +10,7 @@ import { ReaderTools } from './ReaderTools'
 import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
 import { SupportFinale } from './SupportFinale'
+import { tapeFor } from '@/lib/book'
 import { ThreadKnot } from './Thread'
 
 export type NavLink = { href: string; label: string; title: string } | null
@@ -170,6 +171,16 @@ export function ChapterView({
               )
             })}
           </div>
+
+          {tapeFor(doc.id) ? (
+            <a className="ch-tape" href={`/broken-collective/${lang}/tapes/`}>
+              <span className="tp-rec">REC</span>
+              <span className="flex-1 font-display text-h4">
+                {lang === 'he' ? `הפרק הזה כקלטת · Tape ${String(tapeFor(doc.id)!.n).padStart(2, '0')}` : `This chapter as a tape · Tape ${String(tapeFor(doc.id)!.n).padStart(2, '0')}`}
+              </span>
+              <span aria-hidden="true">{lang === 'he' ? '←' : '→'}</span>
+            </a>
+          ) : null}
 
           {finale ? (
             <SupportFinale lang={lang} backHref={contentsHref} note={endNote} />

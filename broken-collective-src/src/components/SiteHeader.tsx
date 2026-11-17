@@ -22,6 +22,19 @@ export function SiteHeader({ lang, altHref }: { lang: Lang; altHref: string }) {
         </Link>
         <div className="flex items-center gap-1 desk:gap-4">
           <Link
+            href={`/${lang}/tapes/`}
+            className="inline-flex min-h-11 items-center gap-1.5 px-2 font-display text-h4 text-ink hover:text-thread"
+          >
+            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-thread" />
+            {lang === 'he' ? 'קלטות' : 'Tapes'}
+          </Link>
+          <Link
+            href={`/${lang}/#paperback`}
+            className="hidden min-h-11 items-center px-2 text-ink-soft underline-offset-4 hover:text-ink hover:underline desk:inline-flex"
+          >
+            {lang === 'he' ? 'הספר המודפס' : 'Paperback'}
+          </Link>
+          <Link
             href={`/${lang}/#contents`}
             className="hidden min-h-11 items-center px-2 text-ink-soft underline-offset-4 hover:text-ink hover:underline desk:inline-flex"
           >
