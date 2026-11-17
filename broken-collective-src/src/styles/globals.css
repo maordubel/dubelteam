@@ -868,13 +868,10 @@ html[data-theme='night'] .finale-bill {
 /* ── the goods: two cards, stacked on a phone, side by side on a desk ── */
 .gd-grid { display: grid; gap: 28px }
 .gd-card { display: flex; flex-direction: column; border: 1.5px solid var(--color-ink); background: color-mix(in oklab, var(--color-paper) 75%, white) }
-.gd-figure { position: relative; aspect-ratio: 4 / 3.2; background: var(--color-paper-deep); border-bottom: 1.5px solid var(--color-ink); overflow: hidden }
-.gd-garment { position: absolute; inset: 8% 14%; width: 72%; height: 84% }
-.gd-print { position: absolute; pointer-events: none }
-.gd-print--back { left: 50%; top: 26%; width: 30%; transform: translateX(-50%) }
-.gd-figure--cap .gd-garment { inset: 18% 12%; width: 76%; height: 64% }
-.gd-print--cap { left: 50%; top: 40%; width: 20%; transform: translateX(-50%) }
-.gd-tag { position: absolute; inset-inline-end: 12px; bottom: 10px; font-size: .95rem; letter-spacing: .2em; color: var(--color-ink-faint) }
+.gd-figure { position: relative; aspect-ratio: 1; background: #fff; border-bottom: 1.5px solid var(--color-ink); overflow: hidden }
+.gd-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .45s var(--ease-ink) }
+.gd-photo--alt { opacity: 0 }
+@media (hover: hover) { .gd-card:hover .gd-photo--alt { opacity: 1 } }
 .gd-body { padding: 16px 16px 18px }
 .gd-price { font-size: 1.8rem; color: var(--color-thread) }
 .gd-region { display: flex; flex-direction: column; gap: 6px; margin-top: 16px }
@@ -882,5 +879,4 @@ html[data-theme='night'] .finale-bill {
 .gd-region select { min-height: 48px; padding: 0 12px; border: 1px solid var(--color-ink); background: var(--color-paper); color: var(--color-ink); font: inherit }
 @media (min-width: 64rem) {
   .gd-grid { grid-template-columns: 1fr 1fr; gap: 40px }
-  .gd-figure { aspect-ratio: 4 / 3 }
 }
