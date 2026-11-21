@@ -16,39 +16,42 @@ function store(key: string, value?: string): string | null {
     if (value === undefined) return window.localStorage.getItem(key)
     window.localStorage.setItem(key, value)
   } catch {
-    /* storage unavailable */
+    /* storage unavailable — choices just won't persist */
   }
   return null
 }
 
 /**
- * Calculate storytelling pause & subtle pacing modulation per sentence.
+ * Storytelling pacing: calmer base tempo + deeper pauses on punctuation.
  */
 function analyzeBeat(sentence: string): { pauseAfter: number; rateMod: number } {
   const trimmed = sentence.trim()
-  let pauseAfter = 180
-  let rateMod = 1
+  let pauseAfter = 260 // standard period
+  let rateMod = 0.9 // calmer storytelling base speed
 
   if (/(\.\.\.|…)\s*["”']?$/.test(trimmed)) {
-    pauseAfter = 520
-    rateMod = 0.93 // slow down slightly for trailing suspense
+    pauseAfter = 680
+    rateMod = 0.84 // slow down for suspense
   } else if (/[?!]\s*["”']?$/.test(trimmed)) {
-    pauseAfter = 320
-  } else if (/[:;]\s*$/.test(trimmed)) {
-    pauseAfter = 260
+    pauseAfter = 420
+    rateMod = 0.88
+  } else if (/[:;—–]\s*$/.test(trimmed)) {
+    pauseAfter = 340
+  } else if (/,\s*$/.test(trimmed)) {
+    pauseAfter = 150 // quick breath on long-sentence commas
   }
 
-  // Short, punchy literary lines get a touch more weight
-  if (trimmed.length > 0 && trimmed.length <= 35) {
-    rateMod = Math.min(rateMod, 0.95)
-    pauseAfter = Math.max(pauseAfter, 280)
+  // Short, punchy literary lines get extra weight
+  if (trimmed.length > 0 && trimmed.length <= 35 && !/,\s*$/.test(trimmed)) {
+    rateMod = Math.min(rateMod, 0.85)
+    pauseAfter = Math.max(pauseAfter, 360)
   }
 
   return { pauseAfter, rateMod }
 }
 
 /**
- * Split paragraphs into individual sentences for natural breathing and dramatic pauses.
+ * Split paragraphs by punctuation, and break long sentences on commas for natural breathing.
  */
 function chunk(texts: string[], from: number, lang: 'he' | 'en'): Chunk[] {
   const out: Chunk[] = []
@@ -57,7 +60,18 @@ function chunk(texts: string[], from: number, lang: 'he' | 'en'): Chunk[] {
     if (!raw) continue
 
     const text = lang === 'he' ? normalizeHebrew(raw) : raw
-    const parts = text.match(/[^.!?…:;]+(?:\.\.\.|[.!?…:;])*["”']?\s*/g) ?? [text]
+    const rawParts = text.match(/[^.!?…:;—–]+(?:\.\.\.|[.!?…:;—–])*["”']?\s*/g) ?? [text]
+
+    // If a sentence is long (> 95 chars), also allow a breath at commas
+    const parts: string[] = []
+    for (const p of rawParts) {
+      if (p.length > 95 && p.includes(',')) {
+        const sub = p.match(/[^,]+,?\s*/g) ?? [p]
+        parts.push(...sub)
+      } else {
+        parts.push(p)
+      }
+    }
 
     for (const part of parts) {
       const sentence = part.trim()
@@ -71,7 +85,6 @@ function chunk(texts: string[], from: number, lang: 'he' | 'en'): Chunk[] {
           out.push({
             block: i,
             ...seg,
-            // Only pause after the last segment of the sentence
             pauseAfter: idx === segs.length - 1 ? pauseAfter : 40,
             rateMod,
           })
@@ -101,7 +114,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
     supported: false,
     voices: [],
     voiceURI: null,
-    rate: 0.94, // warmer storytelling default
+    rate: 1,
     status: 'idle',
     block: null,
   })
@@ -139,7 +152,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
         all.find((v) => v.lang.toLowerCase().startsWith('en')) ??
         null
       const saved = store(`bc:voice:${lang}`)
-      const rate = Number(store('bc:rate')) || 0.94
+      const rate = Number(store('bc:rate')) || 1
       setState((s) => ({
         ...s,
         supported: true,
@@ -198,7 +211,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
           // Scale pauses inversely with user's chosen speed
           const scale = 1 / Math.max(0.75, rate)
           const isNewParagraph = nxt.block !== c.block
-          const delay = Math.round((isNewParagraph ? 700 : c.pauseAfter) * scale)
+          const delay = Math.round((isNewParagraph ? 850 : c.pauseAfter) * scale)
 
           if (delay > 0) {
             timerRef.current = window.setTimeout(() => run(k + 1), delay)
@@ -272,7 +285,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
       const u = new SpeechSynthesisUtterance(lang === 'he' ? normalizeHebrew(sample) : sample)
       if (v) u.voice = v
       u.lang = v?.lang ?? (lang === 'he' ? 'he-IL' : 'en-GB')
-      u.rate = stateRef.current.rate
+      u.rate = Math.max(0.6, Math.min(2, Number((stateRef.current.rate * 0.9).toFixed(2))))
       synth.speak(u)
       setState((s) => ({ ...s, status: s.status === 'playing' ? 'paused' : s.status }))
     },
