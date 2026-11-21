@@ -3,46 +3,89 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { normalizeHebrew, segmentHebrew, voiceScore } from '@/lib/speech-he'
 
-type Chunk = { block: number; text: string; lang: 'he' | 'en' }
+type Chunk = {
+  block: number
+  text: string
+  lang: 'he' | 'en'
+  pauseAfter: number
+  rateMod: number
+}
 
 function store(key: string, value?: string): string | null {
   try {
     if (value === undefined) return window.localStorage.getItem(key)
     window.localStorage.setItem(key, value)
   } catch {
-    /* storage unavailable — choices just won't persist */
+    /* storage unavailable */
   }
   return null
 }
 
 /**
- * Split paragraphs into sentence-sized chunks (some engines stop after ~15s of one utterance).
- * Hebrew is normalised for speech and English runs are split out for an English voice.
+ * Calculate storytelling pause & subtle pacing modulation per sentence.
+ */
+function analyzeBeat(sentence: string): { pauseAfter: number; rateMod: number } {
+  const trimmed = sentence.trim()
+  let pauseAfter = 180
+  let rateMod = 1
+
+  if (/(\.\.\.|…)\s*["”']?$/.test(trimmed)) {
+    pauseAfter = 520
+    rateMod = 0.93 // slow down slightly for trailing suspense
+  } else if (/[?!]\s*["”']?$/.test(trimmed)) {
+    pauseAfter = 320
+  } else if (/[:;]\s*$/.test(trimmed)) {
+    pauseAfter = 260
+  }
+
+  // Short, punchy literary lines get a touch more weight
+  if (trimmed.length > 0 && trimmed.length <= 35) {
+    rateMod = Math.min(rateMod, 0.95)
+    pauseAfter = Math.max(pauseAfter, 280)
+  }
+
+  return { pauseAfter, rateMod }
+}
+
+/**
+ * Split paragraphs into individual sentences for natural breathing and dramatic pauses.
  */
 function chunk(texts: string[], from: number, lang: 'he' | 'en'): Chunk[] {
   const out: Chunk[] = []
   for (let i = from; i < texts.length; i++) {
-    const text = lang === 'he' ? normalizeHebrew(texts[i]) : texts[i]
-    const parts = text.match(/[^.!?…:;]+[.!?…:;]*["”']?\s*/g) ?? [text]
-    const sentences: string[] = []
-    let buf = ''
-    for (const s of parts) {
-      if ((buf + s).length > 200 && buf) {
-        sentences.push(buf.trim())
-        buf = ''
+    const raw = texts[i].trim()
+    if (!raw) continue
+
+    const text = lang === 'he' ? normalizeHebrew(raw) : raw
+    const parts = text.match(/[^.!?…:;]+(?:\.\.\.|[.!?…:;])*["”']?\s*/g) ?? [text]
+
+    for (const part of parts) {
+      const sentence = part.trim()
+      if (!sentence) continue
+
+      const { pauseAfter, rateMod } = analyzeBeat(sentence)
+
+      if (lang === 'he') {
+        const segs = segmentHebrew(sentence)
+        segs.forEach((seg, idx) => {
+          out.push({
+            block: i,
+            ...seg,
+            // Only pause after the last segment of the sentence
+            pauseAfter: idx === segs.length - 1 ? pauseAfter : 40,
+            rateMod,
+          })
+        })
+      } else {
+        out.push({ block: i, text: sentence, lang, pauseAfter, rateMod })
       }
-      buf += s
-    }
-    if (buf.trim()) sentences.push(buf.trim())
-    for (const sentence of sentences) {
-      if (lang === 'he') for (const seg of segmentHebrew(sentence)) out.push({ block: i, ...seg })
-      else out.push({ block: i, text: sentence, lang })
     }
   }
   return out
 }
 
-const byQuality = (a: SpeechSynthesisVoice, b: SpeechSynthesisVoice) => voiceScore(b) - voiceScore(a) || a.name.localeCompare(b.name)
+const byQuality = (a: SpeechSynthesisVoice, b: SpeechSynthesisVoice) =>
+  voiceScore(b) - voiceScore(a) || a.name.localeCompare(b.name)
 
 export type SpeechState = {
   supported: boolean
@@ -53,17 +96,12 @@ export type SpeechState = {
   block: number | null
 }
 
-/**
- * Read-aloud on the device's own voices (Web Speech API): free, offline-capable,
- * and the reader picks the voice. Hebrew voices come from the OS (iOS "Carmit",
- * Android/Chrome Hebrew, Windows "Asaf"/"Hila").
- */
 export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: number) => void) {
   const [state, setState] = useState<SpeechState>({
     supported: false,
     voices: [],
     voiceURI: null,
-    rate: 1,
+    rate: 0.94, // warmer storytelling default
     status: 'idle',
     block: null,
   })
@@ -71,10 +109,18 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
   const english = useRef<SpeechSynthesisVoice | null>(null)
   const pos = useRef(0)
   const runId = useRef(0)
+  const timerRef = useRef<number | null>(null)
   const onBlockRef = useRef(onBlock)
   onBlockRef.current = onBlock
   const stateRef = useRef(state)
   stateRef.current = state
+
+  const clearTimer = () => {
+    if (timerRef.current !== null) {
+      window.clearTimeout(timerRef.current)
+      timerRef.current = null
+    }
+  }
 
   useEffect(() => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
@@ -82,14 +128,18 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
     const load = () => {
       const all = synth.getVoices()
       const mine = all
-        .filter((v) => v.lang.toLowerCase().startsWith(lang === 'he' ? 'he' : 'en') || (lang === 'he' && v.lang.toLowerCase().startsWith('iw')))
+        .filter(
+          (v) =>
+            v.lang.toLowerCase().startsWith(lang === 'he' ? 'he' : 'en') ||
+            (lang === 'he' && v.lang.toLowerCase().startsWith('iw')),
+        )
         .sort(byQuality)
       english.current =
         all.filter((v) => /^en[-_](gb|us|ie|au)/i.test(v.lang)).sort(byQuality)[0] ??
         all.find((v) => v.lang.toLowerCase().startsWith('en')) ??
         null
       const saved = store(`bc:voice:${lang}`)
-      const rate = Number(store('bc:rate')) || 1
+      const rate = Number(store('bc:rate')) || 0.94
       setState((s) => ({
         ...s,
         supported: true,
@@ -103,6 +153,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
     return () => {
       synth.removeEventListener('voiceschanged', load)
       runId.current++
+      clearTimer()
       synth.cancel()
     }
   }, [lang])
@@ -111,7 +162,9 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
     (index: number) => {
       const synth = window.speechSynthesis
       const id = ++runId.current
+      clearTimer()
       synth.cancel()
+
       const run = (k: number) => {
         if (id !== runId.current) return
         const c = queue.current[k]
@@ -126,24 +179,41 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
         const v = c.lang !== lang && english.current ? english.current : own
         if (v) u.voice = v
         u.lang = v?.lang ?? (c.lang === 'he' ? 'he-IL' : 'en-GB')
-        u.rate = rate
+        // Apply subtle dramatic rate modulation clamped to safe bounds
+        u.rate = Math.max(0.6, Math.min(2, Number((rate * c.rateMod).toFixed(2))))
+
         u.onstart = () => {
           if (id !== runId.current) return
           setState((s) => (s.block === c.block ? s : { ...s, block: c.block }))
           onBlockRef.current(c.block)
         }
+
         u.onend = () => {
+          if (id !== runId.current) return
           const nxt = queue.current[k + 1]
-          // a breath between paragraphs, like a reader turning to the next one
-          if (nxt && nxt.block !== c.block) window.setTimeout(() => run(k + 1), 320)
-          else run(k + 1)
+          if (!nxt) {
+            setState((s) => ({ ...s, status: 'idle', block: null }))
+            return
+          }
+          // Scale pauses inversely with user's chosen speed
+          const scale = 1 / Math.max(0.75, rate)
+          const isNewParagraph = nxt.block !== c.block
+          const delay = Math.round((isNewParagraph ? 700 : c.pauseAfter) * scale)
+
+          if (delay > 0) {
+            timerRef.current = window.setTimeout(() => run(k + 1), delay)
+          } else {
+            run(k + 1)
+          }
         }
+
         u.onerror = (e) => {
           if (e.error === 'interrupted' || e.error === 'canceled') return
           run(k + 1)
         }
         synth.speak(u)
       }
+
       setState((s) => ({ ...s, status: 'playing' }))
       run(index)
     },
@@ -160,6 +230,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
 
   const pause = useCallback(() => {
     runId.current++
+    clearTimer()
     window.speechSynthesis.cancel()
     setState((s) => ({ ...s, status: 'paused' }))
   }, [])
@@ -168,6 +239,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
 
   const stop = useCallback(() => {
     runId.current++
+    clearTimer()
     window.speechSynthesis.cancel()
     setState((s) => ({ ...s, status: 'idle', block: null }))
   }, [])
@@ -193,6 +265,7 @@ export function useSpeech(lang: 'he' | 'en', texts: string[], onBlock: (i: numbe
   const preview = useCallback(
     (uri: string, sample: string) => {
       runId.current++
+      clearTimer()
       const synth = window.speechSynthesis
       synth.cancel()
       const v = stateRef.current.voices.find((x) => x.voiceURI === uri)
