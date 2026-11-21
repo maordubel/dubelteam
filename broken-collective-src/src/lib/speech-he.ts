@@ -40,7 +40,7 @@ export function heNumber(n: number, masc = false): string {
 
 const MONTHS = 'ינואר|פברואר|מרץ|מרס|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר'
 
-/* ── acronyms & abbreviations ── */
+/* ── acronyms, abbreviations & vocalised words (niqqud) ── */
 const LEXICON: [RegExp, string][] = [
   [/צה["״]ל/g, 'צהל'],
   [/ארה["״]ב/g, 'ארצות הברית'],
@@ -54,6 +54,9 @@ const LEXICON: [RegExp, string][] = [
   [/וכו['׳]/g, 'וכולי'],
   [/האו["״]ם/g, 'האום'],
   [/או["״]ם/g, 'אום'],
+  // Add any book-specific names or ambiguous words with niqqud here:
+  [/(?<![א-ת])שאטי(?![א-ת])/g, 'שָׁאטִי'],
+  [/(?<![א-ת])יפו(?![א-ת])/g, 'יָפוֹ'],
 ]
 
 const FINAL: Record<string, string> = { כ: 'ך', מ: 'ם', נ: 'ן', פ: 'ף', צ: 'ץ' }
@@ -77,70 +80,4 @@ export function normalizeHebrew(input: string): string {
   s = s.replace(/(\d+)\s?%/g, (_, n: string) => `${heNumber(+n)} אחוז`)
   // dates: (ב־)23 במרץ → בעשרים ושלושה במרץ (days are masculine)
   s = s.replace(new RegExp(`(^|[^${HEB}\\d])([והבלמשכ]{0,3})[־\\-]?(\\d{1,2})(\\s+ב(?:${MONTHS}))`, 'g'), (_, pre: string, px: string, d: string, rest: string) => `${pre}${px}${heNumber(+d, true)}${rest}`)
-  // prefixed numbers: ב־2020 / מ־5 → words attached to the prefix
-  s = s.replace(new RegExp(`(^|[^${HEB}])([והבלמשכ]{1,3})[־\\-](\\d+)`, 'g'), (_, pre: string, px: string, n: string) => `${pre}${px}${heNumber(+n)}`)
-  // bare integers
-  s = s.replace(/\b\d+\b/g, (n) => heNumber(+n))
-  // prefix glued to a Latin word: ב־The One → בֶּ The One
-  s = s.replace(new RegExp(`(^|[^${HEB}])([והבלמשכ]{1,3})[־\\-](?=[A-Za-z])`, 'g'), (_, pre: string, px: string) => pre + [...px].map((c) => PREFIX_SOUND[c] ?? c).join('') + ' ')
-  // maqaf between Hebrew words reads as a join
-  s = s.replace(/־/g, ' ')
-  // dashes and separators → pauses
-  s = s.replace(/\s*[–—]\s*/g, ', ').replace(/\s*·\s*/g, '. ')
-  // quotation marks are not spoken
-  s = s.replace(/["“”„״«»]/g, '').replace(/(^|\s)['‘’]/g, '$1').replace(/(?<![גזצחת])['’](\s|$)/g, '$1')
-  return s.replace(/\s+([,.!?])/g, '$1').replace(/\s{2,}/g, ' ').trim()
-}
-
-/** Split into Hebrew / English runs, so English can be read by an English voice. */
-export function segmentHebrew(text: string): Segment[] {
-  const out: Segment[] = []
-  const re = /[A-Za-z][A-Za-z0-9'’&.\- ]*[A-Za-z0-9.!?]|[A-Za-z]/g
-  let last = 0
-  for (const m of text.matchAll(re)) {
-    const i = m.index ?? 0
-    if (m[0].replace(/[^A-Za-z]/g, '').length < 2) continue
-    const before = text.slice(last, i)
-    if (before.trim()) out.push({ text: before.trim(), lang: 'he' })
-    out.push({ text: m[0].trim(), lang: 'en' })
-    last = i + m[0].length
-  }
-  const rest = text.slice(last)
-  if (rest.trim()) out.push({ text: rest.trim(), lang: 'he' })
-  // glue punctuation-only Hebrew leftovers onto neighbours
-  return out.filter((seg) => /[\p{L}\p{N}]/u.test(seg.text))
-}
-
-/* ── voice quality ── */
-export function voiceScore(v: SpeechSynthesisVoice): number {
-  const n = v.name.toLowerCase()
-  let s = 0
-  if (/natural|neural/.test(n)) s += 6
-  if (/premium/.test(n)) s += 5
-  if (/enhanced|משופר/.test(n)) s += 4
-  if (/online/.test(n)) s += 2
-  if (/google/.test(n)) s += 2
-  if (/siri/.test(n)) s += 3
-  if (/compact|eloquence|espeak/.test(n)) s -= 3
-  if (v.localService === false) s += 1
-  return s
-}
-
-export const voiceTier = (v: SpeechSynthesisVoice): 'natural' | 'good' | 'basic' => {
-  const s = voiceScore(v)
-  return s >= 5 ? 'natural' : s >= 2 ? 'good' : 'basic'
-}
-export function voiceScore(v: SpeechSynthesisVoice): number {
-  const n = v.name.toLowerCase()
-  let s = 0
-  if (/natural|neural/.test(n)) s += 7
-  if (/hila|avri|carmit|andrew|ava|emma|sonia|ryan|brian/.test(n)) s += 3
-  if (/premium/.test(n)) s += 5
-  if (/enhanced|משופר/.test(n)) s += 4
-  if (/online/.test(n)) s += 2
-  if (/google/.test(n)) s += 2
-  if (/siri/.test(n)) s += 3
-  if (/compact|eloquence|espeak/.test(n)) s -= 4
-  if (v.localService === false) s += 1
-  return s
-}
+  // prefixed numbers: ב־2020 /
