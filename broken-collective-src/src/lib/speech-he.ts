@@ -130,3 +130,17 @@ export const voiceTier = (v: SpeechSynthesisVoice): 'natural' | 'good' | 'basic'
   const s = voiceScore(v)
   return s >= 5 ? 'natural' : s >= 2 ? 'good' : 'basic'
 }
+export function voiceScore(v: SpeechSynthesisVoice): number {
+  const n = v.name.toLowerCase()
+  let s = 0
+  if (/natural|neural/.test(n)) s += 7
+  if (/hila|avri|carmit|andrew|ava|emma|sonia|ryan|brian/.test(n)) s += 3
+  if (/premium/.test(n)) s += 5
+  if (/enhanced|משופר/.test(n)) s += 4
+  if (/online/.test(n)) s += 2
+  if (/google/.test(n)) s += 2
+  if (/siri/.test(n)) s += 3
+  if (/compact|eloquence|espeak/.test(n)) s -= 4
+  if (v.localService === false) s += 1
+  return s
+}
